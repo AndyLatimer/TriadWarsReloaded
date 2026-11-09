@@ -1,0 +1,53 @@
+name: CI - Integrity and Build Verification
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  server-smoke-test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python Syntax Verification
+        run: |
+          python -m py_compile server/LocalServer/LocalServer/server.py
+          python -m py_compile server/LocalServer/LocalServer/handlers.py
+          python -m py_compile server/LocalServer/LocalServer/state.py
+          python -m py_compile server/LocalServer/LocalServer/useroptions.py
+          python -m py_compile server/LocalServer/LocalServer/tools/store_items.py
+          python -m py_compile server/LocalServer/LocalServer/tools/smoke_test.py
+
+      - name: Run Server in Background & Smoke Test
+        shell: powershell
+        run: |
+          cd server/LocalServer/LocalServer
+          $server = Start-Process -FilePath "python" -ArgumentList "server.py --port 443" -PassThru
+          Start-Sleep -Seconds 3
+          try {
+            python tools/smoke_test.py --port 443
+          } finally {
+            Stop-Process -Id $server.Id -Force -ErrorAction SilentlyContinue
+          }
+
+  build-launcher:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile C# Launcher
+        shell: powershell
+        run: |
+          $csc = "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe"
+          & $csc /target:winexe /out:launcher\TriadWarsLauncher.exe /platform:x64 /reference:System.Windows.Forms.dll,System.Drawing.dll,System.dll launcher\src\Launcher.cs
+          Test-Path launcher\TriadWarsLauncher.exe
