@@ -35,6 +35,10 @@ namespace TriadWarsLauncher
         private Button btnToggleLanguage;
         private Button btnResetProfile;
         private Button btnOpenLogs;
+        private Label lblSpawn;
+        private ComboBox cmbSpawnPoint;
+        private Button btnSetSpawn;
+        private Button btnSyncSD;
         private TextBox txtLogs;
         private System.Windows.Forms.Timer statusTimer;
 
@@ -105,7 +109,7 @@ namespace TriadWarsLauncher
         private void InitializeComponent()
         {
             this.Text = "Triad Wars Offline Revival - Launcher";
-            this.Size = new Size(820, 670);
+            this.Size = new Size(820, 725);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -262,11 +266,63 @@ namespace TriadWarsLauncher
             btnOpenLogs.FlatAppearance.BorderSize = 0;
             btnOpenLogs.Click += (s, e) => OpenLogsFolder();
 
+            // Controls Row 3 (Sleeping Dogs & Safehouse Spawn)
+            lblSpawn = new Label
+            {
+                Text = "Piso Franco (Spawn):",
+                Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
+                ForeColor = Color.PaleGoldenrod,
+                Location = new Point(25, 323),
+                AutoSize = true
+            };
+
+            cmbSpawnPoint = new ComboBox
+            {
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                BackColor = Color.FromArgb(35, 40, 48),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 9f),
+                Location = new Point(180, 320),
+                Size = new Size(325, 28)
+            };
+            cmbSpawnPoint.Items.Add("North Point Safehouse (Distrito North Point)");
+            cmbSpawnPoint.Items.Add("Central Safehouse (Distrito Central / Loft)");
+            cmbSpawnPoint.Items.Add("Aberdeen Safehouse (Distrito Aberdeen / Flotante)");
+            cmbSpawnPoint.Items.Add("Kennedy Town Safehouse (Distrito Kennedy / Ático)");
+            cmbSpawnPoint.SelectedIndex = 0;
+
+            btnSetSpawn = new Button
+            {
+                Text = "Fijar Spawn",
+                BackColor = Color.FromArgb(45, 52, 60),
+                ForeColor = Color.LightSkyBlue,
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(515, 318),
+                Size = new Size(115, 30),
+                Cursor = Cursors.Hand
+            };
+            btnSetSpawn.FlatAppearance.BorderSize = 0;
+            btnSetSpawn.Click += (s, e) => ApplySelectedSpawn();
+
+            btnSyncSD = new Button
+            {
+                Text = "Restaurar SD",
+                BackColor = Color.FromArgb(140, 35, 35),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(640, 318),
+                Size = new Size(140, 30),
+                Cursor = Cursors.Hand
+            };
+            btnSyncSD.FlatAppearance.BorderSize = 0;
+            btnSyncSD.Click += (s, e) => SyncSleepingDogs();
+
             // Log Console
             Label lblConsole = new Label
             {
                 Text = "Registro de Eventos y Consola del Servidor:",
-                Location = new Point(25, 320),
+                Location = new Point(25, 360),
                 AutoSize = true,
                 ForeColor = Color.Silver
             };
@@ -279,8 +335,8 @@ namespace TriadWarsLauncher
                 BackColor = Color.FromArgb(14, 14, 16),
                 ForeColor = Color.PaleGreen,
                 Font = new Font("Consolas", 9f),
-                Location = new Point(25, 345),
-                Size = new Size(755, 260)
+                Location = new Point(25, 385),
+                Size = new Size(755, 275)
             };
 
             this.Controls.Add(lblTitle);
@@ -294,6 +350,10 @@ namespace TriadWarsLauncher
             this.Controls.Add(btnToggleLanguage);
             this.Controls.Add(btnResetProfile);
             this.Controls.Add(btnOpenLogs);
+            this.Controls.Add(lblSpawn);
+            this.Controls.Add(cmbSpawnPoint);
+            this.Controls.Add(btnSetSpawn);
+            this.Controls.Add(btnSyncSD);
             this.Controls.Add(lblConsole);
             this.Controls.Add(txtLogs);
 
@@ -461,6 +521,38 @@ namespace TriadWarsLauncher
                 lblControllerStatus.Text = "Mando: Controlador estándar de Windows";
                 lblControllerStatus.ForeColor = Color.LightGray;
             }
+
+            // Spawn Safehouse Live State
+            if (cmbSpawnPoint != null && !cmbSpawnPoint.DroppedDown)
+            {
+                string script = Path.Combine(serverDir, "tools", "safehouse_manager.py");
+                if (File.Exists(script))
+                {
+                    try
+                    {
+                        var psi = new ProcessStartInfo(pythonPath, string.Format("\"{0}\" get-spawn", script))
+                        {
+                            WorkingDirectory = Path.GetDirectoryName(script),
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        };
+                        using (var p = Process.Start(psi))
+                        {
+                            string line = p.StandardOutput.ReadLine();
+                            p.WaitForExit(600);
+                            if (!string.IsNullOrEmpty(line))
+                            {
+                                if (line.Contains("SafehouseNP") && cmbSpawnPoint.SelectedIndex != 0) cmbSpawnPoint.SelectedIndex = 0;
+                                else if (line.Contains("SafehouseCT") && cmbSpawnPoint.SelectedIndex != 1) cmbSpawnPoint.SelectedIndex = 1;
+                                else if (line.Contains("SafehouseAB") && cmbSpawnPoint.SelectedIndex != 2) cmbSpawnPoint.SelectedIndex = 2;
+                                else if (line.Contains("SafehouseKT") && cmbSpawnPoint.SelectedIndex != 3) cmbSpawnPoint.SelectedIndex = 3;
+                            }
+                        }
+                    }
+                    catch { }
+                }
+            }
         }
 
         private void ToggleLanguage()
@@ -565,8 +657,63 @@ namespace TriadWarsLauncher
             }
         }
 
+        private void ApplySelectedSpawn()
+        {
+            if (cmbSpawnPoint == null || cmbSpawnPoint.SelectedIndex < 0) return;
+            string[] targets = new string[] { "np", "ct", "ab", "kt" };
+            int idx = cmbSpawnPoint.SelectedIndex;
+            if (idx >= 0 && idx < targets.Length)
+            {
+                ExecuteSafehouseCommand("spawn " + targets[idx]);
+            }
+        }
+
+        private void SyncSleepingDogs()
+        {
+            ExecuteSafehouseCommand("sync-sd");
+        }
+
+        private void ExecuteSafehouseCommand(string arg)
+        {
+            string script = Path.Combine(serverDir, "tools", "safehouse_manager.py");
+            if (!File.Exists(script)) return;
+
+            try
+            {
+                var psi = new ProcessStartInfo(pythonPath, string.Format("\"{0}\" {1}", script, arg))
+                {
+                    WorkingDirectory = Path.GetDirectoryName(script),
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                using (var p = Process.Start(psi))
+                {
+                    string stdout = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit(3000);
+                    if (!string.IsNullOrEmpty(stdout))
+                    {
+                        foreach (var rawLine in stdout.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                        {
+                            string line = rawLine.Trim();
+                            if (line.StartsWith("PUNTO DE REAPARICIÓN") || line.StartsWith("Coordenadas") || line.StartsWith("¡SINCRONIZACIÓN") || line.StartsWith("- ") || line.StartsWith("GameplayState"))
+                            {
+                                LogMessage("[PISO FRANCO] " + line);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogMessage("[PISO FRANCO ERR] " + ex.Message);
+            }
+        }
+
         private void LaunchClientOnly()
         {
+            ApplySelectedSpawn();
             string exePath = Path.Combine(betaDir, "TriadWars.exe");
             if (!File.Exists(exePath))
             {

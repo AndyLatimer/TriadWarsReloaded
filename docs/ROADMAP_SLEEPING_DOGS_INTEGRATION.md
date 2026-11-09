@@ -189,7 +189,23 @@ flowchart LR
 - **Banderas de Servidor a Activar en `state.json`:**
   - `SafehouseUnlocked = 1`
   - `UndercoverSafehouse = 1`
-  - `Collectible_Safehouse: { "SafehouseNP": true }`
-  - `DoorStateLocked: { "Door_SafehouseNP": false }`
+  - `Collectible_Safehouse: { "SafehouseNP": true, "SafehouseCT": true, "SafehouseAB": true, "SafehouseKT": true }`
+  - `DoorStateLocked: { "Door_SafehouseNP": false, "Door_SafehouseCT": false, ... }`
 - **Punto de Reaparición (*Spawn Point / Restore Location*):**
-  - Configurado en `get_closest_restore_location` hacia `RestoreType_Safehouse` en North Point.
+  - Configurado en `PlayerCheckpointLocationX/Y/Z` y `PlayerLastStableLocationX/Y/Z` con selector en tiempo real desde el Launcher (`safehouse_manager.py spawn <np|ct|ab|kt>`).
+
+---
+
+## 7. Resumen de Implementación Completada
+
+| Componente | Estado | Integración en Triad Wars |
+| :--- | :---: | :--- |
+| **4 Pisos Francos** | **COMPLETO** | North Point, Central, Aberdeen y Kennedy Town con streaming 3D de interiores, garajes exteriores y spawn inicial. |
+| **Dojo de Artes Marciales (Sifu)** | **COMPLETO** | Interior del Dojo activo, 11 estatuas de Jade registradas, árbol de combate Kung Fu al nivel 5 y 12 movimientos cuerpo a cuerpo desbloqueados. |
+| **4 Clubes de Pelea de Distrito** | **COMPLETO** | North Point, Central, Aberdeen y Kennedy Town con torneos de 6 rondas y recompensas de Face/HK$. |
+| **Coleccionables y Minimapa** | **COMPLETO** | Indicadores de mapa activos con iconos y texto: 50 Santuarios de Salud (+100% vida), Cajas Fuertes, Estatuas de Jade, Cámaras de Vigilancia Policial y Rampas de Salto Acrobático. |
+| **Minijuegos Urbanos** | **COMPLETO** | 2 Clubs de Karaoke (Bam Bam y K-Bar) con 7 canciones clásicas de los 80s, 7 Carreras Callejeras por toda la isla y 2 Casas de Apuestas (Póker/Lucha de Gallos). |
+| **Servicios y Buffs Activos** | **COMPLETO** | Masajes de doble reputación Face (`MassageParlourBuff_Activated=1`), comida callejera con daño extra (`StrikingBuff_Activated=1`) y regeneración pasiva de salud (`HealthRegen_Activated=1`). |
+| **28 Trajes Legendarios DLC** | **COMPLETO** | Hitman Agent 47, Deus Ex Sarif, Bruce Lee chándal amarillo, Rey Mono Sun Wukong, SWAT táctico, Rico Rodriguez Just Cause, Maestro Shaolin, Wing Chun y Muay Thai integrados al armario del jugador. |
+| **Árboles de Habilidades Cop & Triad** | **COMPLETO** | Cop Driving 5, Cop Shooting 5, Triad Defensive 5, Triad Offensive 5, Gunplay Mastery 5 y Embiste de Vehículos activado. |
+| **Launcher GUI v2.0** | **COMPLETO** | Selector desplegable de Piso Franco inicial con 1 clic, botón de fijar reaparición, sincronizador maestro de Sleeping Dogs y compilación nativa en `TriadWarsLauncher.exe`. |

@@ -115,40 +115,133 @@ def _find_safehouse(safehouses, target):
 def set_safehouse_state(target, unlock=True):
     missions = load_json(MISSIONS_FILE)
     safehouses = missions.get("safehouses", [])
-    sh = _find_safehouse(safehouses, target)
-    if not sh:
-        print(f"Error: No se encontró ningún piso franco que coincida con '{target}'.")
-        return
 
-    sh["is_unlocked"] = unlock
-    save_json(MISSIONS_FILE, missions)
+    if str(target).strip().lower() == "all":
+        targets = safehouses
+    else:
+        sh = _find_safehouse(safehouses, target)
+        if not sh:
+            print(f"Error: No se encontró ningún piso franco que coincida con '{target}'.")
+            return
+        targets = [sh]
 
     state = load_json(STATE_FILE)
     gps = state.get("gameplaystate", "")
     flags = [f.strip() for f in gps.split(";") if f.strip()]
-    sym_flag = f"{sh['symbol']}=1"
 
     if unlock:
         if "SafehouseUnlocked=1" not in flags:
             flags.insert(0, "SafehouseUnlocked=1")
         if "UndercoverSafehouse=1" not in flags:
             flags.insert(1, "UndercoverSafehouse=1")
-        if sym_flag not in flags:
-            flags.append(sym_flag)
+
+    for sh in targets:
+        sh["is_unlocked"] = unlock
+        sym_flag = f"{sh['symbol']}=1"
         door_flag = f"Door_{sh['symbol']}=0"
-        if door_flag not in flags:
-            flags.append(door_flag)
-    else:
-        flags = [f for f in flags if f != sym_flag and f != f"Door_{sh['symbol']}=0"]
+        if unlock:
+            if sym_flag not in flags:
+                flags.append(sym_flag)
+            if door_flag not in flags:
+                flags.append(door_flag)
+        else:
+            flags = [f for f in flags if f != sym_flag and f != door_flag]
+
+    save_json(MISSIONS_FILE, missions)
 
     new_gps = ";".join(flags)
     state["gameplaystate"] = new_gps
     state.setdefault("player", {}).setdefault("PlayerDataBag", {})["GameplayState"] = new_gps
     save_json(STATE_FILE, state)
 
-    action = "desbloqueado" if unlock else "bloqueado"
-    print(f"Piso franco '{sh['name']}' ({sh['symbol']}) {action} correctamente.")
+    action = "desbloqueados" if unlock else "bloqueados"
+    print(f"Pisos francos ({len(targets)}) {action} correctamente.")
     print(f"GameplayState actualizado: {new_gps}")
+
+
+def sync_all_sleeping_dogs():
+    """Restaura y sincroniza todas las características del singleplayer de Sleeping Dogs."""
+    missions = load_json(MISSIONS_FILE)
+    safehouses = missions.get("safehouses", [])
+    for sh in safehouses:
+        sh["is_unlocked"] = True
+    save_json(MISSIONS_FILE, missions)
+
+    state = load_json(STATE_FILE)
+    gps = state.get("gameplaystate", "")
+    flags = [f.strip() for f in gps.split(";") if f.strip()]
+
+    sd_flags = [
+        "SafehouseUnlocked=1", "UndercoverSafehouse=1",
+        "SafehouseNP=1", "Door_SafehouseNP=0",
+        "SafehouseCT=1", "Door_SafehouseCT=0",
+        "SafehouseAB=1", "Door_SafehouseAB=0",
+        "SafehouseKT=1", "Door_SafehouseKT=0",
+        "FIGHTCLUB_INTRO_COMPLETE=1",
+        "StatueUpgradePoint=11", "StatueDefensiveStage=5", "StatueOffensiveStage=5",
+        "CopDrivingStage=5", "CopShootingStage=5",
+        "TriadDefensiveStage=5", "TriadOffensiveStage=5",
+        "GunplayUpgradeStage=5", "VehicleRamUpgrade=1",
+        "CopXP=100000", "TriadXP=100000",
+        "CopUpgradePoint=10", "TriadUpgradePoint=10",
+        "MaxHealthUpgradePoint=50",
+        "EnableJadeStatueIndicators=1", "EnableJadeStatueIndicatorsIcon=1", "EnableJadeStatueIndicatorsText=1",
+        "EnableHealthShrineIndicators=1", "EnableHealthShrineIndicatorsIcon=1", "EnableHealthShrineIndicatorsText=1",
+        "EnableLockboxIndicators=1", "EnableLockboxIndicatorsIcon=1", "EnableLockboxIndicatorsText=1",
+        "EnableSpyCams=1", "EnableSpyCamsIcon=1", "EnableSpyCamsText=1",
+        "EnableSpyCamIndicators=1", "EnableSpyCamIndicatorsIcon=1", "EnableSpyCamIndicatorsText=1",
+        "EnableJumpIndicators=1",
+        "EnableValet=1", "EnablePDA=1",
+        "EnableKaraoke=1",
+        "MassageParlourBuff_Activated=1", "StrikingBuff_Activated=1", "HealthRegen_Activated=1",
+        "DLCRedeemed=1", "TriadWarsTutorialComplete=1"
+    ]
+
+    for f in sd_flags:
+        key = f.split("=")[0]
+        flags = [existing for existing in flags if not existing.startswith(f"{key}=")]
+        flags.append(f)
+
+    # Ensure spawn exists
+    has_spawn = any(f.startswith("ActiveSafehouseSpawn") for f in flags)
+    if not has_spawn:
+        flags.append("PlayerCheckpointLocationX=840.50")
+        flags.append("PlayerCheckpointLocationY=-320.20")
+        flags.append("PlayerCheckpointLocationZ=5.30")
+        flags.append("PlayerLastStableLocationX=840.50")
+        flags.append("PlayerLastStableLocationY=-320.20")
+        flags.append("PlayerLastStableLocationZ=5.30")
+        flags.append("ActiveSafehouseSpawn=SafehouseNP")
+
+    new_gps = ";".join(flags)
+    state["gameplaystate"] = new_gps
+    state.setdefault("player", {}).setdefault("PlayerDataBag", {})["GameplayState"] = new_gps
+    save_json(STATE_FILE, state)
+
+    print("=" * 70)
+    print("¡SINCRONIZACIÓN SLEEPING DOGS COMPLETADA!")
+    print(" - 4 Pisos Francos desbloqueados (North Point, Central, Aberdeen, Kennedy)")
+    print(" - Dojo de Sifu y 4 Clubes de Pelea de Distrito activados")
+    print(" - Árboles de Habilidades Kung Fu, Cop, Triad y Gunplay al MAXIMO")
+    print(" - Indicadores en Minimapa de Estatuas de Jade, Santuarios, Cajas Fuertes y Cámaras")
+    print(" - Buffs activos: Masaje (Doble Face), Comida callejera (Fuerza)")
+    print("=" * 70)
+
+
+def get_spawn():
+    state = load_json(STATE_FILE)
+    gps = state.get("gameplaystate", "")
+    for part in gps.split(";"):
+        if part.startswith("ActiveSafehouseSpawn="):
+            sym = part.split("=")[1]
+            missions = load_json(MISSIONS_FILE)
+            for sh in missions.get("safehouses", []):
+                if sh.get("symbol") == sym:
+                    print(f"{sym}:{sh.get('name')}:{sh.get('district')}")
+                    return
+            print(f"{sym}:Safehouse")
+            return
+    print("SafehouseNP:North Point Apartment:North Point")
 
 
 def set_spawn_location(target):
@@ -199,12 +292,14 @@ def main():
 
     subparsers.add_parser("list", help="Listar todos los pisos francos y su estado")
     subparsers.add_parser("status", help="Mostrar resumen de estado activo")
+    subparsers.add_parser("get-spawn", help="Obtener el piso franco de spawn activo")
+    subparsers.add_parser("sync-sd", help="Sincronizar y restaurar todas las características de Sleeping Dogs")
 
     spawn_parser = subparsers.add_parser("spawn", help="Fijar punto de reaparición inicial del jugador")
     spawn_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, ct, ab, kt)")
 
-    unlock_parser = subparsers.add_parser("unlock", help="Desbloquear un piso franco")
-    unlock_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, north, SafehouseNP)")
+    unlock_parser = subparsers.add_parser("unlock", help="Desbloquear un piso franco (o 'all')")
+    unlock_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, north, SafehouseNP, all)")
 
     lock_parser = subparsers.add_parser("lock", help="Bloquear un piso franco")
     lock_parser.add_argument("target", help="ID o nombre del piso (ej: 2, central, SafehouseCT)")
@@ -218,6 +313,10 @@ def main():
         list_safehouses()
     elif args.cmd == "status":
         print_status()
+    elif args.cmd == "get-spawn":
+        get_spawn()
+    elif args.cmd == "sync-sd":
+        sync_all_sleeping_dogs()
     elif args.cmd == "spawn":
         set_spawn_location(args.target)
     elif args.cmd == "unlock":

@@ -103,7 +103,8 @@ def main():
         st = gps.get("mGameplayState", "")
         for flag in ("FIGHTCLUB_INTRO_COMPLETE=1", "StatueDefensiveStage=5", "StatueOffensiveStage=5",
                      "CopDrivingStage=5", "CopShootingStage=5", "TriadDefensiveStage=5",
-                     "TriadOffensiveStage=5", "GunplayUpgradeStage=5", "PlayerCheckpointLocationX=840.50"):
+                     "TriadOffensiveStage=5", "GunplayUpgradeStage=5", "MaxHealthUpgradePoint=50",
+                     "EnableSpyCams=1", "EnableJumpIndicators=1"):
             assert flag in st, f"missing {flag} in gameplaystate"
         return "Sifu Dojo active, 4 Fight Clubs ready, Kung Fu/Cop/Triad trees maxed"
 
