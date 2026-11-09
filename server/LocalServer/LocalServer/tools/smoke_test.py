@@ -94,6 +94,17 @@ def main():
             assert sym in state_str, f"{sym} flag missing in gameplaystate"
         return "4 safehouses registered & all 4 unlocked (NP, CT, AB, KT)"
 
+    def martial_arts():
+        dojo = get("game/api/v1/dojo")
+        assert dojo.get("mDojo", {}).get("internal_id") == "Interior_DojoNP", "missing Dojo"
+        fc = get("game/api/v1/fightclubs")
+        assert len(fc.get("mFightClubs", [])) == 4, "expected 4 fight clubs"
+        gps = get("game/api/v1/playerdata/gameplaystate")
+        st = gps.get("mGameplayState", "")
+        for flag in ("FIGHTCLUB_INTRO_COMPLETE=1", "StatueDefensiveStage=5", "StatueOffensiveStage=5", "EnableJadeStatueIndicators=1"):
+            assert flag in st, f"missing {flag} in gameplaystate"
+        return "Sifu Dojo active, 4 Fight Clubs ready, Kung Fu combos maxed"
+
     def stores():
         with open(os.path.join(DATA, "store_items.json"), encoding="utf-8") as f:
             catalogues = json.load(f)
@@ -115,7 +126,8 @@ def main():
     check("face tiers", face_tiers)
     check("black market quotes", quotes)
     check("missions & open world", missions)
-    check("safehouses (North Point)", safehouses)
+    check("safehouses (4 Safehouses)", safehouses)
+    check("martial arts & fight clubs", martial_arts)
     check("shop catalogues", stores)
     print("%d check(s) failed" % len(failed) if failed else "all checks passed")
     return 1 if failed else 0

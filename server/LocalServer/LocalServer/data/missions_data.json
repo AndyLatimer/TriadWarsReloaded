@@ -918,5 +918,106 @@
         "Jacuzzi"
       ]
     }
+  ],
+  "dojo": {
+    "id": 1,
+    "name": "North Point Martial Arts Dojo",
+    "master": "Master Sifu",
+    "internal_id": "Interior_DojoNP",
+    "district": "North Point",
+    "coordinates": {
+      "x": 885.5,
+      "y": -415.2,
+      "z": 5.8
+    },
+    "jade_statues_total": 11,
+    "offensive_stage": 5,
+    "defensive_stage": 5,
+    "unlocked_moves": [
+      "Sweep Kick (Square, Square, Hold Square)",
+      "Arm Break (Grab, Square, Hold Square)",
+      "Dim Mak / Stun Strike (Square, Hold Square)",
+      "Climbing Jump Attack (Wall Run Attack)",
+      "Leg Breaker (Grab, Square, Square, Hold Square)",
+      "Tackle & Ground Pound (Sprint, Circle, Square)"
+    ]
+  },
+  "fight_clubs": [
+    {
+      "id": 1,
+      "name": "North Point Fight Club",
+      "district": "North Point",
+      "location": "Vacant Industrial Lot",
+      "coordinates": {
+        "x": 720.0,
+        "y": -180.0,
+        "z": 4.5
+      },
+      "rounds": 6,
+      "reward_cash": 15000,
+      "reward_face": 500,
+      "enemies": [
+        "Brawlers",
+        "Grapplers",
+        "Strikers"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Central Fight Club",
+      "district": "Central",
+      "location": "Underground Parking Garage",
+      "coordinates": {
+        "x": -410.0,
+        "y": -220.0,
+        "z": 12.0
+      },
+      "rounds": 6,
+      "reward_cash": 30000,
+      "reward_face": 1000,
+      "enemies": [
+        "Enforcers",
+        "Armed Thugs",
+        "Grapplers"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Aberdeen Fight Club",
+      "district": "Aberdeen",
+      "location": "Dockside Freight Warehouse",
+      "coordinates": {
+        "x": -580.0,
+        "y": -910.0,
+        "z": 3.5
+      },
+      "rounds": 6,
+      "reward_cash": 60000,
+      "reward_face": 2000,
+      "enemies": [
+        "Dockworkers",
+        "Brawlers",
+        "Knife Fighters"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Kennedy Town Fight Club",
+      "district": "Kennedy Town",
+      "location": "Exclusive Underground Pit",
+      "coordinates": {
+        "x": -1080.0,
+        "y": 180.0,
+        "z": 20.0
+      },
+      "rounds": 6,
+      "reward_cash": 100000,
+      "reward_face": 5000,
+      "enemies": [
+        "Martial Artists",
+        "Heavy Enforcers",
+        "Boss Champions"
+      ]
+    }
   ]
 }

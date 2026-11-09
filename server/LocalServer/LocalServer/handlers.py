@@ -111,7 +111,14 @@ def gameplay_state(req, method, parts, body, query):
         return {}
     current = STATE.data.get("gameplaystate", "")
     if not current:
-        current = "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0"
+        current = (
+            "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;"
+            "SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;"
+            "SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;"
+            "StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;"
+            "EnableJadeStatueIndicators=1;EnableHealthShrineIndicators=1;"
+            "EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1"
+        )
         with STATE.lock:
             STATE.data["gameplaystate"] = current
             STATE.data["player"]["PlayerDataBag"]["GameplayState"] = current
@@ -299,6 +306,49 @@ def safehouse_unlock(req, method, parts, body, query):
                 STATE.data["player"]["PlayerDataBag"]["GameplayState"] = current
             STATE.save()
     return {"mReturnCode": 0, "mUnlocked": unlocked, "mSafehouses": safehouses}
+
+
+@route("game", "dojo")
+def dojo_info(req, method, parts, body, query):
+    dojo = MISSIONS.get("dojo", {})
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mDojo": dojo,
+    }
+
+
+@route("game", "fightclubs")
+@route("game", "fightclub/list")
+def fight_clubs_list(req, method, parts, body, query):
+    fight_clubs = MISSIONS.get("fight_clubs", [])
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mFightClubs": fight_clubs,
+    }
+
+
+@route("game", "fightclub/end")
+def fight_club_end(req, method, parts, body, query):
+    fc_id = _int(parts[2] if len(parts) > 2 else "1", 1)
+    fight_clubs = MISSIONS.get("fight_clubs", [])
+    fc = next((c for c in fight_clubs if c.get("id") == fc_id), None)
+    reward_cash = fc.get("reward_cash", 15000) if fc else 15000
+    reward_face = fc.get("reward_face", 500) if fc else 500
+    with STATE.lock:
+        cash = _money("DirtyMoney", reward_cash)
+        face = _int(_player()["PlayerDataBag"].get("Face", "0")) + reward_face
+        _player()["PlayerDataBag"]["Face"] = str(face)
+        STATE.save()
+    return {
+        "mReturnCode": 0,
+        "mMessage": "Fight Club completed!",
+        "mCashRewarded": reward_cash,
+        "mFaceRewarded": reward_face,
+        "mCurrentFace": str(face),
+        "mCurrentCash": str(cash),
+    }
 
 
 
