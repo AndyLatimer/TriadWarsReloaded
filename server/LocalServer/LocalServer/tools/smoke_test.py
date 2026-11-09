@@ -78,8 +78,12 @@ def main():
         we = get("game/api/v1/worldencounter/list")
         assert len(we.get("WorldEncounters", [])) >= 3, "missing encounters"
         cs = get("game/api/v1/openworldcrimescene")
-        assert len(cs.get("CrimeScenes", [])) >= 5, "missing crime scenes"
-        return "errands, operations, encounters & crime scenes active"
+        assert len(cs.get("CrimeScenes", [])) == 20, "expected 20 crime scenes (drug busts)"
+        db = get("game/api/v1/drugbusts")
+        assert db.get("mTotalBusts") == 20, "expected 20 drug busts"
+        enc = get("game/api/v1/encounters")
+        assert len(enc.get("mEncounters", [])) == 3, "expected 3 encounter types"
+        return "20 Drug Busts, 3 World Encounters, Errands & Operations active"
 
     def safehouses():
         res = get("game/api/v1/safehouses")

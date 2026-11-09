@@ -1414,13 +1414,27 @@ def export_end(req, method, parts, body, query):
 
 @route("game", "worldencounter/endencounter")
 def end_world_encounter(req, method, parts, body, query):
+    enc_type = _int(parts[1] if len(parts) > 1 else 0)
     success = _int(parts[2] if len(parts) > 2 else 1) != 0
-    money = 5000 if success else 500
-    face = 750 if success else 100
+    enc_cfg = next((e for e in MISSIONS.get("world_encounters", []) if e.get("type_id") == enc_type), None)
+    money = (enc_cfg.get("reward_money", 5000) if enc_cfg else 5000) if success else 500
+    face = (enc_cfg.get("reward_face", 750) if enc_cfg else 750) if success else 100
+    xp = (enc_cfg.get("reward_xp", 750) if enc_cfg else 750) if success else 100
     with STATE.lock:
         _money("DirtyMoney", money)
         _add_face(face)
-        _add_xp(face)
+        _add_xp(xp)
+        if success:
+            completed_encounters = STATE.data.setdefault("completed_encounters", 0) + 1
+            STATE.data["completed_encounters"] = completed_encounters
+            gps = STATE.data.get("gameplaystate", "")
+            flags = [f.strip() for f in gps.split(";") if f.strip()]
+            flags = [f for f in flags if not f.startswith("EventsCompleted=")]
+            flags.append(f"EventsCompleted={completed_encounters}")
+            new_gps = ";".join(flags)
+            STATE.data["gameplaystate"] = new_gps
+            if "player" in STATE.data and "PlayerDataBag" in STATE.data["player"]:
+                STATE.data["player"]["PlayerDataBag"]["GameplayState"] = new_gps
     STATE.save()
     return _ok_bags(mRewardType=1, mReward=str(money))
 
@@ -1428,15 +1442,79 @@ def end_world_encounter(req, method, parts, body, query):
 @route("game", "openworldcrimescenecollection")
 def collect_open_world_crime_scene(req, method, parts, body, query):
     cs_id = _int(parts[1] if len(parts) > 1 else 0)
+    money = 3500
+    face = 600
+    cop_xp = 600
+    for cs in MISSIONS.get("crime_scenes", []):
+        if cs.get("id") == cs_id:
+            money = cs.get("reward_money", money)
+            face = cs.get("reward_face", face)
+            cop_xp = cs.get("reward_cop_xp", cop_xp)
+            break
     with STATE.lock:
         coll = STATE.data.setdefault("collected_crime_scenes", [])
         if cs_id and cs_id not in coll:
             coll.append(cs_id)
-        _money("DirtyMoney", 2500)
-        _add_face(500)
-        _add_xp(500)
+        _money("DirtyMoney", money)
+        _add_face(face)
+        _add_xp(cop_xp)
+        gps = STATE.data.get("gameplaystate", "")
+        flags = [f.strip() for f in gps.split(";") if f.strip()]
+        flags = [f for f in flags if not f.startswith("CasesCompleted=")]
+        flags.append(f"CasesCompleted={len(coll)}")
+        new_gps = ";".join(flags)
+        STATE.data["gameplaystate"] = new_gps
+        if "player" in STATE.data and "PlayerDataBag" in STATE.data["player"]:
+            STATE.data["player"]["PlayerDataBag"]["GameplayState"] = new_gps
     STATE.save()
-    return _ok_bags(CrimeSceneID=str(cs_id), FaceCollected=500)
+    return _ok_bags(CrimeSceneID=str(cs_id), FaceCollected=face, MoneyCollected=str(money))
+
+
+@route("game", "drugbusts")
+@route("game", "drugbusts/list")
+def list_drug_busts(req, method, parts, body, query):
+    with STATE.lock:
+        coll = set(STATE.data.get("collected_crime_scenes", []))
+    busts = []
+    for cs in MISSIONS.get("crime_scenes", []):
+        b = dict(cs)
+        b["is_completed"] = b["id"] in coll
+        busts.append(b)
+    return {
+        "mReturnCode": 0,
+        "mTotalBusts": len(busts),
+        "mCompletedBusts": len(coll),
+        "mDrugBusts": busts,
+    }
+
+
+@route("game", "drugbust/reset")
+def reset_drug_busts(req, method, parts, body, query):
+    with STATE.lock:
+        STATE.data["collected_crime_scenes"] = []
+        gps = STATE.data.get("gameplaystate", "")
+        flags = [f.strip() for f in gps.split(";") if f.strip()]
+        flags = [f for f in flags if not f.startswith("CasesCompleted=")]
+        flags.append("CasesCompleted=0")
+        new_gps = ";".join(flags)
+        STATE.data["gameplaystate"] = new_gps
+        if "player" in STATE.data and "PlayerDataBag" in STATE.data["player"]:
+            STATE.data["player"]["PlayerDataBag"]["GameplayState"] = new_gps
+        STATE.save()
+    return {"mReturnCode": 0, "mMessage": "Todas las 20 redadas de droga han sido reiniciadas para rejugabilidad."}
+
+
+@route("game", "encounters")
+@route("game", "encounters/list")
+def list_world_encounters(req, method, parts, body, query):
+    with STATE.lock:
+        completed = STATE.data.get("completed_encounters", 0)
+    encs = MISSIONS.get("world_encounters", [])
+    return {
+        "mReturnCode": 0,
+        "mCompletedEncounters": completed,
+        "mEncounters": encs,
+    }
 
 
 @route("game", "raidcrimescenecompletion")
