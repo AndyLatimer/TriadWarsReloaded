@@ -1,0 +1,43 @@
+# Proprietary & commercial game binaries/assets
+beta/
+sleeping-dogs/
+*.big
+*.bix
+*.pck
+*.exe.orig
+*.bin
+
+# Third-party cloned tool submodules/repos (keep root clean)
+tools/BigFileSystem/
+tools/FileRedirector/
+tools/PermToFBX/
+tools/SD-UltimateTexTool/
+tools/SDK/
+tools/TheoryEngine/
+server/TW_Beta_Release/
+
+# Logs and runtime dumps
+logs/
+*.log
+crash_reports/
+__pycache__/
+*.py[cod]
+*$py.class
+*.tmp
+*.cab
+*.dmp
+
+# Build artifacts
+build/
+*.obj
+*.exp
+*.lib
+*.pdb
+
+# Local sensitive or ephemeral state
+server/LocalServer/LocalServer/logs/
+server/LocalServer/LocalServer/state.json.tmp
+server/LocalServer/LocalServer/state_backup_*.json
+server/LocalServer/LocalServer/__pycache__/
+server/LocalServer/LocalServer/tools/__pycache__/
+server/LocalServer/LocalServer/tools/re_cache.pkl

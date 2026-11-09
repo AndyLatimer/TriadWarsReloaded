@@ -1,0 +1,795 @@
+{
+  "errands": [
+    {
+      "uid": "110624962204148299",
+      "name": "Fish Collector",
+      "desc": "Obtain 175 fish during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "165701615963828379",
+      "name": "Warehouse V",
+      "desc": "Have your warehouse at level 5",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 5,
+      "priority": 19000
+    },
+    {
+      "uid": "726902321891037803",
+      "name": "Attack An Operation",
+      "desc": "Distract the cops by attacking an operation",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 1,
+      "priority": 8000
+    },
+    {
+      "uid": "919935932594635868",
+      "name": "You Show 'Em",
+      "desc": "Beat a friend in a leaderboard",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "1584296752294962164",
+      "name": "You're Not Alone",
+      "desc": "Add a friend",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "1691762078100972362",
+      "name": "Grappled the Grappler",
+      "desc": "Eliminate a grappler using a combat prop",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "1789680098261488832",
+      "name": "Level Up",
+      "desc": "Earn enough XP to level up.",
+      "reward_type": "REWARD_CLEAN_MONEY_TUTORIAL3",
+      "safehouse_level": 1,
+      "priority": 0
+    },
+    {
+      "uid": "1799762375524390716",
+      "name": "Stolen Designs",
+      "desc": "Obtain 70 Stolen Designs during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "2116841554080689634",
+      "name": "Rank Up To \"49'er\"",
+      "desc": "Earn enough face to move up the ranks",
+      "reward_type": "REWARD_CLEAN_MONEY_HIGH",
+      "safehouse_level": 1,
+      "priority": 0
+    },
+    {
+      "uid": "2353029531759739686",
+      "name": "Industrial Sabotage",
+      "desc": "Kill 5 staff members",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 13000
+    },
+    {
+      "uid": "2365331197383816874",
+      "name": "Charge Kick Followups",
+      "desc": "Equip the Charge Kick Follow Up upgrade and give 10 enemies the boot",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "2469603037663905556",
+      "name": "Won't Beat Me",
+      "desc": "Survive an ambush",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 15,
+      "priority": 0
+    },
+    {
+      "uid": "2490265929332524187",
+      "name": "Tire Damage",
+      "desc": "Shoot out 25 tires during an export",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 7,
+      "priority": 0
+    },
+    {
+      "uid": "2896696751733372417",
+      "name": "Racket VII",
+      "desc": "Upgrade a racket to level 7",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 7,
+      "priority": 0
+    },
+    {
+      "uid": "3048277898705028579",
+      "name": "Attack 5 Operations",
+      "desc": "Distract the cops by attacking 5 operations",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 1,
+      "priority": 0
+    },
+    {
+      "uid": "3134427736900531570",
+      "name": "Raid 3 Rivals",
+      "desc": "Complete 3 more raids",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 1,
+      "priority": 15000
+    },
+    {
+      "uid": "3262002507522071106",
+      "name": "Complete an Export",
+      "desc": "Export any shipment of goods",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 0,
+      "priority": 17000
+    },
+    {
+      "uid": "3404834728049342074",
+      "name": "Safehouse X",
+      "desc": "Have your safehouse at level 10",
+      "reward_type": "REWARD_MONEY_HIGH",
+      "safehouse_level": 9,
+      "priority": 0
+    },
+    {
+      "uid": "3484068720243982148",
+      "name": "Safehouse VII",
+      "desc": "Have your safehouse at level 7",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "3909205429961262443",
+      "name": "Warehouse VI",
+      "desc": "Have your warehouse at level 6",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "4099375518106932942",
+      "name": "Leveraging the Enemy",
+      "desc": "Collect 10 Favors from defeating enemy contacts in Hong Kong. Look for the red markers in the minimap. ",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "4159361181448630704",
+      "name": "Favor Reimbursement",
+      "desc": "Use 10 favors",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "4533801444909835282",
+      "name": "Racket VI",
+      "desc": "Upgrade a racket to level 6",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "4660263853431746934",
+      "name": "Take Down 3 Enforcers",
+      "desc": "Complete 3 raids and take down the enforcers along the way",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 16000
+    },
+    {
+      "uid": "4838707314544871735",
+      "name": "Rank Up to \"Blue Lantern\"",
+      "desc": "Earn enough face to move up the ranks",
+      "reward_type": "REWARD_CLEAN_MONEY_HIGH",
+      "safehouse_level": 1,
+      "priority": 0
+    },
+    {
+      "uid": "4864441477209824538",
+      "name": "Thorough",
+      "desc": "Get all 3 Triad Marks in a raid",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 3,
+      "priority": 11000
+    },
+    {
+      "uid": "4942334883192633672",
+      "name": "Nothing Left Behind",
+      "desc": "Get all Triad Marks in three sequential raids",
+      "reward_type": "REWARD_MONEY_HIGH",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "5094055285378919427",
+      "name": "Safehouse VI",
+      "desc": "Have your safehouse at level 6",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "5191940287385928115",
+      "name": "Broken Legs",
+      "desc": "Use the Bone Breaker upgrade to cripple 10 enemies",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "5294316401828828614",
+      "name": "Warehouse VII",
+      "desc": "Have your warehouse at level 7",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 7,
+      "priority": 0
+    },
+    {
+      "uid": "5639168277215281321",
+      "name": "Pay Back",
+      "desc": "Raid a rival who raided you",
+      "reward_type": "REWARD_MONEY_MID",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "5696091160946916123",
+      "name": "Environmental Damage",
+      "desc": "Kill 10 enemies using combat props",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "5909927619873633051",
+      "name": "Safehouse VIII",
+      "desc": "Have your safehouse at level 8",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 7,
+      "priority": 0
+    },
+    {
+      "uid": "6002850353329125207",
+      "name": "Raid A Rival",
+      "desc": "Complete a single raid",
+      "reward_type": "REWARD_CLEAN_MONEY_TUTORIAL1",
+      "safehouse_level": 1,
+      "priority": 5000
+    },
+    {
+      "uid": "6328253168503051576",
+      "name": "Raid 2 Rivals",
+      "desc": "Complete 2 more raids",
+      "reward_type": "REWARD_CLEAN_MONEY_TUTORIAL2",
+      "safehouse_level": 1,
+      "priority": 0
+    },
+    {
+      "uid": "6849332074002370226",
+      "name": "Racket IV",
+      "desc": "Upgrade a racket to level 4",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "7248803030859912658",
+      "name": "New Looks",
+      "desc": "Purchase your first clothing item",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "7617592323567021152",
+      "name": "Apothecary Goods Collector",
+      "desc": "Obtain 25 Apothecary Goods Parts during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "7692538983302549397",
+      "name": "Upgrade Safehouse II",
+      "desc": "Upgrade your safehouse to level 2",
+      "reward_type": "REWARD_CLEAN_MONEY_TUTORIAL2",
+      "safehouse_level": 1,
+      "priority": 6000
+    },
+    {
+      "uid": "8678539870531129712",
+      "name": "Paying Respects",
+      "desc": "Collect 6 crime scenes",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "8813955175172452318",
+      "name": "Friendly Thug",
+      "desc": "Have 5 friends in your list",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "8841972451374815421",
+      "name": "Close Cut",
+      "desc": "Kill the enforcer with less than 5 seconds on the clock",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "8961087799917271726",
+      "name": "Racket III",
+      "desc": "Upgrade a racket to level 3",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "8979205940903733069",
+      "name": "Time to Spare",
+      "desc": "Have more than five bonus minutes added to a raid",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 8,
+      "priority": 0
+    },
+    {
+      "uid": "9426770097349161672",
+      "name": "Upgrade A Racket II",
+      "desc": "Upgrade a racket to level 2",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "9717440998123988302",
+      "name": "Flying Tackles",
+      "desc": "$Errand_FlyingTackles",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "9843331962281723188",
+      "name": "Invulnerable",
+      "desc": "Finish a 3 mark raid without taking any damage",
+      "reward_type": "REWARD_FACE_HIGH",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "10468489042791378768",
+      "name": "Heavy Kicks",
+      "desc": "Kill 10 enemies with a heavy kick - Hold X ",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 15,
+      "priority": 0
+    },
+    {
+      "uid": "10815357855733968599",
+      "name": "The Leader",
+      "desc": "Be the top contender in a friends leaderboard",
+      "reward_type": "REWARD_MONEY_HIGH",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "11401275314236585462",
+      "name": "Warehouse IX",
+      "desc": "Have your warehouse at level 9",
+      "reward_type": "REWARD_MONEY_HIGH",
+      "safehouse_level": 9,
+      "priority": 0
+    },
+    {
+      "uid": "11505819071979708174",
+      "name": "Efficient Raider",
+      "desc": "Finish a 3 mark raid with more than 2 minutes on the clock",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 7,
+      "priority": 0
+    },
+    {
+      "uid": "11812395070504543988",
+      "name": "Staffed",
+      "desc": "Activate all 5 staff slots in a single racket",
+      "reward_type": "REWARD_FAVOUR",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "11995953927461589456",
+      "name": "Safehouse IX",
+      "desc": "Have your safehouse at level 9",
+      "reward_type": "REWARD_FACE_HIGH",
+      "safehouse_level": 8,
+      "priority": 0
+    },
+    {
+      "uid": "12020041609259508142",
+      "name": "Friendly Competition",
+      "desc": "Raid a friend and win with all 3 Triad Marks",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "12025935648668164134",
+      "name": "Safe from Harm",
+      "desc": "Kill 10 enemies from cover",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "12135026967159630509",
+      "name": "Flying Kicks",
+      "desc": "Kill 10 enemies using the flying kick - Hold A, X",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 15,
+      "priority": 0
+    },
+    {
+      "uid": "12947347582487028183",
+      "name": "Reloaded",
+      "desc": "Equip Melee, Ranged, and Two-Handed weapons in your Loadout",
+      "reward_type": "REWARD_FAVOUR",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "13048283302816983043",
+      "name": "Racket IX",
+      "desc": "Upgrade a racket to level 9",
+      "reward_type": "REWARD_FACE_HIGH",
+      "safehouse_level": 9,
+      "priority": 0
+    },
+    {
+      "uid": "13208072368721185521",
+      "name": "Disarm Tackles",
+      "desc": "Perform 10 Disarm Tackle while sprinting towards an on foot target press B",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "13227527398263225747",
+      "name": "That Car is Mine",
+      "desc": "Action hijack 5 vehicles (Hold A while driving behind another vehicle)",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "13401017040480475796",
+      "name": "Warehouse IV",
+      "desc": "Have your warehouse at level 4",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "13533136121453022785",
+      "name": "Upgrade Safehouse III",
+      "desc": "Upgrade your safehouse to level 3",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 6000
+    },
+    {
+      "uid": "14119037922014204363",
+      "name": "Take Down 3 Enforcers",
+      "desc": "Complete 3 raids and take down the enforcers along the way",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 16000
+    },
+    {
+      "uid": "14137839605858964094",
+      "name": "Stay Low",
+      "desc": "Don't allow any alarms to go off",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 3,
+      "priority": 12000
+    },
+    {
+      "uid": "14180353433135976460",
+      "name": "Upgrade Warehouse II",
+      "desc": "Upgrade your warehouse to level 2",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "14496665940505772195",
+      "name": "Warehouse VIII",
+      "desc": "Have your warehouse at level 8",
+      "reward_type": "REWARD_MONEY_HIGH",
+      "safehouse_level": 8,
+      "priority": 0
+    },
+    {
+      "uid": "14813840667246452406",
+      "name": "Vault Shooting Graduate",
+      "desc": "Complete all rounds of the Vault-Shooting tutorial located in your Turf's Warehouse",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "15427292794836330698",
+      "name": "Racket VIII",
+      "desc": "Upgrade a racket to level 8",
+      "reward_type": "REWARD_FACE_HIGH",
+      "safehouse_level": 8,
+      "priority": 0
+    },
+    {
+      "uid": "15774917007619105255",
+      "name": "Operation Blast",
+      "desc": "Complete an operation in 60 seconds or less",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 4,
+      "priority": 0
+    },
+    {
+      "uid": "15934951952810103360",
+      "name": "Warehouse III",
+      "desc": "Have your warehouse at level 3",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "16032025730725461373",
+      "name": "Industrial Park",
+      "desc": "Have a full turf",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "16269995246481999480",
+      "name": "Upgrade Safehouse IV",
+      "desc": "Upgrade your safehouse to level 4",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "16652349099717315613",
+      "name": "Warehouse X",
+      "desc": "Have your warehouse at level 10",
+      "reward_type": "REWARD_FAVOUR",
+      "safehouse_level": 10,
+      "priority": 0
+    },
+    {
+      "uid": "16653231857243734118",
+      "name": "Knock off Electronics Collector",
+      "desc": "Obtain 250 Knock off electronics during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "16816818988681988494",
+      "name": "New Wheels",
+      "desc": "Purchase a new vehicle",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "17074486086986970277",
+      "name": "Safehouse V",
+      "desc": "Have your safehouse at level 5",
+      "reward_type": "REWARD_FACE_LOW",
+      "safehouse_level": 4,
+      "priority": 7000
+    },
+    {
+      "uid": "17084160157631099617",
+      "name": "Racket V",
+      "desc": "Upgrade a racket to level 5",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "17216099574968130670",
+      "name": "Racket X",
+      "desc": "Upgrade a racket to level 10",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 10,
+      "priority": 0
+    },
+    {
+      "uid": "17299775331420101291",
+      "name": "Dirty Money Collector",
+      "desc": "Obtain HK $100,000 during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "17325204327884358735",
+      "name": "Buy A Favor Pack",
+      "desc": "Purchase a favor pack from the favor store",
+      "reward_type": "REWARD_CLEAN_MONEY_MID",
+      "safehouse_level": 2,
+      "priority": 0
+    },
+    {
+      "uid": "17371046294040190537",
+      "name": "Favor Reimbursement",
+      "desc": "Use 20 favors",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 6,
+      "priority": 0
+    },
+    {
+      "uid": "17513278086096300346",
+      "name": "Knee Strikes",
+      "desc": "Kill 10 enemies with a knee strike - X, X, Hold X ",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 15,
+      "priority": 0
+    },
+    {
+      "uid": "17741855881443638051",
+      "name": "Knock off Fashions Collector",
+      "desc": "Obtain 600 knock off fashions during Raids",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 5,
+      "priority": 0
+    },
+    {
+      "uid": "17771866944830141359",
+      "name": "Broken Arms",
+      "desc": "Break 10 arms - Grapple, Tap <img src='img://BUTTON_BUTTON1' height='35' width='35' vspace='-22'>, Tap <img src='img://BUTTON_BUTTON1' height='35' width='35' vspace='-22'>, Hold <img src='img://BUTTON_BUTTON1' height='35' width='35' vspace='-22'>",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "17797484425003460980",
+      "name": "Complete 3 Exports",
+      "desc": "Export any 3 shipments of goods",
+      "reward_type": "REWARD_CLEAN_MONEY_LOW",
+      "safehouse_level": 3,
+      "priority": 17000
+    },
+    {
+      "uid": "17890198098853802867",
+      "name": "Combat Master",
+      "desc": "Activate the combat meter 5 times in one raid",
+      "reward_type": "REWARD_FACE_MID",
+      "safehouse_level": 3,
+      "priority": 0
+    },
+    {
+      "uid": "18414153939993416167",
+      "name": "Charge Knee Stuns",
+      "desc": "Perform 10 Charge Knee Stuns.  X, X, Hold X",
+      "reward_type": "REWARD_MONEY_LOW",
+      "safehouse_level": 2,
+      "priority": 0
+    }
+  ],
+  "operations": [
+    {
+      "id": 0,
+      "name": "Catch",
+      "uid": "999752098279033389"
+    },
+    {
+      "id": 1,
+      "name": "Defeat",
+      "uid": "2751831883422413570"
+    },
+    {
+      "id": 2,
+      "name": "Photo",
+      "uid": "7248541061705089675"
+    },
+    {
+      "id": 3,
+      "name": "Deliver",
+      "uid": "9265075428558064518"
+    },
+    {
+      "id": 4,
+      "name": "Collect",
+      "uid": "9915659117056696551"
+    },
+    {
+      "id": 5,
+      "name": "Destroy",
+      "uid": "10092364645237936142"
+    },
+    {
+      "id": 6,
+      "name": "Hijack",
+      "uid": "16002500952313957002"
+    }
+  ],
+  "crime_scenes": [
+    {
+      "id": 101,
+      "x": 865.0,
+      "y": -310.0,
+      "z": 5.0,
+      "victim": "2001",
+      "district": "North Point Night Market"
+    },
+    {
+      "id": 102,
+      "x": 810.0,
+      "y": -250.0,
+      "z": 6.0,
+      "victim": "2002",
+      "district": "Golden Koi"
+    },
+    {
+      "id": 103,
+      "x": 950.0,
+      "y": -120.0,
+      "z": 2.0,
+      "victim": "2003",
+      "district": "Waterfront Docks"
+    },
+    {
+      "id": 104,
+      "x": -320.0,
+      "y": -150.0,
+      "z": 18.0,
+      "victim": "2004",
+      "district": "Central Plaza"
+    },
+    {
+      "id": 105,
+      "x": -680.0,
+      "y": -750.0,
+      "z": 4.0,
+      "victim": "2005",
+      "district": "Aberdeen Floating Market"
+    },
+    {
+      "id": 106,
+      "x": -1100.0,
+      "y": 180.0,
+      "z": 12.0,
+      "victim": "2006",
+      "district": "Kennedy Town Docks"
+    },
+    {
+      "id": 107,
+      "x": -200.0,
+      "y": -600.0,
+      "z": 80.0,
+      "victim": "2007",
+      "district": "Victoria Peak Overlook"
+    }
+  ]
+}
