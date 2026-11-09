@@ -228,6 +228,37 @@ def sync_all_sleeping_dogs():
     print("=" * 70)
 
 
+def _find_spawn_target(missions, target):
+    target_str = str(target).strip().lower()
+
+    # 1. Search in safehouses
+    for sh in missions.get("safehouses", []):
+        if str(sh.get("id")) == target_str:
+            return sh, sh.get("door_coordinates", {})
+        sym = sh.get("symbol", "").lower()
+        if sym == target_str or sym.endswith(target_str):
+            return sh, sh.get("door_coordinates", {})
+        if target_str in sh.get("name", "").lower() or target_str in sh.get("district", "").lower():
+            return sh, sh.get("door_coordinates", {})
+
+    # 2. Search in special_interiors (Landmarks)
+    for lmk in missions.get("special_interiors", []):
+        if str(lmk.get("id")) == target_str:
+            return lmk, lmk.get("coordinates", {})
+        sym = lmk.get("symbol", "").lower()
+        if sym == target_str or target_str in sym:
+            return lmk, lmk.get("coordinates", {})
+        if target_str in lmk.get("name", "").lower() or target_str in lmk.get("internal_id", "").lower():
+            return lmk, lmk.get("coordinates", {})
+
+    # 3. Search Sifu dojo
+    dojo = missions.get("dojo", {})
+    if target_str in ("dojo", "sifu", "artes marciales"):
+        return dojo, dojo.get("coordinates", {})
+
+    return None, None
+
+
 def get_spawn():
     state = load_json(STATE_FILE)
     gps = state.get("gameplaystate", "")
@@ -239,6 +270,13 @@ def get_spawn():
                 if sh.get("symbol") == sym:
                     print(f"{sym}:{sh.get('name')}:{sh.get('district')}")
                     return
+            for lmk in missions.get("special_interiors", []):
+                if lmk.get("symbol") == sym:
+                    print(f"{sym}:{lmk.get('name')}:{lmk.get('district')}")
+                    return
+            if sym == "Interior_DojoNP":
+                print(f"{sym}:Sifu Martial Arts Dojo:North Point")
+                return
             print(f"{sym}:Safehouse")
             return
     print("SafehouseNP:North Point Apartment:North Point")
@@ -246,16 +284,16 @@ def get_spawn():
 
 def set_spawn_location(target):
     missions = load_json(MISSIONS_FILE)
-    safehouses = missions.get("safehouses", [])
-    sh = _find_safehouse(safehouses, target)
-    if not sh:
-        print(f"Error: No se encontró ningún piso franco que coincida con '{target}'.")
+    target_obj, coords = _find_spawn_target(missions, target)
+    if not target_obj:
+        print(f"Error: No se encontró ningún piso franco o punto de interés que coincida con '{target}'.")
         return
 
-    door = sh.get("door_coordinates", {})
-    x = door.get("x", 840.5)
-    y = door.get("y", -320.2)
-    z = door.get("z", 5.3)
+    x = coords.get("x", 840.5)
+    y = coords.get("y", -320.2)
+    z = coords.get("z", 5.3)
+
+    symbol = target_obj.get("symbol", target_obj.get("internal_id", "SafehouseNP"))
 
     state = load_json(STATE_FILE)
     gps = state.get("gameplaystate", "")
@@ -272,7 +310,7 @@ def set_spawn_location(target):
     flags.append(f"PlayerLastStableLocationX={x:.2f}")
     flags.append(f"PlayerLastStableLocationY={y:.2f}")
     flags.append(f"PlayerLastStableLocationZ={z:.2f}")
-    flags.append(f"ActiveSafehouseSpawn={sh['symbol']}")
+    flags.append(f"ActiveSafehouseSpawn={symbol}")
 
     new_gps = ";".join(flags)
     state["gameplaystate"] = new_gps
@@ -280,23 +318,112 @@ def set_spawn_location(target):
     save_json(STATE_FILE, state)
 
     print("=" * 70)
-    print(f"PUNTO DE REAPARICIÓN FIJADO EN: {sh['name']} ({sh['district']})")
+    print(f"PUNTO DE REAPARICIÓN FIJADO EN: {target_obj['name']} ({target_obj.get('district', 'Hong Kong')})")
     print(f"Coordenadas de Spawn:  X: {x:.2f}, Y: {y:.2f}, Z: {z:.2f}")
-    print(f"Interior Chunk:        {sh['internal_id']}")
+    print(f"Interior Chunk:        {target_obj.get('internal_id', symbol)}")
     print("=" * 70)
 
 
+def list_landmarks():
+    missions = load_json(MISSIONS_FILE)
+    landmarks = missions.get("special_interiors", [])
+    print("=" * 75)
+    print(f"PUNTOS DE INTERÉS E INTERIORES ESPECIALES - TOTAL: {len(landmarks)}")
+    print("=" * 75)
+    for l in landmarks:
+        c = l.get("coordinates", {})
+        print(f"[{l.get('id')}] {l.get('name')} ({l.get('district')})")
+        print(f"    Símbolo: {l.get('symbol')} | Chunk 3D: {l.get('internal_id')}")
+        print(f"    Coords:  X: {c.get('x'):.2f}, Y: {c.get('y'):.2f}, Z: {c.get('z'):.2f}")
+        print(f"    Info:    {l.get('description')}")
+        print("-" * 75)
+
+
+def list_vehicles():
+    missions = load_json(MISSIONS_FILE)
+    vehicles = missions.get("starter_vehicles", [])
+    state = load_json(STATE_FILE)
+    current_uid = state.get("player", {}).get("PlayerDataBag", {}).get("LastUsedVehicle", "")
+
+    print("=" * 75)
+    print(f"VEHÍCULOS DESTACADOS PARA GARAJE (VALET) - TOTAL: {len(vehicles)}")
+    print("=" * 75)
+    for idx, v in enumerate(vehicles, 1):
+        uid = str(v.get("uid"))
+        active_tag = " [ACTIVO EN GARAJE]" if uid == str(current_uid) else ""
+        print(f"[{idx}] {v.get('name')} ({v.get('class')}){active_tag}")
+        print(f"    UID:  {uid}")
+        print(f"    Info: {v.get('description')}")
+        print("-" * 75)
+
+
+def set_favorite_vehicle(target):
+    missions = load_json(MISSIONS_FILE)
+    vehicles = missions.get("starter_vehicles", [])
+    target_str = str(target).strip().lower()
+
+    found = None
+    for idx, v in enumerate(vehicles, 1):
+        if str(idx) == target_str or str(v.get("uid")) == target_str:
+            found = v
+            break
+        if target_str in v.get("name", "").lower() or target_str in v.get("class", "").lower():
+            found = v
+            break
+
+    if not found:
+        print(f"Error: No se encontró ningún vehículo que coincida con '{target}'.")
+        return
+
+    uid = str(found["uid"])
+    state = load_json(STATE_FILE)
+    state.setdefault("player", {}).setdefault("PlayerDataBag", {})["LastUsedVehicle"] = uid
+
+    gps = state.get("gameplaystate", "")
+    flags = [f.strip() for f in gps.split(";") if f.strip()]
+    flags = [f for f in flags if not (f.startswith("LastUsedVehicle=") or f.startswith("GarageVehicle="))]
+    flags.append(f"LastUsedVehicle={uid}")
+    flags.append(f"GarageVehicle={uid}")
+    new_gps = ";".join(flags)
+    state["gameplaystate"] = new_gps
+    state["player"]["PlayerDataBag"]["GameplayState"] = new_gps
+    save_json(STATE_FILE, state)
+
+    print("=" * 70)
+    print(f"VEHÍCULO DE GARAJE ACTUALIZADO: {found['name']} ({found['class']})")
+    print(f"UID del Vehículo:   {uid}")
+    print(f"Servicio Valet:     Entrega automática lista en el exterior del piso franco")
+    print("=" * 70)
+
+
+def get_favorite_vehicle():
+    state = load_json(STATE_FILE)
+    uid = str(state.get("player", {}).get("PlayerDataBag", {}).get("LastUsedVehicle", "3116199975099848891"))
+    missions = load_json(MISSIONS_FILE)
+    for v in missions.get("starter_vehicles", []):
+        if str(v.get("uid")) == uid:
+            print(f"{uid}:{v.get('name')}:{v.get('class')}")
+            return
+    print(f"{uid}:Tuono: BRG:Muscle Car")
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Administrador de Pisos Francos de Triad Wars")
+    parser = argparse.ArgumentParser(description="Administrador de Pisos Francos y Puntos de Interés de Triad Wars")
     subparsers = parser.add_subparsers(dest="cmd")
 
     subparsers.add_parser("list", help="Listar todos los pisos francos y su estado")
     subparsers.add_parser("status", help="Mostrar resumen de estado activo")
-    subparsers.add_parser("get-spawn", help="Obtener el piso franco de spawn activo")
+    subparsers.add_parser("get-spawn", help="Obtener el punto de spawn activo")
+    subparsers.add_parser("get-vehicle", help="Obtener el vehículo favorito activo en garaje")
+    subparsers.add_parser("list-landmarks", help="Listar interiores y puntos de interés especiales")
+    subparsers.add_parser("list-vehicles", help="Listar vehículos destacados de garaje")
     subparsers.add_parser("sync-sd", help="Sincronizar y restaurar todas las características de Sleeping Dogs")
 
-    spawn_parser = subparsers.add_parser("spawn", help="Fijar punto de reaparición inicial del jugador")
-    spawn_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, ct, ab, kt)")
+    spawn_parser = subparsers.add_parser("spawn", help="Fijar punto de reaparición (piso franco o landmark)")
+    spawn_parser.add_argument("target", help="ID o nombre (ej: 1, np, ct, ab, kt, koi, hospital, mansion, bambam)")
+
+    veh_parser = subparsers.add_parser("vehicle", help="Fijar vehículo aparcado en el garaje exterior")
+    veh_parser.add_argument("target", help="ID o nombre (ej: tuono, drifter, panzer, 860, 1100, neo)")
 
     unlock_parser = subparsers.add_parser("unlock", help="Desbloquear un piso franco (o 'all')")
     unlock_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, north, SafehouseNP, all)")
@@ -315,10 +442,18 @@ def main():
         print_status()
     elif args.cmd == "get-spawn":
         get_spawn()
+    elif args.cmd == "get-vehicle":
+        get_favorite_vehicle()
+    elif args.cmd == "list-landmarks":
+        list_landmarks()
+    elif args.cmd == "list-vehicles":
+        list_vehicles()
     elif args.cmd == "sync-sd":
         sync_all_sleeping_dogs()
     elif args.cmd == "spawn":
         set_spawn_location(args.target)
+    elif args.cmd == "vehicle":
+        set_favorite_vehicle(args.target)
     elif args.cmd == "unlock":
         set_safehouse_state(args.target, unlock=True)
     elif args.cmd == "lock":

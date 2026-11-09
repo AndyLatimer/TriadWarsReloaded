@@ -1673,5 +1673,121 @@
       "description": "Inconspicuous in the right environment and highly functional",
       "pieces_count": 4
     }
+  ],
+  "special_interiors": [
+    {
+      "id": 1,
+      "symbol": "Landmark_GoldenKoi",
+      "name": "Restaurante Golden Koi (Sra. Chu)",
+      "internal_id": "Interior_ChuRest",
+      "district": "North Point",
+      "coordinates": { "x": 815.0, "y": -248.0, "z": 6.0 },
+      "description": "Sede principal de las Tríadas de North Point y restaurante tradicional."
+    },
+    {
+      "id": 2,
+      "symbol": "Landmark_CentralHospital",
+      "name": "Hospital General Central",
+      "internal_id": "Interior_Hospital",
+      "district": "Central",
+      "coordinates": { "x": -385.0, "y": -280.0, "z": 18.5 },
+      "description": "Centro médico de urgencias y reanimación de Hong Kong."
+    },
+    {
+      "id": 3,
+      "symbol": "Landmark_VictoriaMansion",
+      "name": "Mansión de Victoria Peak",
+      "internal_id": "Interior_Mansion",
+      "district": "Victoria Peak",
+      "coordinates": { "x": -180.0, "y": -620.0, "z": 82.0 },
+      "description": "Mansión privada en la cumbre con vistas panorámicas a la bahía."
+    },
+    {
+      "id": 4,
+      "symbol": "Landmark_ClubBamBam",
+      "name": "Club Bam Bam",
+      "internal_id": "Interior_BamBam",
+      "district": "North Point",
+      "coordinates": { "x": 790.0, "y": -340.0, "z": 6.0 },
+      "description": "Exclusiva discoteca nocturna con salas VIP y bar."
+    },
+    {
+      "id": 5,
+      "symbol": "Landmark_AberdeenBarge",
+      "name": "Barco Casino Flotante",
+      "internal_id": "Interior_GamblingBarge",
+      "district": "Aberdeen",
+      "coordinates": { "x": -650.0, "y": -1050.0, "z": 2.5 },
+      "description": "Casino flotante en alta mar frente a Aberdeen para apuestas VIP y peleas de gallos."
+    },
+    {
+      "id": 6,
+      "symbol": "Landmark_FishMarket",
+      "name": "Mercado Mayorista de Pescado",
+      "internal_id": "Interior_FishMarket",
+      "district": "Aberdeen",
+      "coordinates": { "x": -710.0, "y": -770.0, "z": 4.0 },
+      "description": "Lonja de pescado y muelles del canal de Aberdeen."
+    },
+    {
+      "id": 7,
+      "symbol": "Landmark_Sweatshop",
+      "name": "Taller Clandestino",
+      "internal_id": "Interior_Sweatshop",
+      "district": "North Point",
+      "coordinates": { "x": 860.0, "y": -340.0, "z": 5.2 },
+      "description": "Taller textil subterráneo de producción de falsificaciones de las Tríadas."
+    }
+  ],
+  "starter_vehicles": [
+    {
+      "uid": "3116199975099848891",
+      "name": "Tuono: BRG",
+      "class": "Muscle Car",
+      "description": "Clásico muscle car estilo 1970 Dodge Charger con gran aceleración",
+      "propertyset": "object-physical-vehicle-Tuono_Reward02"
+    },
+    {
+      "uid": "4038665221450332677",
+      "name": "Drifter GT",
+      "class": "Drift Sport",
+      "description": "Deportivo japonés de alta velocidad y control de derrape preciso",
+      "propertyset": "object-physical-vehicle-DrifterGT01"
+    },
+    {
+      "uid": "4771389782786149219",
+      "name": "Panzer GTS",
+      "class": "Executive Sedan",
+      "description": "Sedán alemán blindado de lujo y gran potencia",
+      "propertyset": "object-physical-vehicle-Lowin"
+    },
+    {
+      "uid": "9767755121759837355",
+      "name": "860 MHC Sportec",
+      "class": "Super Coupe",
+      "description": "Superdeportivo europeo estilo Porsche de aerodinámica avanzada",
+      "propertyset": "object-physical-vehicle-860MHC_Reward02"
+    },
+    {
+      "uid": "4764344839122282480",
+      "name": "Enterprise: Dark Shadow",
+      "class": "Exotic Supercar",
+      "description": "Hiperdeportivo exclusivo de máxima velocidad punta",
+      "propertyset": "object-physical-vehicle-Enterprise_Reward01"
+    },
+    {
+      "uid": "619900358478812557",
+      "name": "1100 NAR Mangano",
+      "class": "Superbike",
+      "description": "Moto deportiva de competición estilo Ducati de gran agilidad",
+      "propertyset": "object-physical-vehicle-1100NAR_Reward04"
+    },
+    {
+      "uid": "20894389733943751",
+      "name": "Neo V: Le Tigre",
+      "class": "Tuner",
+      "description": "Deportivo de carreras urbanas con turbo optimizado",
+      "propertyset": "object-physical-vehicle-NeoV_Reward03"
+    }
   ]
 }

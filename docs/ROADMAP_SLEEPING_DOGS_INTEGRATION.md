@@ -208,4 +208,8 @@ flowchart LR
 | **Servicios y Buffs Activos** | **COMPLETO** | Masajes de doble reputación Face (`MassageParlourBuff_Activated=1`), comida callejera con daño extra (`StrikingBuff_Activated=1`) y regeneración pasiva de salud (`HealthRegen_Activated=1`). |
 | **28 Trajes Legendarios DLC** | **COMPLETO** | Hitman Agent 47, Deus Ex Sarif, Bruce Lee chándal amarillo, Rey Mono Sun Wukong, SWAT táctico, Rico Rodriguez Just Cause, Maestro Shaolin, Wing Chun y Muay Thai integrados al armario del jugador. |
 | **Árboles de Habilidades Cop & Triad** | **COMPLETO** | Cop Driving 5, Cop Shooting 5, Triad Defensive 5, Triad Offensive 5, Gunplay Mastery 5 y Embiste de Vehículos activado. |
-| **Launcher GUI v2.0** | **COMPLETO** | Selector desplegable de Piso Franco inicial con 1 clic, botón de fijar reaparición, sincronizador maestro de Sleeping Dogs y compilación nativa en `TriadWarsLauncher.exe`. |
+| **20 Redadas de Droga (Drug Busts)** | **COMPLETO** | Las 20 escenas de crimen y narcotráfico distribuidas en North Point, Central, Aberdeen, Kennedy Town y Victoria Peak con cámaras espía y bandas rivales. |
+| **Encuentros Callejeros Dinámicos** | **COMPLETO** | 3 tipos de eventos en vivo: Emboscadas armadas en callejones, persecución a pie de ladrones en mercados y rescate de rehenes en maleteros. |
+| **Interiores y Puntos de Interés** | **COMPLETO** | Golden Koi (Sra. Chu), Hospital General Central, Mansión de Victoria Peak, Club Bam Bam, Barco Casino Flotante de Aberdeen y Lonja de Pescado. |
+| **Vehículo de Garaje (Valet)** | **COMPLETO** | Selector de 7 vehículos iniciales destacados (Tuono Muscle Car, Drifter GT, Panzer GTS, 860 Sportec, Enterprise, 1100 NAR Superbike, Neo V) esperándote en la puerta. |
+| **Launcher GUI v2.1** | **COMPLETO** | Desplegable doble (Punto de Spawn / Landmark + Coche de Garaje) con 1 clic, botón de sincronización de Sleeping Dogs y binario nativo en `TriadWarsLauncher.exe`. |

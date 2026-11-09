@@ -39,6 +39,9 @@ namespace TriadWarsLauncher
         private ComboBox cmbSpawnPoint;
         private Button btnSetSpawn;
         private Button btnSyncSD;
+        private Label lblVehicle;
+        private ComboBox cmbVehicle;
+        private Button btnSetVehicle;
         private TextBox txtLogs;
         private System.Windows.Forms.Timer statusTimer;
 
@@ -109,7 +112,7 @@ namespace TriadWarsLauncher
         private void InitializeComponent()
         {
             this.Text = "Triad Wars Offline Revival - Launcher";
-            this.Size = new Size(820, 725);
+            this.Size = new Size(820, 785);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -269,7 +272,7 @@ namespace TriadWarsLauncher
             // Controls Row 3 (Sleeping Dogs & Safehouse Spawn)
             lblSpawn = new Label
             {
-                Text = "Piso Franco (Spawn):",
+                Text = "Spawn / Landmark:",
                 Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
                 ForeColor = Color.PaleGoldenrod,
                 Location = new Point(25, 323),
@@ -290,6 +293,13 @@ namespace TriadWarsLauncher
             cmbSpawnPoint.Items.Add("Central Safehouse (Distrito Central / Loft)");
             cmbSpawnPoint.Items.Add("Aberdeen Safehouse (Distrito Aberdeen / Flotante)");
             cmbSpawnPoint.Items.Add("Kennedy Town Safehouse (Distrito Kennedy / Ático)");
+            cmbSpawnPoint.Items.Add("Restaurante Golden Koi (Sra. Chu - North Point)");
+            cmbSpawnPoint.Items.Add("Hospital General Central (Distrito Central)");
+            cmbSpawnPoint.Items.Add("Mansión de Victoria Peak (The Peak)");
+            cmbSpawnPoint.Items.Add("Dojo de Artes Marciales (Sifu - North Point)");
+            cmbSpawnPoint.Items.Add("Club Bam Bam (Discoteca VIP - North Point)");
+            cmbSpawnPoint.Items.Add("Barco Casino Flotante (Bahía de Aberdeen)");
+            cmbSpawnPoint.Items.Add("Mercado de Pescado (Canal de Aberdeen)");
             cmbSpawnPoint.SelectedIndex = 0;
 
             btnSetSpawn = new Button
@@ -318,11 +328,53 @@ namespace TriadWarsLauncher
             btnSyncSD.FlatAppearance.BorderSize = 0;
             btnSyncSD.Click += (s, e) => SyncSleepingDogs();
 
+            // Controls Row 4 (Starter Vehicle in Garage / Valet)
+            lblVehicle = new Label
+            {
+                Text = "Coche de Garaje (Valet):",
+                Font = new Font("Segoe UI", 9.5f, FontStyle.Bold),
+                ForeColor = Color.PaleGreen,
+                Location = new Point(25, 362),
+                AutoSize = true
+            };
+
+            cmbVehicle = new ComboBox
+            {
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                BackColor = Color.FromArgb(35, 40, 48),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 9f),
+                Location = new Point(180, 359),
+                Size = new Size(325, 28)
+            };
+            cmbVehicle.Items.Add("Tuono: BRG (Muscle Car 1970 Dodge Charger)");
+            cmbVehicle.Items.Add("Drifter GT (Deportivo Drift)");
+            cmbVehicle.Items.Add("Panzer GTS (Sedán Blindado Alemán)");
+            cmbVehicle.Items.Add("860 MHC Sportec (Superdeportivo Europeo)");
+            cmbVehicle.Items.Add("Enterprise: Dark Shadow (Hiperdeportivo)");
+            cmbVehicle.Items.Add("1100 NAR Mangano (Superbike Deportiva)");
+            cmbVehicle.Items.Add("Neo V: Le Tigre (Tuner Turbo)");
+            cmbVehicle.SelectedIndex = 0;
+
+            btnSetVehicle = new Button
+            {
+                Text = "Fijar Coche",
+                BackColor = Color.FromArgb(45, 52, 60),
+                ForeColor = Color.PaleGreen,
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(515, 357),
+                Size = new Size(115, 30),
+                Cursor = Cursors.Hand
+            };
+            btnSetVehicle.FlatAppearance.BorderSize = 0;
+            btnSetVehicle.Click += (s, e) => ApplySelectedVehicle();
+
             // Log Console
             Label lblConsole = new Label
             {
                 Text = "Registro de Eventos y Consola del Servidor:",
-                Location = new Point(25, 360),
+                Location = new Point(25, 399),
                 AutoSize = true,
                 ForeColor = Color.Silver
             };
@@ -335,8 +387,8 @@ namespace TriadWarsLauncher
                 BackColor = Color.FromArgb(14, 14, 16),
                 ForeColor = Color.PaleGreen,
                 Font = new Font("Consolas", 9f),
-                Location = new Point(25, 385),
-                Size = new Size(755, 275)
+                Location = new Point(25, 424),
+                Size = new Size(755, 290)
             };
 
             this.Controls.Add(lblTitle);
@@ -354,6 +406,9 @@ namespace TriadWarsLauncher
             this.Controls.Add(cmbSpawnPoint);
             this.Controls.Add(btnSetSpawn);
             this.Controls.Add(btnSyncSD);
+            this.Controls.Add(lblVehicle);
+            this.Controls.Add(cmbVehicle);
+            this.Controls.Add(btnSetVehicle);
             this.Controls.Add(lblConsole);
             this.Controls.Add(txtLogs);
 
@@ -522,7 +577,7 @@ namespace TriadWarsLauncher
                 lblControllerStatus.ForeColor = Color.LightGray;
             }
 
-            // Spawn Safehouse Live State
+            // Spawn Safehouse & Landmark Live State
             if (cmbSpawnPoint != null && !cmbSpawnPoint.DroppedDown)
             {
                 string script = Path.Combine(serverDir, "tools", "safehouse_manager.py");
@@ -547,6 +602,48 @@ namespace TriadWarsLauncher
                                 else if (line.Contains("SafehouseCT") && cmbSpawnPoint.SelectedIndex != 1) cmbSpawnPoint.SelectedIndex = 1;
                                 else if (line.Contains("SafehouseAB") && cmbSpawnPoint.SelectedIndex != 2) cmbSpawnPoint.SelectedIndex = 2;
                                 else if (line.Contains("SafehouseKT") && cmbSpawnPoint.SelectedIndex != 3) cmbSpawnPoint.SelectedIndex = 3;
+                                else if (line.Contains("GoldenKoi") && cmbSpawnPoint.SelectedIndex != 4) cmbSpawnPoint.SelectedIndex = 4;
+                                else if (line.Contains("CentralHospital") && cmbSpawnPoint.SelectedIndex != 5) cmbSpawnPoint.SelectedIndex = 5;
+                                else if (line.Contains("VictoriaMansion") && cmbSpawnPoint.SelectedIndex != 6) cmbSpawnPoint.SelectedIndex = 6;
+                                else if (line.Contains("Dojo") && cmbSpawnPoint.SelectedIndex != 7) cmbSpawnPoint.SelectedIndex = 7;
+                                else if (line.Contains("BamBam") && cmbSpawnPoint.SelectedIndex != 8) cmbSpawnPoint.SelectedIndex = 8;
+                                else if (line.Contains("Barge") && cmbSpawnPoint.SelectedIndex != 9) cmbSpawnPoint.SelectedIndex = 9;
+                                else if (line.Contains("FishMarket") && cmbSpawnPoint.SelectedIndex != 10) cmbSpawnPoint.SelectedIndex = 10;
+                            }
+                        }
+                    }
+                    catch { }
+                }
+            }
+
+            // Starter Vehicle Live State
+            if (cmbVehicle != null && !cmbVehicle.DroppedDown)
+            {
+                string script = Path.Combine(serverDir, "tools", "safehouse_manager.py");
+                if (File.Exists(script))
+                {
+                    try
+                    {
+                        var psi = new ProcessStartInfo(pythonPath, string.Format("\"{0}\" get-vehicle", script))
+                        {
+                            WorkingDirectory = Path.GetDirectoryName(script),
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        };
+                        using (var p = Process.Start(psi))
+                        {
+                            string line = p.StandardOutput.ReadLine();
+                            p.WaitForExit(600);
+                            if (!string.IsNullOrEmpty(line))
+                            {
+                                if (line.Contains("Tuono") && cmbVehicle.SelectedIndex != 0) cmbVehicle.SelectedIndex = 0;
+                                else if (line.Contains("Drifter") && cmbVehicle.SelectedIndex != 1) cmbVehicle.SelectedIndex = 1;
+                                else if (line.Contains("Panzer") && cmbVehicle.SelectedIndex != 2) cmbVehicle.SelectedIndex = 2;
+                                else if (line.Contains("860") && cmbVehicle.SelectedIndex != 3) cmbVehicle.SelectedIndex = 3;
+                                else if (line.Contains("Enterprise") && cmbVehicle.SelectedIndex != 4) cmbVehicle.SelectedIndex = 4;
+                                else if (line.Contains("1100") && cmbVehicle.SelectedIndex != 5) cmbVehicle.SelectedIndex = 5;
+                                else if (line.Contains("Neo") && cmbVehicle.SelectedIndex != 6) cmbVehicle.SelectedIndex = 6;
                             }
                         }
                     }
@@ -660,11 +757,29 @@ namespace TriadWarsLauncher
         private void ApplySelectedSpawn()
         {
             if (cmbSpawnPoint == null || cmbSpawnPoint.SelectedIndex < 0) return;
-            string[] targets = new string[] { "np", "ct", "ab", "kt" };
+            string[] targets = new string[] {
+                "np", "ct", "ab", "kt",
+                "koi", "hospital", "mansion", "dojo",
+                "bambam", "barge", "fishmarket"
+            };
             int idx = cmbSpawnPoint.SelectedIndex;
             if (idx >= 0 && idx < targets.Length)
             {
                 ExecuteSafehouseCommand("spawn " + targets[idx]);
+            }
+        }
+
+        private void ApplySelectedVehicle()
+        {
+            if (cmbVehicle == null || cmbVehicle.SelectedIndex < 0) return;
+            string[] vehTargets = new string[] {
+                "tuono", "drifter", "panzer", "860",
+                "enterprise", "1100", "neo"
+            };
+            int idx = cmbVehicle.SelectedIndex;
+            if (idx >= 0 && idx < vehTargets.Length)
+            {
+                ExecuteSafehouseCommand("vehicle " + vehTargets[idx]);
             }
         }
 
@@ -714,6 +829,7 @@ namespace TriadWarsLauncher
         private void LaunchClientOnly()
         {
             ApplySelectedSpawn();
+            ApplySelectedVehicle();
             string exePath = Path.Combine(betaDir, "TriadWars.exe");
             if (!File.Exists(exePath))
             {

@@ -583,6 +583,44 @@ def last_used_vehicle(req, method, parts, body, query):
     return ok()
 
 
+@route("game", "vehicles/starter")
+def starter_vehicles_list(req, method, parts, body, query):
+    starters = MISSIONS.get("starter_vehicles", [])
+    active_vehicle = STATE.data.get("player", {}).get("PlayerDataBag", {}).get("LastUsedVehicle", "3116199975099848891")
+    return {
+        "mReturnCode": 0,
+        "mActiveVehicleUID": str(active_vehicle),
+        "mStarterVehicles": starters,
+    }
+
+
+@route("game", "vehicles/setfavorite")
+def set_favorite_vehicle(req, method, parts, body, query):
+    veh_uid = parts[2] if len(parts) > 2 else "3116199975099848891"
+    with STATE.lock:
+        STATE.data.setdefault("player", {}).setdefault("PlayerDataBag", {})["LastUsedVehicle"] = str(veh_uid)
+        gps = STATE.data.get("gameplaystate", "")
+        flags = [f.strip() for f in gps.split(";") if f.strip()]
+        flags = [f for f in flags if not (f.startswith("LastUsedVehicle=") or f.startswith("GarageVehicle="))]
+        flags.append(f"LastUsedVehicle={veh_uid}")
+        flags.append(f"GarageVehicle={veh_uid}")
+        new_gps = ";".join(flags)
+        STATE.data["gameplaystate"] = new_gps
+        STATE.data["player"]["PlayerDataBag"]["GameplayState"] = new_gps
+        STATE.save()
+    return {"mReturnCode": 0, "mLastUsedVehicle": str(veh_uid)}
+
+
+@route("game", "landmarks")
+@route("game", "interiors")
+def landmarks_list(req, method, parts, body, query):
+    interiors = MISSIONS.get("special_interiors", [])
+    return {
+        "mReturnCode": 0,
+        "mSpecialInteriors": interiors,
+    }
+
+
 @route("game", "playerdata/preferfriendmatchmaking")
 def prefer_friend_matchmaking(req, method, parts, body, query):
     return ok()

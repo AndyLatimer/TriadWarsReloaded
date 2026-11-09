@@ -122,6 +122,10 @@ def main():
         assert len(g.get("mGamblingDens", [])) == 2, "expected 2 gambling dens"
         s = get("game/api/v1/services")
         assert len(s.get("mServices", {}).get("food_vendors", [])) >= 4, "missing food vendors"
+        lmk = get("game/api/v1/landmarks")
+        assert len(lmk.get("mSpecialInteriors", [])) >= 7, "expected 7 special landmarks"
+        v = get("game/api/v1/vehicles/starter")
+        assert len(v.get("mStarterVehicles", [])) >= 7, "expected 7 starter vehicles"
         gps = get("game/api/v1/playerdata/gameplaystate")
         st = gps.get("mGameplayState", "")
         for flag in ("EnableKaraoke=1", "MassageParlourBuff_Activated=1", "StrikingBuff_Activated=1"):
