@@ -701,37 +701,26 @@
     {
       "id": 0,
       "name": "Catch",
+      "reward_type": "DirtyMoney",
       "uid": "999752098279033389"
     },
     {
       "id": 1,
       "name": "Defeat",
+      "reward_type": "Face",
       "uid": "2751831883422413570"
     },
     {
       "id": 2,
       "name": "Photo",
+      "reward_type": "Favours_RaidBonus",
       "uid": "7248541061705089675"
     },
     {
       "id": 3,
       "name": "Deliver",
+      "reward_type": "Favours_All",
       "uid": "9265075428558064518"
-    },
-    {
-      "id": 4,
-      "name": "Collect",
-      "uid": "9915659117056696551"
-    },
-    {
-      "id": 5,
-      "name": "Destroy",
-      "uid": "10092364645237936142"
-    },
-    {
-      "id": 6,
-      "name": "Hijack",
-      "uid": "16002500952313957002"
     }
   ],
   "crime_scenes": [
@@ -1042,7 +1031,12 @@
       "name": "Thug Ambush",
       "desc": "Emboscada callejera de pandilleros armados en callejones",
       "interval_seconds": 1200,
-      "districts": ["North Point", "Central", "Aberdeen", "Kennedy Town"],
+      "districts": [
+        "North Point",
+        "Central",
+        "Aberdeen",
+        "Kennedy Town"
+      ],
       "reward_money": 5000,
       "reward_face": 750,
       "reward_xp": 750
@@ -1052,7 +1046,11 @@
       "name": "Fleeing Thief Pursuit",
       "desc": "Persecución y derribo a pie de carteristas y ladrones a la fuga",
       "interval_seconds": 1200,
-      "districts": ["Night Market", "Central Plaza", "Floating Market"],
+      "districts": [
+        "Night Market",
+        "Central Plaza",
+        "Floating Market"
+      ],
       "reward_money": 4500,
       "reward_face": 650,
       "reward_xp": 650
@@ -1062,7 +1060,11 @@
       "name": "Trunk Hostage Extraction",
       "desc": "Interceptar vehículo sospechoso y liberar rehén atrapado en el maletero",
       "interval_seconds": 1800,
-      "districts": ["Highways", "Waterfront", "Overpass"],
+      "districts": [
+        "Highways",
+        "Waterfront",
+        "Overpass"
+      ],
       "reward_money": 6000,
       "reward_face": 900,
       "reward_xp": 900
@@ -1681,7 +1683,11 @@
       "name": "Restaurante Golden Koi (Sra. Chu)",
       "internal_id": "Interior_ChuRest",
       "district": "North Point",
-      "coordinates": { "x": 815.0, "y": -248.0, "z": 6.0 },
+      "coordinates": {
+        "x": 815.0,
+        "y": -248.0,
+        "z": 6.0
+      },
       "description": "Sede principal de las Tríadas de North Point y restaurante tradicional."
     },
     {
@@ -1690,7 +1696,11 @@
       "name": "Hospital General Central",
       "internal_id": "Interior_Hospital",
       "district": "Central",
-      "coordinates": { "x": -385.0, "y": -280.0, "z": 18.5 },
+      "coordinates": {
+        "x": -385.0,
+        "y": -280.0,
+        "z": 18.5
+      },
       "description": "Centro médico de urgencias y reanimación de Hong Kong."
     },
     {
@@ -1699,7 +1709,11 @@
       "name": "Mansión de Victoria Peak",
       "internal_id": "Interior_Mansion",
       "district": "Victoria Peak",
-      "coordinates": { "x": -180.0, "y": -620.0, "z": 82.0 },
+      "coordinates": {
+        "x": -180.0,
+        "y": -620.0,
+        "z": 82.0
+      },
       "description": "Mansión privada en la cumbre con vistas panorámicas a la bahía."
     },
     {
@@ -1708,7 +1722,11 @@
       "name": "Club Bam Bam",
       "internal_id": "Interior_BamBam",
       "district": "North Point",
-      "coordinates": { "x": 790.0, "y": -340.0, "z": 6.0 },
+      "coordinates": {
+        "x": 790.0,
+        "y": -340.0,
+        "z": 6.0
+      },
       "description": "Exclusiva discoteca nocturna con salas VIP y bar."
     },
     {
@@ -1717,7 +1735,11 @@
       "name": "Barco Casino Flotante",
       "internal_id": "Interior_GamblingBarge",
       "district": "Aberdeen",
-      "coordinates": { "x": -650.0, "y": -1050.0, "z": 2.5 },
+      "coordinates": {
+        "x": -650.0,
+        "y": -1050.0,
+        "z": 2.5
+      },
       "description": "Casino flotante en alta mar frente a Aberdeen para apuestas VIP y peleas de gallos."
     },
     {
@@ -1726,7 +1748,11 @@
       "name": "Mercado Mayorista de Pescado",
       "internal_id": "Interior_FishMarket",
       "district": "Aberdeen",
-      "coordinates": { "x": -710.0, "y": -770.0, "z": 4.0 },
+      "coordinates": {
+        "x": -710.0,
+        "y": -770.0,
+        "z": 4.0
+      },
       "description": "Lonja de pescado y muelles del canal de Aberdeen."
     },
     {
@@ -1735,7 +1761,11 @@
       "name": "Taller Clandestino",
       "internal_id": "Interior_Sweatshop",
       "district": "North Point",
-      "coordinates": { "x": 860.0, "y": -340.0, "z": 5.2 },
+      "coordinates": {
+        "x": 860.0,
+        "y": -340.0,
+        "z": 5.2
+      },
       "description": "Taller textil subterráneo de producción de falsificaciones de las Tríadas."
     }
   ],

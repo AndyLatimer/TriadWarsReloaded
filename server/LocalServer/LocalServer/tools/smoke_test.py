@@ -74,7 +74,7 @@ def main():
         err = get("game/api/v1/errands")
         assert len(err.get("mErrands", [])) >= 4, "missing errands"
         ops = get("game/api/v1/operation/list")
-        assert len(ops.get("mOperationInstances", [])) >= 7, "missing operations"
+        assert len(ops.get("mOperationInstances", [])) == 4, "expected 4 operation instances (reward types 0..3)"
         we = get("game/api/v1/worldencounter/list")
         assert len(we.get("WorldEncounters", [])) >= 3, "missing encounters"
         cs = get("game/api/v1/openworldcrimescene")

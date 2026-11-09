@@ -276,7 +276,10 @@ def racket_countdowns(req, method, parts, body, query):
 
 @route("game", "operation/list")
 def operations(req, method, parts, body, query):
-    op_ids = [op["id"] for op in MISSIONS.get("operations", [])] or [0, 1, 2, 3, 4, 5, 6]
+    # TriadWars.exe indexes mOperationInstances directly into a 4-element RewardType table:
+    # 0 = DirtyMoney, 1 = Face, 2 = Favours_RaidBonus, 3 = Favours_All.
+    # Any ID >= 4 results in an out-of-bounds pointer dereference (0xc0000005 crash).
+    op_ids = [op["id"] for op in MISSIONS.get("operations", []) if 0 <= op.get("id", -1) < 4] or [0, 1, 2, 3]
     return {
         "mReturnCode": 0,
         "mMessage": "",
