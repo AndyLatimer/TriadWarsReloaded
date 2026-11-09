@@ -105,6 +105,22 @@ def main():
             assert flag in st, f"missing {flag} in gameplaystate"
         return "Sifu Dojo active, 4 Fight Clubs ready, Kung Fu combos maxed"
 
+    def minigames():
+        k = get("game/api/v1/karaoke")
+        assert len(k.get("mKaraoke", {}).get("venues", [])) == 2, "expected 2 karaoke venues"
+        assert len(k.get("mKaraoke", {}).get("songs", [])) >= 7, "missing karaoke songs"
+        r = get("game/api/v1/races")
+        assert len(r.get("mStreetRaces", [])) >= 7, "expected 7 street races"
+        g = get("game/api/v1/gambling")
+        assert len(g.get("mGamblingDens", [])) == 2, "expected 2 gambling dens"
+        s = get("game/api/v1/services")
+        assert len(s.get("mServices", {}).get("food_vendors", [])) >= 4, "missing food vendors"
+        gps = get("game/api/v1/playerdata/gameplaystate")
+        st = gps.get("mGameplayState", "")
+        for flag in ("EnableKaraoke=1", "MassageParlourBuff_Activated=1", "StrikingBuff_Activated=1"):
+            assert flag in st, f"missing {flag} in gameplaystate"
+        return "Karaoke, 7 Street Races, Gambling Dens & Food/Buffs active"
+
     def stores():
         with open(os.path.join(DATA, "store_items.json"), encoding="utf-8") as f:
             catalogues = json.load(f)
@@ -128,6 +144,7 @@ def main():
     check("missions & open world", missions)
     check("safehouses (4 Safehouses)", safehouses)
     check("martial arts & fight clubs", martial_arts)
+    check("minigames & services", minigames)
     check("shop catalogues", stores)
     print("%d check(s) failed" % len(failed) if failed else "all checks passed")
     return 1 if failed else 0

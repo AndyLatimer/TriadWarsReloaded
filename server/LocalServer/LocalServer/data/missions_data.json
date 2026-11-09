@@ -1019,5 +1019,213 @@
         "Boss Champions"
       ]
     }
-  ]
+  ],
+  "karaoke": {
+    "venues": [
+      {
+        "id": 1,
+        "name": "K-Bar Karaoke Club",
+        "district": "North Point",
+        "internal_id": "Interior_Karaoke",
+        "coordinates": {
+          "x": 840.0,
+          "y": -280.0,
+          "z": 5.5
+        }
+      },
+      {
+        "id": 2,
+        "name": "Club Bam Bam VIP Lounge",
+        "district": "Central",
+        "internal_id": "Interior_BamBam",
+        "coordinates": {
+          "x": -290.0,
+          "y": -180.0,
+          "z": 12.0
+        }
+      }
+    ],
+    "songs": [
+      {
+        "id": 1,
+        "title": "I Ran (So Far Away)",
+        "artist": "A Flock of Seagulls",
+        "genre": "New Wave"
+      },
+      {
+        "id": 2,
+        "title": "Girls Just Want to Have Fun",
+        "artist": "Cyndi Lauper",
+        "genre": "Pop 80s"
+      },
+      {
+        "id": 3,
+        "title": "All Out of Love",
+        "artist": "Air Supply",
+        "genre": "Soft Rock"
+      },
+      {
+        "id": 4,
+        "title": "Hit Me With Your Best Shot",
+        "artist": "Pat Benatar",
+        "genre": "Rock"
+      },
+      {
+        "id": 5,
+        "title": "Take On Me",
+        "artist": "A-ha",
+        "genre": "Synthpop"
+      },
+      {
+        "id": 6,
+        "title": "Rebel Yell",
+        "artist": "Billy Idol",
+        "genre": "Punk Rock"
+      },
+      {
+        "id": 7,
+        "title": "I Fought the Law",
+        "artist": "The Clash",
+        "genre": "Punk Rock"
+      }
+    ]
+  },
+  "street_races": [
+    {
+      "id": 1,
+      "name": "Loose Ends",
+      "district": "North Point",
+      "vehicle_class": "Motorcycle",
+      "laps": 2,
+      "reward": 10000
+    },
+    {
+      "id": 2,
+      "name": "Red-Line Aberdeen",
+      "district": "Aberdeen",
+      "vehicle_class": "Class C",
+      "laps": 3,
+      "reward": 15000
+    },
+    {
+      "id": 3,
+      "name": "Waterfront Run",
+      "district": "North Point",
+      "vehicle_class": "Class B",
+      "laps": 3,
+      "reward": 25000
+    },
+    {
+      "id": 4,
+      "name": "Night Market Dash",
+      "district": "North Point",
+      "vehicle_class": "Class A",
+      "laps": 2,
+      "reward": 40000
+    },
+    {
+      "id": 5,
+      "name": "Central Highway Grand Prix",
+      "district": "Central",
+      "vehicle_class": "Supercar",
+      "laps": 3,
+      "reward": 75000
+    },
+    {
+      "id": 6,
+      "name": "Victoria Peak Hillclimb",
+      "district": "Kennedy Town",
+      "vehicle_class": "Supercar",
+      "laps": 2,
+      "reward": 100000
+    },
+    {
+      "id": 7,
+      "name": "Victoria Harbour Speedboat Regatta",
+      "district": "Aberdeen",
+      "vehicle_class": "Speed Boat",
+      "laps": 2,
+      "reward": 50000
+    }
+  ],
+  "gambling_dens": [
+    {
+      "id": 1,
+      "name": "North Point Docks Gambling Den",
+      "district": "North Point",
+      "internal_id": "Interior_GDenNP",
+      "games": [
+        "Mahjong Poker",
+        "Poker Dice"
+      ],
+      "coordinates": {
+        "x": 750.0,
+        "y": -140.0,
+        "z": 4.0
+      }
+    },
+    {
+      "id": 2,
+      "name": "Central High-Stakes Den",
+      "district": "Central",
+      "internal_id": "Interior_GDenCT",
+      "games": [
+        "High-Stakes Mahjong Poker",
+        "Cockfight Betting"
+      ],
+      "coordinates": {
+        "x": -380.0,
+        "y": -200.0,
+        "z": 15.0
+      }
+    }
+  ],
+  "food_and_services": {
+    "food_vendors": [
+      {
+        "id": 1,
+        "name": "Pork Bun Vendor",
+        "item": "Steamed Pork Bun",
+        "effect": "Continuous Health Regeneration (100% Full Health)",
+        "cost": 20
+      },
+      {
+        "id": 2,
+        "name": "Dim Sum Stand",
+        "item": "Shrimp Dumplings",
+        "effect": "+50% Melee Damage Boost",
+        "cost": 40
+      },
+      {
+        "id": 3,
+        "name": "Herbal Tea Shop",
+        "item": "Herbal Remedy Tea",
+        "effect": "+50% Physical Damage Resistance",
+        "cost": 35
+      },
+      {
+        "id": 4,
+        "name": "Dragon Kick Energy Drink",
+        "item": "Dragon Kick Can",
+        "effect": "+100% Striking Power",
+        "cost": 25
+      }
+    ],
+    "massage_parlours": [
+      {
+        "id": 1,
+        "name": "Rose Petal Massage Parlour",
+        "district": "North Point",
+        "effect": "2x Face Meter Earn Multiplier",
+        "cost": 250
+      },
+      {
+        "id": 2,
+        "name": "Golden Touch Parlour",
+        "district": "Central",
+        "effect": "2x Face Meter Earn Multiplier",
+        "cost": 500
+      }
+    ]
+  }
 }

@@ -129,7 +129,7 @@ def new_player(player_id, name, triad_index, location, template_index=0, account
             "Triad": TRIADS[triad_index % len(TRIADS)]["$uid"],
             "AccountID": str(account_id if account_id is not None else player_id),
             "LastUsedVehicle": "0",
-            "GameplayState": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;EnableJadeStatueIndicators=1;EnableHealthShrineIndicators=1;EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1",
+            "GameplayState": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;EnableJadeStatueIndicators=1;EnableHealthShrineIndicators=1;EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1;EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1",
             "AvatarUrl": "",
             "PreferMatchmakingWithFriends": False,
             "IsFavourListInitialized": True,

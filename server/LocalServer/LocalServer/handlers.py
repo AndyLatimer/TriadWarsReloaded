@@ -117,7 +117,8 @@ def gameplay_state(req, method, parts, body, query):
             "SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;"
             "StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;"
             "EnableJadeStatueIndicators=1;EnableHealthShrineIndicators=1;"
-            "EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1"
+            "EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1;"
+            "EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1"
         )
         with STATE.lock:
             STATE.data["gameplaystate"] = current
@@ -347,6 +348,80 @@ def fight_club_end(req, method, parts, body, query):
         "mCashRewarded": reward_cash,
         "mFaceRewarded": reward_face,
         "mCurrentFace": str(face),
+        "mCurrentCash": str(cash),
+    }
+
+
+@route("game", "karaoke")
+def karaoke_info(req, method, parts, body, query):
+    karaoke = MISSIONS.get("karaoke", {})
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mKaraoke": karaoke,
+    }
+
+
+@route("game", "races")
+@route("game", "streetraces")
+def street_races(req, method, parts, body, query):
+    races = MISSIONS.get("street_races", [])
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mStreetRaces": races,
+    }
+
+
+@route("game", "race/end")
+def race_end(req, method, parts, body, query):
+    race_id = _int(parts[2] if len(parts) > 2 else "1", 1)
+    races = MISSIONS.get("street_races", [])
+    r = next((x for x in races if x.get("id") == race_id), None)
+    reward = r.get("reward", 15000) if r else 15000
+    with STATE.lock:
+        cash = _money("DirtyMoney", reward)
+        face = _int(_player()["PlayerDataBag"].get("Face", "0")) + 250
+        _player()["PlayerDataBag"]["Face"] = str(face)
+        STATE.save()
+    return {
+        "mReturnCode": 0,
+        "mMessage": "Race won!",
+        "mCashRewarded": reward,
+        "mCurrentCash": str(cash),
+        "mCurrentFace": str(face),
+    }
+
+
+@route("game", "gambling")
+def gambling_dens(req, method, parts, body, query):
+    dens = MISSIONS.get("gambling_dens", [])
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mGamblingDens": dens,
+    }
+
+
+@route("game", "services")
+@route("game", "foodvendors")
+def food_and_services(req, method, parts, body, query):
+    srv = MISSIONS.get("food_and_services", {})
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mServices": srv,
+    }
+
+
+@route("game", "service/buy")
+def service_buy(req, method, parts, body, query):
+    with STATE.lock:
+        cash = _money("DirtyMoney", -25)
+        STATE.save()
+    return {
+        "mReturnCode": 0,
+        "mMessage": "Purchased item / buff activated!",
         "mCurrentCash": str(cash),
     }
 
