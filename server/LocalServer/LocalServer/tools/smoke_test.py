@@ -81,6 +81,16 @@ def main():
         assert len(cs.get("CrimeScenes", [])) >= 5, "missing crime scenes"
         return "errands, operations, encounters & crime scenes active"
 
+    def safehouses():
+        res = get("game/api/v1/safehouses")
+        shs = res.get("mSafehouses", [])
+        assert len(shs) == 4, "expected 4 safehouses"
+        np = next((s for s in shs if s["symbol"] == "SafehouseNP"), None)
+        assert np and np["is_unlocked"] is True, "North Point safehouse must be unlocked"
+        gps = get("game/api/v1/playerdata/gameplaystate")
+        assert "SafehouseNP=1" in gps.get("mGameplayState", ""), "SafehouseNP flag missing in gameplaystate"
+        return "4 safehouses registered, North Point apartment unlocked"
+
     def stores():
         with open(os.path.join(DATA, "store_items.json"), encoding="utf-8") as f:
             catalogues = json.load(f)
@@ -102,6 +112,7 @@ def main():
     check("face tiers", face_tiers)
     check("black market quotes", quotes)
     check("missions & open world", missions)
+    check("safehouses (North Point)", safehouses)
     check("shop catalogues", stores)
     print("%d check(s) failed" % len(failed) if failed else "all checks passed")
     return 1 if failed else 0

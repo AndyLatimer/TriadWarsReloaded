@@ -109,7 +109,14 @@ def gameplay_state(req, method, parts, body, query):
             STATE.data["player"]["PlayerDataBag"]["GameplayState"] = value
         STATE.save()
         return {}
-    return {"mGameplayState": STATE.data.get("gameplaystate", "")}
+    current = STATE.data.get("gameplaystate", "")
+    if not current:
+        current = "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0"
+        with STATE.lock:
+            STATE.data["gameplaystate"] = current
+            STATE.data["player"]["PlayerDataBag"]["GameplayState"] = current
+        STATE.save()
+    return {"mGameplayState": current}
 
 
 @route("game", "playerdata/playersavegame")
@@ -258,6 +265,40 @@ def operations(req, method, parts, body, query):
         "mTotalSeconds": 7200,
         "mOperationInstances": op_ids,
     }
+
+
+@route("game", "safehouses")
+@route("game", "safehouse/list")
+def safehouses_list(req, method, parts, body, query):
+    safehouses = MISSIONS.get("safehouses", [])
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mSafehouses": safehouses,
+        "mActiveSafehouse": "Interior_SafehouseNP",
+    }
+
+
+@route("game", "safehouse/unlock")
+def safehouse_unlock(req, method, parts, body, query):
+    target_id = parts[2] if len(parts) > 2 else "1"
+    safehouses = MISSIONS.get("safehouses", [])
+    unlocked = None
+    for sh in safehouses:
+        if str(sh.get("id")) == str(target_id) or sh.get("symbol", "").lower() == str(target_id).lower():
+            sh["is_unlocked"] = True
+            unlocked = sh
+            break
+    if unlocked:
+        with STATE.lock:
+            current = STATE.data.get("gameplaystate", "")
+            flag = f"{unlocked['symbol']}=1"
+            if flag not in current:
+                current = f"{current};{flag}" if current else flag
+                STATE.data["gameplaystate"] = current
+                STATE.data["player"]["PlayerDataBag"]["GameplayState"] = current
+            STATE.save()
+    return {"mReturnCode": 0, "mUnlocked": unlocked, "mSafehouses": safehouses}
 
 
 

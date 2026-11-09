@@ -129,7 +129,7 @@ def new_player(player_id, name, triad_index, location, template_index=0, account
             "Triad": TRIADS[triad_index % len(TRIADS)]["$uid"],
             "AccountID": str(account_id if account_id is not None else player_id),
             "LastUsedVehicle": "0",
-            "GameplayState": "",
+            "GameplayState": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0",
             "AvatarUrl": "",
             "PreferMatchmakingWithFriends": False,
             "IsFavourListInitialized": True,
