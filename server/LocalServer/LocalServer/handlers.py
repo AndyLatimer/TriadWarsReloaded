@@ -116,9 +116,15 @@ def gameplay_state(req, method, parts, body, query):
             "SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;"
             "SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;"
             "StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;"
+            "CopDrivingStage=5;CopShootingStage=5;TriadDefensiveStage=5;TriadOffensiveStage=5;"
+            "GunplayUpgradeStage=5;VehicleRamUpgrade=1;CopXP=100000;TriadXP=100000;"
+            "CopUpgradePoint=10;TriadUpgradePoint=10;"
             "EnableJadeStatueIndicators=1;EnableHealthShrineIndicators=1;"
             "EnableLockboxIndicators=1;EnableSpyCamIndicators=1;EnableValet=1;EnablePDA=1;"
-            "EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1"
+            "EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1;"
+            "PlayerCheckpointLocationX=840.50;PlayerCheckpointLocationY=-320.20;PlayerCheckpointLocationZ=5.30;"
+            "PlayerLastStableLocationX=840.50;PlayerLastStableLocationY=-320.20;PlayerLastStableLocationZ=5.30;"
+            "ActiveSafehouseSpawn=SafehouseNP"
         )
         with STATE.lock:
             STATE.data["gameplaystate"] = current

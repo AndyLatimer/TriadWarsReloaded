@@ -151,12 +151,57 @@ def set_safehouse_state(target, unlock=True):
     print(f"GameplayState actualizado: {new_gps}")
 
 
+def set_spawn_location(target):
+    missions = load_json(MISSIONS_FILE)
+    safehouses = missions.get("safehouses", [])
+    sh = _find_safehouse(safehouses, target)
+    if not sh:
+        print(f"Error: No se encontró ningún piso franco que coincida con '{target}'.")
+        return
+
+    door = sh.get("door_coordinates", {})
+    x = door.get("x", 840.5)
+    y = door.get("y", -320.2)
+    z = door.get("z", 5.3)
+
+    state = load_json(STATE_FILE)
+    gps = state.get("gameplaystate", "")
+    flags = [f.strip() for f in gps.split(";") if f.strip()]
+
+    # Filter out previous spawn flags
+    flags = [f for f in flags if not (f.startswith("PlayerCheckpointLocation") or
+                                      f.startswith("PlayerLastStableLocation") or
+                                      f.startswith("ActiveSafehouseSpawn"))]
+
+    flags.append(f"PlayerCheckpointLocationX={x:.2f}")
+    flags.append(f"PlayerCheckpointLocationY={y:.2f}")
+    flags.append(f"PlayerCheckpointLocationZ={z:.2f}")
+    flags.append(f"PlayerLastStableLocationX={x:.2f}")
+    flags.append(f"PlayerLastStableLocationY={y:.2f}")
+    flags.append(f"PlayerLastStableLocationZ={z:.2f}")
+    flags.append(f"ActiveSafehouseSpawn={sh['symbol']}")
+
+    new_gps = ";".join(flags)
+    state["gameplaystate"] = new_gps
+    state.setdefault("player", {}).setdefault("PlayerDataBag", {})["GameplayState"] = new_gps
+    save_json(STATE_FILE, state)
+
+    print("=" * 70)
+    print(f"PUNTO DE REAPARICIÓN FIJADO EN: {sh['name']} ({sh['district']})")
+    print(f"Coordenadas de Spawn:  X: {x:.2f}, Y: {y:.2f}, Z: {z:.2f}")
+    print(f"Interior Chunk:        {sh['internal_id']}")
+    print("=" * 70)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Administrador de Pisos Francos de Triad Wars")
     subparsers = parser.add_subparsers(dest="cmd")
 
     subparsers.add_parser("list", help="Listar todos los pisos francos y su estado")
     subparsers.add_parser("status", help="Mostrar resumen de estado activo")
+
+    spawn_parser = subparsers.add_parser("spawn", help="Fijar punto de reaparición inicial del jugador")
+    spawn_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, ct, ab, kt)")
 
     unlock_parser = subparsers.add_parser("unlock", help="Desbloquear un piso franco")
     unlock_parser.add_argument("target", help="ID o nombre del piso (ej: 1, np, north, SafehouseNP)")
@@ -173,6 +218,8 @@ def main():
         list_safehouses()
     elif args.cmd == "status":
         print_status()
+    elif args.cmd == "spawn":
+        set_spawn_location(args.target)
     elif args.cmd == "unlock":
         set_safehouse_state(args.target, unlock=True)
     elif args.cmd == "lock":

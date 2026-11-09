@@ -101,9 +101,11 @@ def main():
         assert len(fc.get("mFightClubs", [])) == 4, "expected 4 fight clubs"
         gps = get("game/api/v1/playerdata/gameplaystate")
         st = gps.get("mGameplayState", "")
-        for flag in ("FIGHTCLUB_INTRO_COMPLETE=1", "StatueDefensiveStage=5", "StatueOffensiveStage=5", "EnableJadeStatueIndicators=1"):
+        for flag in ("FIGHTCLUB_INTRO_COMPLETE=1", "StatueDefensiveStage=5", "StatueOffensiveStage=5",
+                     "CopDrivingStage=5", "CopShootingStage=5", "TriadDefensiveStage=5",
+                     "TriadOffensiveStage=5", "GunplayUpgradeStage=5", "PlayerCheckpointLocationX=840.50"):
             assert flag in st, f"missing {flag} in gameplaystate"
-        return "Sifu Dojo active, 4 Fight Clubs ready, Kung Fu combos maxed"
+        return "Sifu Dojo active, 4 Fight Clubs ready, Kung Fu/Cop/Triad trees maxed"
 
     def minigames():
         k = get("game/api/v1/karaoke")
