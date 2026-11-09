@@ -845,7 +845,7 @@
         "y": -125.0,
         "z": 18.0
       },
-      "is_unlocked": false,
+      "is_unlocked": true,
       "features": [
         "Bed",
         "Wardrobe",
@@ -876,7 +876,7 @@
         "y": -770.0,
         "z": 4.5
       },
-      "is_unlocked": false,
+      "is_unlocked": true,
       "features": [
         "Bed",
         "Wardrobe",
@@ -907,7 +907,7 @@
         "y": 115.0,
         "z": 25.0
       },
-      "is_unlocked": false,
+      "is_unlocked": true,
       "features": [
         "Bed",
         "Wardrobe",

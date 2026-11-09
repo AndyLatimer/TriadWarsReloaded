@@ -85,11 +85,14 @@ def main():
         res = get("game/api/v1/safehouses")
         shs = res.get("mSafehouses", [])
         assert len(shs) == 4, "expected 4 safehouses"
-        np = next((s for s in shs if s["symbol"] == "SafehouseNP"), None)
-        assert np and np["is_unlocked"] is True, "North Point safehouse must be unlocked"
+        for sym in ("SafehouseNP", "SafehouseCT", "SafehouseAB", "SafehouseKT"):
+            sh = next((s for s in shs if s["symbol"] == sym), None)
+            assert sh and sh["is_unlocked"] is True, f"{sym} safehouse must be unlocked"
         gps = get("game/api/v1/playerdata/gameplaystate")
-        assert "SafehouseNP=1" in gps.get("mGameplayState", ""), "SafehouseNP flag missing in gameplaystate"
-        return "4 safehouses registered, North Point apartment unlocked"
+        state_str = gps.get("mGameplayState", "")
+        for sym in ("SafehouseNP=1", "SafehouseCT=1", "SafehouseAB=1", "SafehouseKT=1"):
+            assert sym in state_str, f"{sym} flag missing in gameplaystate"
+        return "4 safehouses registered & all 4 unlocked (NP, CT, AB, KT)"
 
     def stores():
         with open(os.path.join(DATA, "store_items.json"), encoding="utf-8") as f:

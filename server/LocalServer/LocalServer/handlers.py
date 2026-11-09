@@ -111,7 +111,7 @@ def gameplay_state(req, method, parts, body, query):
         return {}
     current = STATE.data.get("gameplaystate", "")
     if not current:
-        current = "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0"
+        current = "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0"
         with STATE.lock:
             STATE.data["gameplaystate"] = current
             STATE.data["player"]["PlayerDataBag"]["GameplayState"] = current
