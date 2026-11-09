@@ -1227,5 +1227,175 @@
         "cost": 500
       }
     ]
-  }
+  },
+  "legendary_outfits": [
+    {
+      "uid": "164920233587172087",
+      "name": "Tactical Gear: Digital Urban",
+      "description": "Inconspicuous in the right environment and highly functional",
+      "pieces_count": 4
+    },
+    {
+      "uid": "266812656000463268",
+      "name": "Rico",
+      "description": "Just Cause 2",
+      "pieces_count": 3
+    },
+    {
+      "uid": "1060393915960339534",
+      "name": "Kung Fu Vagabond",
+      "description": "Embrace the lifestyle",
+      "pieces_count": 3
+    },
+    {
+      "uid": "1830394833577068751",
+      "name": "Agent 47",
+      "description": "Agent 47 a.k.a The Hitman, a highly trained assassin, consistently recognized as the world's deadliest, most discreet and skilled assassin.",
+      "pieces_count": 4
+    },
+    {
+      "uid": "2119721700411310346",
+      "name": "Bloody Suit",
+      "description": "",
+      "pieces_count": 3
+    },
+    {
+      "uid": "3198715769221673704",
+      "name": "Wing Chun",
+      "description": "Become the master",
+      "pieces_count": 3
+    },
+    {
+      "uid": "3410300355816008138",
+      "name": "Tactical Gear: Urban Camo",
+      "description": "Inconspicuous in the right environment and highly functional",
+      "pieces_count": 4
+    },
+    {
+      "uid": "4514032563323111547",
+      "name": "Shaolin Warrior",
+      "description": "35 chambers down...",
+      "pieces_count": 4
+    },
+    {
+      "uid": "6241460106731006346",
+      "name": "Wu Shu",
+      "description": "Let your fists do the talking",
+      "pieces_count": 3
+    },
+    {
+      "uid": "6567866255832397606",
+      "name": "Kung Fu Hustler",
+      "description": "Be a master not a disaster",
+      "pieces_count": 3
+    },
+    {
+      "uid": "7564596263067345457",
+      "name": "Ultimate Beatdown",
+      "description": "Straight from the ring",
+      "pieces_count": 3
+    },
+    {
+      "uid": "7574621266568974758",
+      "name": "Spry and Viscious",
+      "description": "Are you dangerous?",
+      "pieces_count": 4
+    },
+    {
+      "uid": "9274714014958772002",
+      "name": "Lightning Warrior",
+      "description": "Ride the Storm!",
+      "pieces_count": 4
+    },
+    {
+      "uid": "10209607326606741076",
+      "name": "Sun Wukong",
+      "description": "Become the Monkey King!",
+      "pieces_count": 4
+    },
+    {
+      "uid": "10365779547856234049",
+      "name": "Vintage Jumpsuit",
+      "description": "Play the game",
+      "pieces_count": 3
+    },
+    {
+      "uid": "10689456492797972409",
+      "name": "Tactical Gear: Green Camo",
+      "description": "Inconspicuous in the right environment and highly functional",
+      "pieces_count": 4
+    },
+    {
+      "uid": "10825236588784892543",
+      "name": "Kung Fu",
+      "description": "Become the Legend",
+      "pieces_count": 2
+    },
+    {
+      "uid": "10951711769280898226",
+      "name": "Zombie Enforcer",
+      "description": "Me want TUUUURRRRRFFFFF!",
+      "pieces_count": 4
+    },
+    {
+      "uid": "11089315892382218235",
+      "name": "NVidia Zombie Enforcer",
+      "description": "The way it's meant to be afraid!",
+      "pieces_count": 4
+    },
+    {
+      "uid": "12248504742236130773",
+      "name": "Tactical Gear: Digital Pink",
+      "description": "Inconspicuous in the right environment and highly functional",
+      "pieces_count": 4
+    },
+    {
+      "uid": "15325908797379668623",
+      "name": "Super Swat Uniform",
+      "description": "",
+      "pieces_count": 4
+    },
+    {
+      "uid": "16173257557199901863",
+      "name": "Monk",
+      "description": "The only limit is yourself",
+      "pieces_count": 2
+    },
+    {
+      "uid": "16601978319230876509",
+      "name": "Masked Justice",
+      "description": "You are no vigilante",
+      "pieces_count": 4
+    },
+    {
+      "uid": "16972082814130311141",
+      "name": "Deus Ex",
+      "description": "The mechanically augmented protagonist of Deus Ex: Human Revolution",
+      "pieces_count": 4
+    },
+    {
+      "uid": "17252126931384523275",
+      "name": "Bronze Master",
+      "description": "No, it's not chocolate milk",
+      "pieces_count": 4
+    },
+    {
+      "uid": "17542338473309454167",
+      "name": "Swat Uniform",
+      "description": "",
+      "pieces_count": 4
+    },
+    {
+      "uid": "17955367596543792818",
+      "name": "Muay Thai",
+      "description": "Your body is a weapon",
+      "pieces_count": 2
+    },
+    {
+      "uid": "17965305667519441334",
+      "name": "Tactical Gear: Desert Camo",
+      "description": "Inconspicuous in the right environment and highly functional",
+      "pieces_count": 4
+    }
+  ]
 }

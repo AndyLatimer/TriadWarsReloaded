@@ -426,6 +426,17 @@ def service_buy(req, method, parts, body, query):
     }
 
 
+@route("game", "outfits")
+@route("game", "legendaryoutfits")
+def legendary_outfits(req, method, parts, body, query):
+    outfits = MISSIONS.get("legendary_outfits", [])
+    return {
+        "mReturnCode": 0,
+        "mMessage": "",
+        "mOutfits": outfits,
+    }
+
+
 
 # ---- commerce / accounts / social --------------------------------------------
 # UFG::Currency: 0 = PriceInGame_Dirty (cash), 1 = PriceInGame_Clean (gold).

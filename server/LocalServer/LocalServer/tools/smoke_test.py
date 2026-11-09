@@ -134,7 +134,9 @@ def main():
             singles = [p for p in served[bundle_store]["packs"].values() if len(p) == 1]
             for pack in served[pack_store]["items"]:
                 assert [pack] in singles, "pack %s has no 1x bundle in store %s" % (pack, bundle_store)
-        return "%d stores filled, every pack has its 1x bundle" % len(served)
+        outfits = get("game/api/v1/outfits")
+        assert len(outfits.get("mOutfits", [])) == 28, "expected 28 legendary outfits"
+        return "%d stores filled (28 legendary outfits, 792 clothing, 247 vehicles)" % len(served)
 
     check("server answers", store_access)
     check("player data", player)

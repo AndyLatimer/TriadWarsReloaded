@@ -71,10 +71,9 @@ def main(path):
             return bool(item.get("mDisplayName") and item.get("mPropertySet"))
         if item["$type"] == "UFG::StoreClothing":
             return item["mSubType"] not in UNFINISHED + ("",)
-        # an outfit is sellable when every piece it is made of exists and is finished
-        pieces = [h["$handle"] for h in item["mClothingItems"] if h]
-        return bool(pieces) and all(p in clothing and clothing[p]["mSubType"] not in UNFINISHED
-                                    for p in pieces)
+        if item["$type"] == "UFG::StoreOutfit":
+            pieces = [h["$handle"] for h in item.get("mClothingItems", []) if h]
+            return bool(item.get("mDisplayName")) and bool(pieces) and all(p in clothing for p in pieces)
 
     def pack_bundles(packs):
         """{store bundle uid: [pack uid, ...]} for every bundle made only of one of `packs`."""
