@@ -44,12 +44,19 @@ ORIG_SHA256 = "6bd58dbdea8f8acb4d76c24eccff77c14cdd8652408f25c38f7ab8bcb832cf7b"
 IMAGE_BASE = 0x140000000
 TEXT_VA, TEXT_RAW = 0x140001000, 0x400          # .text: virtual address and file offset
 
+# Patch 1: Spot-shadow composite drawable model null-check
 SITE_VA = 0x140005486                           # mov [rbp-0x61], r8 ; mov r15, [r8+0x58]
 SITE_OLD = bytes.fromhex("4c89459f" "4d8b7858")
 RESUME_VA = 0x14000548E                         # mov [rbp+0x7f], r15
 EXIT_VA = 0x140005C4E                           # the routine's early-exit epilogue
 CAVE_VA = 0x1417C63E0                           # zero padding after the last function in .text
 CAVE_LEN = 22
+
+# Patch 2: Transform node null-check (crash at 1401ca13a reading [rcx + 0x68])
+XFORM_VA = 0x1401CA13A
+XFORM_OLD = bytes.fromhex("488b5168" "488bf9" "4885d2" "754b" "395170" "0f8460020000")
+XFORM_NEW = bytes.fromhex("4885c9" "0f846c020000" "488b5168" "488bf9" "4885d2" "7542")
+assert len(XFORM_NEW) == len(XFORM_OLD) == 21
 
 
 def _off(va):
@@ -69,7 +76,11 @@ def patches():
     cave += bytes.fromhex("4d8b7858")                                     # mov r15, [r8+0x58]
     cave += b"\xe9" + _rel32(CAVE_VA + len(cave) + 5, RESUME_VA)          # jmp resume
     assert len(site) == len(SITE_OLD) and len(cave) == CAVE_LEN
-    return [(_off(SITE_VA), SITE_OLD, site), (_off(CAVE_VA), bytes(CAVE_LEN), cave)]
+    return [
+        (_off(SITE_VA), SITE_OLD, site),
+        (_off(CAVE_VA), bytes(CAVE_LEN), cave),
+        (_off(XFORM_VA), XFORM_OLD, XFORM_NEW),
+    ]
 
 
 def state(data):
@@ -90,28 +101,31 @@ def status():
 
 
 def apply():
-    data = _read(EXE)
-    st = state(data)
-    if st == "patched":
-        print("already patched")
-        return
-    if st != "original" or hashlib.sha256(data).hexdigest() != ORIG_SHA256:
-        sys.exit("TriadWars.exe is not the build this patch was written for; nothing changed")
     if os.path.exists(ORIG):
-        sys.exit("TriadWars.exe.orig already exists; nothing changed")
-    out = bytearray(data)
+        base_data = _read(ORIG)
+        if hashlib.sha256(base_data).hexdigest() != ORIG_SHA256:
+            sys.exit("TriadWars.exe.orig is corrupted; aborting")
+    else:
+        base_data = _read(EXE)
+        if hashlib.sha256(base_data).hexdigest() != ORIG_SHA256:
+            sys.exit("TriadWars.exe is not the build this patch was written for; nothing changed")
+        with open(ORIG, "wb") as f:
+            f.write(base_data)
+
+    out = bytearray(base_data)
     for o, a, b in patches():
         out[o:o + len(b)] = b
+
     tmp = EXE + ".new"
     with open(tmp, "wb") as f:
         f.write(out)
-    os.rename(EXE, ORIG)            # allowed even while the game is running
     try:
+        os.replace(tmp, EXE)
+    except PermissionError:
+        # If game is running, rename running exe then put new in place
+        os.rename(EXE, EXE + ".running")
         os.rename(tmp, EXE)
-    except OSError:
-        os.rename(ORIG, EXE)
-        raise
-    print("patched; original kept as TriadWars.exe.orig")
+    print("successfully applied all engine crash patches to TriadWars.exe")
 
 
 def restore():
