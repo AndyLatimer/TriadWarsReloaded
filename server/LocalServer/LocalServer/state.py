@@ -202,7 +202,7 @@ def default_state():
     grant_starting_favours(player)
     grant_starting_inventory(player)
     return {
-        "version": 5,
+        "version": 6,
         "created": int(time.time()),
         "player": player,
         "opponents": [
@@ -233,7 +233,7 @@ class State:
     def _migrate(self):
         """Bring a profile saved by an older server version up to date."""
         version = self.data.get("version", 1)
-        if version >= 5:
+        if version >= 6:
             return
         player = self.data["player"]
         if version < 2:
@@ -257,7 +257,40 @@ class State:
                                       if r.get("RacketTypeUID") not in empties]
         if version < 5:
             grant_starting_inventory(player)
-        self.data["version"] = 5
+        if version < 6:
+            # Earlier launchers wrote 64-bit store UIDs into a uint32 driving
+            # field and duplicated them as synthetic gameplay-state flags.
+            pdb = player["PlayerDataBag"]
+            runtime_value = str(pdb.get("LastUsedVehicle", "0"))
+            try:
+                runtime_id = int(runtime_value)
+            except ValueError:
+                runtime_id = -1
+
+            preferred_uid = self.data.get("preferred_starter_vehicle_uid")
+            for game_flags in (self.data.get("gameplaystate", ""), pdb.get("GameplayState", "")):
+                if isinstance(game_flags, str):
+                    for flag in game_flags.split(";"):
+                        if flag.startswith("GarageVehicle=") and not preferred_uid:
+                            preferred_uid = flag.partition("=")[2]
+
+            if not 0 <= runtime_id <= 0xFFFFFFFF:
+                if runtime_id > 0xFFFFFFFF and not preferred_uid:
+                    preferred_uid = runtime_value
+                pdb["LastUsedVehicle"] = "0"
+            if preferred_uid:
+                self.data["preferred_starter_vehicle_uid"] = str(preferred_uid)
+
+            # These flags were injected by our tooling, not saved by the game.
+            # Preserve the rest of the player's tutorial and progress flags.
+            for owner, key in ((self.data, "gameplaystate"), (pdb, "GameplayState")):
+                value = owner.get(key, "")
+                if isinstance(value, str):
+                    owner[key] = ";".join(
+                        f for f in value.split(";")
+                        if not f.startswith(("LastUsedVehicle=", "GarageVehicle="))
+                    )
+        self.data["version"] = 6
         self.save()
 
     def save(self):
