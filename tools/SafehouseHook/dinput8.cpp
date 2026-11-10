@@ -71,11 +71,11 @@ extern "C" __declspec(dllexport) HRESULT WINAPI DirectInput8Create(
         if (hOrig)
         {
             g_oDirectInput8Create = (PFN_DirectInput8Create)GetProcAddress(hOrig, "DirectInput8Create");
-            Log("[dinput8] Proxy chained to original system dinput8.dll at %s", sysPath);
+            Log("[dinput8] Proxy encadenado a dinput8.dll original del sistema (%s)", sysPath);
         }
         else
         {
-            Log("[dinput8] ERROR: Failed to load system dinput8.dll!");
+            Log("[dinput8] ERROR: No se pudo cargar dinput8.dll del sistema!");
         }
     }
     if (g_oDirectInput8Create)
@@ -114,6 +114,10 @@ static DWORD g_lastTeleportTime = 0;
 static DWORD g_lastProximityLogTime = 0;
 static volatile bool g_bRunning = true;
 
+// Player pointers discovered safely via HookUpdateTransform
+static void* volatile g_pPlayerSimObject = NULL;
+static void* volatile g_pPlayerTransform = NULL;
+
 // Engine Event types
 typedef void* (__fastcall* FnTeleportEventCtor)(void* pEvent, const float* pWorldMatrix, uint32_t targetUID, uint32_t r9, uint64_t channel, uint64_t unk);
 typedef void (__fastcall* FnQueueEvent)(void* pDispatcher, void* pEvent);
@@ -122,39 +126,46 @@ static void TeleportPlayer(void* pSimObj, void* pTransformNode, float tx, float 
 {
     if (!pSimObj || !pTransformNode) return;
 
-    float* pWorld = (float*)((uintptr_t)pTransformNode + 0x80);
-    float* pLocal = (float*)((uintptr_t)pTransformNode + 0xC0);
-
-    // 1. Update TransformNodeComponent coordinates directly
-    pWorld[12] = tx;
-    pWorld[13] = ty;
-    pWorld[14] = tz;
-
-    pLocal[12] = tx;
-    pLocal[13] = ty;
-    pLocal[14] = tz;
-
-    *(int*)((uintptr_t)pTransformNode + 0x70) = 1; // mChanged = 1
-
-    // 2. Dispatch official engine TeleportEvent
-    uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
-
-    FnTeleportEventCtor pTeleportEventCtor = (FnTeleportEventCtor)(g_base + 0x445290);
-    FnQueueEvent pQueueEvent = (FnQueueEvent)(g_base + 0x1F0260);
-    void* pDispatcher = (void*)(g_base + 0x23F5870);
-
-    if (pTeleportEventCtor && pQueueEvent && pDispatcher)
+    __try
     {
-        __declspec(align(16)) uint8_t eventBuf[0x90] = { 0 };
-        pTeleportEventCtor(eventBuf, pWorld, nameUID, 0, 0xF76010DEULL, 0);
-        pQueueEvent(pDispatcher, eventBuf);
+        float* pWorld = (float*)((uintptr_t)pTransformNode + 0x80);
+        float* pLocal = (float*)((uintptr_t)pTransformNode + 0xC0);
+
+        // 1. Update TransformNodeComponent coordinates directly
+        pWorld[12] = tx;
+        pWorld[13] = ty;
+        pWorld[14] = tz;
+
+        pLocal[12] = tx;
+        pLocal[13] = ty;
+        pLocal[14] = tz;
+
+        *(int*)((uintptr_t)pTransformNode + 0x70) = 1; // mChanged = 1
+
+        // 2. Dispatch official engine TeleportEvent
+        uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
+
+        FnTeleportEventCtor pTeleportEventCtor = (FnTeleportEventCtor)(g_base + 0x445290);
+        FnQueueEvent pQueueEvent = (FnQueueEvent)(g_base + 0x1F0260);
+        void* pDispatcher = (void*)(g_base + 0x23F5870);
+
+        if (pTeleportEventCtor && pQueueEvent && pDispatcher)
+        {
+            __declspec(align(16)) uint8_t eventBuf[0x90] = { 0 };
+            pTeleportEventCtor(eventBuf, pWorld, nameUID, 0, 0xF76010DEULL, 0);
+            pQueueEvent(pDispatcher, eventBuf);
+        }
+
+        // Audio cue
+        MessageBeep(MB_OK);
+
+        Log("[TELEPORT] EXITO: %s %s -> Nueva Posicion: (X=%.2f, Y=%.2f, Z=%.2f)",
+            entering ? "ENTRANDO A" : "SALIENDO DE", name, tx, ty, tz);
     }
-
-    // Audio cue
-    MessageBeep(MB_OK);
-
-    Log("[TELEPORT] SUCCESS: %s %s -> Nueva Pos: (X=%.2f, Y=%.2f, Z=%.2f)",
-        entering ? "ENTRANDO A" : "SALIENDO DE", name, tx, ty, tz);
+    __except (EXCEPTION_EXECUTE_HANDLER)
+    {
+        Log("[TELEPORT] Excepcion capturada durante TeleportPlayer");
+    }
 }
 
 static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool requireActionKey)
@@ -198,7 +209,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
 
         if (!isActionPressed)
         {
-            // If not pressed, check if we should log proximity once every 2.5s for user debugging
+            // If not pressed, check if we should log proximity once every 2.5s for debugging
             if (now - g_lastProximityLogTime > 2500)
             {
                 for (int i = 0; i < NUM_DOORS; ++i)
@@ -209,7 +220,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
                     if (dExt <= door.trigger_radius + 2.0f || dInt <= door.trigger_radius + 2.0f)
                     {
                         g_lastProximityLogTime = now;
-                        Log("[PROXIMITY] Cerca de '%s' | Jugador: (%.2f, %.2f, %.2f) | Dist Ext: %.2f m, Dist Int: %.2f m. Pulsa [E] o [Y] para interactuar.",
+                        Log("[PROXIMITY] Cerca de '%s' | Jugador: (%.2f, %.2f, %.2f) | Dist Ext: %.2f m, Dist Int: %.2f m. Pulsa [E] o [Y].",
                             door.name, px, py, pz, dExt, dInt);
                         break;
                     }
@@ -260,6 +271,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
 
 //--------------------------------------------------------------------------
 // UpdateTransform Hook (RVA 0x1CA120)
+// Safely matches PlayerOne_Havok (0x90ECB5FF) and stores the player pointer
 //--------------------------------------------------------------------------
 typedef void(__fastcall* FnUpdateTransform)(void* pTransformNode);
 static FnUpdateTransform g_oUpdateTransform = NULL;
@@ -268,18 +280,22 @@ static void __fastcall HookUpdateTransform(void* pTransformNode)
 {
     if (pTransformNode)
     {
-        // In SimComponent, m_pSimObject is at offset 0x28
-        void* pSimObj = *(void**)((uintptr_t)pTransformNode + 0x28);
-        if (pSimObj)
+        __try
         {
-            // Check if this object is the local player
-            void* pLocalPlayer = *(void**)(g_base + 0x235C488);
-            uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
-
-            if (pSimObj == pLocalPlayer || nameUID == 0x90ECB5FF)
+            // In SimComponent, m_pSimObject is at offset 0x28
+            void* pSimObj = *(void**)((uintptr_t)pTransformNode + 0x28);
+            if (pSimObj)
             {
-                CheckSafehouseProximity(pSimObj, pTransformNode, true);
+                uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
+                if (nameUID == 0x90ECB5FF) // "PlayerOne_Havok" -> Local Player
+                {
+                    g_pPlayerSimObject = pSimObj;
+                    g_pPlayerTransform = pTransformNode;
+                }
             }
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER)
+        {
         }
     }
     g_oUpdateTransform(pTransformNode);
@@ -294,64 +310,68 @@ static DWORD WINAPI MonitorThread(LPVOID lpParam)
 
     while (g_bRunning)
     {
-        Sleep(25);
+        Sleep(30);
 
-        void* pLocalPlayer = *(void**)(g_base + 0x235C488);
-        if (!pLocalPlayer) continue;
+        void* pSimObj = g_pPlayerSimObject;
+        void* pTrans = g_pPlayerTransform;
+        if (!pSimObj || !pTrans) continue;
 
-        void* pTrans = *(void**)((uintptr_t)pLocalPlayer + 0x58); // m_pTransformNodeComponent
-        if (!pTrans) continue;
-
-        float* pWorld = (float*)((uintptr_t)pTrans + 0x80);
-        float px = pWorld[12];
-        float py = pWorld[13];
-        float pz = pWorld[14];
-
-        DWORD now = GetTickCount();
-
-        // Hotkey [F9]: Coordinates Inspector & Proximity Status
-        if ((GetAsyncKeyState(VK_F9) & 0x8000) != 0)
+        __try
         {
-            if (now - g_lastTeleportTime > 500)
+            float* pWorld = (float*)((uintptr_t)pTrans + 0x80);
+            float px = pWorld[12];
+            float py = pWorld[13];
+            float pz = pWorld[14];
+
+            DWORD now = GetTickCount();
+
+            // Hotkey [F9]: Coordinates Inspector & Proximity Status
+            if ((GetAsyncKeyState(VK_F9) & 0x8000) != 0)
             {
-                g_lastTeleportTime = now;
-                MessageBeep(MB_ICONINFORMATION);
-                Log("[F9 INSPECTOR] Posicion actual del jugador: X=%.2f, Y=%.2f, Z=%.2f", px, py, pz);
-                for (int i = 0; i < NUM_DOORS; ++i)
+                if (now - g_lastTeleportTime > 500)
                 {
-                    const SafehouseDoor& d = g_Doors[i];
-                    float distExt = sqrtf((px - d.ext_x)*(px - d.ext_x) + (py - d.ext_y)*(py - d.ext_y));
-                    float distInt = sqrtf((px - d.int_x)*(px - d.int_x) + (py - d.int_y)*(py - d.int_y));
-                    Log("   -> %s: Dist Ext=%.2f m (dZ=%.2f), Dist Int=%.2f m (dZ=%.2f)",
-                        d.name, distExt, fabsf(pz - d.ext_z), distInt, fabsf(pz - d.int_z));
+                    g_lastTeleportTime = now;
+                    MessageBeep(MB_ICONINFORMATION);
+                    Log("[F9 INSPECTOR] Posicion actual del jugador: X=%.2f, Y=%.2f, Z=%.2f", px, py, pz);
+                    for (int i = 0; i < NUM_DOORS; ++i)
+                    {
+                        const SafehouseDoor& d = g_Doors[i];
+                        float distExt = sqrtf((px - d.ext_x)*(px - d.ext_x) + (py - d.ext_y)*(py - d.ext_y));
+                        float distInt = sqrtf((px - d.int_x)*(px - d.int_x) + (py - d.int_y)*(py - d.int_y));
+                        Log("   -> %s: Dist Ext=%.2f m (dZ=%.2f), Dist Int=%.2f m (dZ=%.2f)",
+                            d.name, distExt, fabsf(pz - d.ext_z), distInt, fabsf(pz - d.int_z));
+                    }
                 }
             }
-        }
 
-        // Hotkey [F7]: Forzar Teleport Directo al interior del Safehouse de North Point
-        if ((GetAsyncKeyState(VK_F7) & 0x8000) != 0)
-        {
-            if (now - g_lastTeleportTime > 1500)
+            // Hotkey [F7]: Forzar Teleport Directo al interior del Safehouse de North Point
+            if ((GetAsyncKeyState(VK_F7) & 0x8000) != 0)
             {
-                g_lastTeleportTime = now;
-                Log("[F7 HOTKEY] Forzando entrada al piso franco de North Point...");
-                TeleportPlayer(pLocalPlayer, pTrans, g_Doors[0].int_x, g_Doors[0].int_y, g_Doors[0].int_z, g_Doors[0].name, true);
+                if (now - g_lastTeleportTime > 1500)
+                {
+                    g_lastTeleportTime = now;
+                    Log("[F7 HOTKEY] Forzando entrada al piso franco de North Point...");
+                    TeleportPlayer(pSimObj, pTrans, g_Doors[0].int_x, g_Doors[0].int_y, g_Doors[0].int_z, g_Doors[0].name, true);
+                }
             }
-        }
 
-        // Hotkey [F8]: Forzar Teleport Directo al exterior del Safehouse de North Point
-        if ((GetAsyncKeyState(VK_F8) & 0x8000) != 0)
-        {
-            if (now - g_lastTeleportTime > 1500)
+            // Hotkey [F8]: Forzar Teleport Directo al exterior del Safehouse de North Point
+            if ((GetAsyncKeyState(VK_F8) & 0x8000) != 0)
             {
-                g_lastTeleportTime = now;
-                Log("[F8 HOTKEY] Forzando salida al rellano de North Point...");
-                TeleportPlayer(pLocalPlayer, pTrans, g_Doors[0].ext_x, g_Doors[0].ext_y, g_Doors[0].ext_z, g_Doors[0].name, false);
+                if (now - g_lastTeleportTime > 1500)
+                {
+                    g_lastTeleportTime = now;
+                    Log("[F8 HOTKEY] Forzando salida al rellano de North Point...");
+                    TeleportPlayer(pSimObj, pTrans, g_Doors[0].ext_x, g_Doors[0].ext_y, g_Doors[0].ext_z, g_Doors[0].name, false);
+                }
             }
-        }
 
-        // Check proximity and standard interaction keys [E] / [Y]
-        CheckSafehouseProximity(pLocalPlayer, pTrans, true);
+            // Check proximity and standard interaction keys [E] / [Y]
+            CheckSafehouseProximity(pSimObj, pTrans, true);
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER)
+        {
+        }
     }
 
     return 0;
