@@ -33,6 +33,7 @@ build/
 *.exp
 *.lib
 *.pdb
+tools/SafehouseHook/*.dll
 
 # Local sensitive or ephemeral state
 server/LocalServer/LocalServer/logs/
