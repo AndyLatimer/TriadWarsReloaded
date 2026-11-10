@@ -1,1287 +1,1287 @@
 {
- "version": 6,
- "created": 1794255267,
- "player": {
-  "PlayerDataBag": {
-   "PlayerDataID": "1001",
-   "Name": "Huang",
-   "Face": "0",
-   "LaunderedMoney": 0,
-   "LaundrySecondsRemaining": 0,
-   "EnforcerXP": 1860,
-   "Triad": "11294725079368944546",
-   "AccountID": "1",
-   "LastUsedVehicle": "1726117570",
-   "GameplayState": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;CopDrivingStage=5;CopShootingStage=5;TriadDefensiveStage=5;TriadOffensiveStage=5;GunplayUpgradeStage=5;VehicleRamUpgrade=1;CopXP=100000;TriadXP=100000;CopUpgradePoint=10;TriadUpgradePoint=10;MaxHealthUpgradePoint=50;EnableJadeStatueIndicators=1;EnableJadeStatueIndicatorsIcon=1;EnableJadeStatueIndicatorsText=1;EnableHealthShrineIndicators=1;EnableHealthShrineIndicatorsIcon=1;EnableHealthShrineIndicatorsText=1;EnableLockboxIndicators=1;EnableLockboxIndicatorsIcon=1;EnableLockboxIndicatorsText=1;EnableSpyCams=1;EnableSpyCamsIcon=1;EnableSpyCamsText=1;EnableSpyCamIndicators=1;EnableSpyCamIndicatorsIcon=1;EnableSpyCamIndicatorsText=1;EnableJumpIndicators=1;EnableValet=1;EnablePDA=1;EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1;HealthRegen_Activated=1;DLCRedeemed=1;TriadWarsTutorialComplete=1;PlayerCheckpointLocationX=840.50;PlayerCheckpointLocationY=-320.20;PlayerCheckpointLocationZ=5.30;PlayerLastStableLocationX=840.50;PlayerLastStableLocationY=-320.20;PlayerLastStableLocationZ=5.30;ActiveSafehouseSpawn=SafehouseNP",
-   "AvatarUrl": "",
-   "PreferMatchmakingWithFriends": false,
-   "IsFavourListInitialized": true
-  },
-  "CurrencyBag": {
-   "CleanMoney": "24600",
-   "DirtyMoney": "3750"
-  },
-  "TurfBag": {
-   "Turf": {
-    "LocationName": "Turf-Turf00004",
-    "Safehouse": {
-     "RacketTypeUID": "7427838002936215495",
-     "RacketLevel": 1,
-     "Staff": 0,
-     "BlockIndex": -1,
-     "RacketState": 0,
-     "SlotIndex": 0,
-     "CurrentProduction": 0,
-     "Stats": {
-      "MaxStaff": 0,
-      "OutputMultiplier": 1.0,
-      "ProductionTimeDivision": 1.0,
-      "UpgradeDiscountMultiplier": 1.0,
-      "ProductionInputDiscountDivision": 1.0,
-      "NoStaffSpawn": 0
-     },
-     "Production1": 0,
-     "Production2": 0,
-     "Production3": 0,
-     "Production4": 0,
-     "Production5": 0,
-     "Production6": 0,
-     "Production7": 0,
-     "Production8": 0,
-     "Production9": 0,
-     "Production10": 0
+  "version": 6,
+  "created": 1794255267,
+  "player": {
+    "PlayerDataBag": {
+      "PlayerDataID": "1001",
+      "Name": "Huang",
+      "Face": "0",
+      "LaunderedMoney": 0,
+      "LaundrySecondsRemaining": 0,
+      "EnforcerXP": 1860,
+      "Triad": "11294725079368944546",
+      "AccountID": "1",
+      "LastUsedVehicle": "1726117570",
+      "GameplayState": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;CopDrivingStage=5;CopShootingStage=5;TriadDefensiveStage=5;TriadOffensiveStage=5;GunplayUpgradeStage=5;VehicleRamUpgrade=1;CopXP=100000;TriadXP=100000;CopUpgradePoint=10;TriadUpgradePoint=10;MaxHealthUpgradePoint=50;EnableJadeStatueIndicators=1;EnableJadeStatueIndicatorsIcon=1;EnableJadeStatueIndicatorsText=1;EnableHealthShrineIndicators=1;EnableHealthShrineIndicatorsIcon=1;EnableHealthShrineIndicatorsText=1;EnableLockboxIndicators=1;EnableLockboxIndicatorsIcon=1;EnableLockboxIndicatorsText=1;EnableSpyCams=1;EnableSpyCamsIcon=1;EnableSpyCamsText=1;EnableSpyCamIndicators=1;EnableSpyCamIndicatorsIcon=1;EnableSpyCamIndicatorsText=1;EnableJumpIndicators=1;EnableValet=1;EnablePDA=1;EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1;HealthRegen_Activated=1;DLCRedeemed=1;TriadWarsTutorialComplete=1;PlayerCheckpointLocationX=840.50;PlayerCheckpointLocationY=-320.20;PlayerCheckpointLocationZ=5.30;PlayerLastStableLocationX=840.50;PlayerLastStableLocationY=-320.20;PlayerLastStableLocationZ=5.30;ActiveSafehouseSpawn=SafehouseNP",
+      "AvatarUrl": "",
+      "PreferMatchmakingWithFriends": false,
+      "IsFavourListInitialized": true
     },
-    "Warehouse": {
-     "RacketTypeUID": "6675658476745246410",
-     "RacketLevel": 1,
-     "Staff": 0,
-     "BlockIndex": -1,
-     "RacketState": 0,
-     "SlotIndex": 0,
-     "CurrentProduction": 0,
-     "Stats": {
-      "MaxStaff": 0,
-      "OutputMultiplier": 1.0,
-      "ProductionTimeDivision": 1.0,
-      "UpgradeDiscountMultiplier": 1.0,
-      "ProductionInputDiscountDivision": 1.0,
-      "NoStaffSpawn": 0
-     },
-     "Production1": 0,
-     "Production2": 0,
-     "Production3": 0,
-     "Production4": 0,
-     "Production5": 0,
-     "Production6": 0,
-     "Production7": 0,
-     "Production8": 0,
-     "Production9": 0,
-     "Production10": 0
+    "CurrencyBag": {
+      "CleanMoney": "24600",
+      "DirtyMoney": "3750"
     },
-    "Temple": {
-     "RacketTypeUID": "681339054293160616",
-     "RacketLevel": 1,
-     "Staff": 0,
-     "BlockIndex": -1,
-     "RacketState": 0,
-     "SlotIndex": 0,
-     "CurrentProduction": 0,
-     "Stats": {
-      "MaxStaff": 0,
-      "OutputMultiplier": 1.0,
-      "ProductionTimeDivision": 1.0,
-      "UpgradeDiscountMultiplier": 1.0,
-      "ProductionInputDiscountDivision": 1.0,
-      "NoStaffSpawn": 0
-     },
-     "Production1": 0,
-     "Production2": 0,
-     "Production3": 0,
-     "Production4": 0,
-     "Production5": 0,
-     "Production6": 0,
-     "Production7": 0,
-     "Production8": 0,
-     "Production9": 0,
-     "Production10": 0
+    "TurfBag": {
+      "Turf": {
+        "LocationName": "Turf-Turf00004",
+        "Safehouse": {
+          "RacketTypeUID": "7427838002936215495",
+          "RacketLevel": 1,
+          "Staff": 0,
+          "BlockIndex": -1,
+          "RacketState": 0,
+          "SlotIndex": 0,
+          "CurrentProduction": 0,
+          "Stats": {
+            "MaxStaff": 0,
+            "OutputMultiplier": 1.0,
+            "ProductionTimeDivision": 1.0,
+            "UpgradeDiscountMultiplier": 1.0,
+            "ProductionInputDiscountDivision": 1.0,
+            "NoStaffSpawn": 0
+          },
+          "Production1": 0,
+          "Production2": 0,
+          "Production3": 0,
+          "Production4": 0,
+          "Production5": 0,
+          "Production6": 0,
+          "Production7": 0,
+          "Production8": 0,
+          "Production9": 0,
+          "Production10": 0
+        },
+        "Warehouse": {
+          "RacketTypeUID": "6675658476745246410",
+          "RacketLevel": 1,
+          "Staff": 0,
+          "BlockIndex": -1,
+          "RacketState": 0,
+          "SlotIndex": 0,
+          "CurrentProduction": 0,
+          "Stats": {
+            "MaxStaff": 0,
+            "OutputMultiplier": 1.0,
+            "ProductionTimeDivision": 1.0,
+            "UpgradeDiscountMultiplier": 1.0,
+            "ProductionInputDiscountDivision": 1.0,
+            "NoStaffSpawn": 0
+          },
+          "Production1": 0,
+          "Production2": 0,
+          "Production3": 0,
+          "Production4": 0,
+          "Production5": 0,
+          "Production6": 0,
+          "Production7": 0,
+          "Production8": 0,
+          "Production9": 0,
+          "Production10": 0
+        },
+        "Temple": {
+          "RacketTypeUID": "681339054293160616",
+          "RacketLevel": 1,
+          "Staff": 0,
+          "BlockIndex": -1,
+          "RacketState": 0,
+          "SlotIndex": 0,
+          "CurrentProduction": 0,
+          "Stats": {
+            "MaxStaff": 0,
+            "OutputMultiplier": 1.0,
+            "ProductionTimeDivision": 1.0,
+            "UpgradeDiscountMultiplier": 1.0,
+            "ProductionInputDiscountDivision": 1.0,
+            "NoStaffSpawn": 0
+          },
+          "Production1": 0,
+          "Production2": 0,
+          "Production3": 0,
+          "Production4": 0,
+          "Production5": 0,
+          "Production6": 0,
+          "Production7": 0,
+          "Production8": 0,
+          "Production9": 0,
+          "Production10": 0
+        },
+        "TurfTemplateUID": "225501511964055524",
+        "RacketsBuilt": "1"
+      },
+      "Rackets": [
+        {
+          "RacketTypeUID": "4790026536684175184",
+          "RacketLevel": 1,
+          "Staff": 0,
+          "BlockIndex": 0,
+          "RacketState": 0,
+          "SlotIndex": 0,
+          "CurrentProduction": 0,
+          "Stats": {
+            "MaxStaff": 0,
+            "OutputMultiplier": 1.0,
+            "ProductionTimeDivision": 1.0,
+            "UpgradeDiscountMultiplier": 1.0,
+            "ProductionInputDiscountDivision": 1.0,
+            "NoStaffSpawn": 0
+          },
+          "Production1": 0,
+          "Production2": 0,
+          "Production3": 0,
+          "Production4": 0,
+          "Production5": 0,
+          "Production6": 0,
+          "Production7": 0,
+          "Production8": 0,
+          "Production9": 0,
+          "Production10": 0
+        }
+      ],
+      "Commodities": []
     },
-    "TurfTemplateUID": "225501511964055524",
-    "RacketsBuilt": "1"
-   },
-   "Rackets": [
-    {
-     "RacketTypeUID": "4790026536684175184",
-     "RacketLevel": 1,
-     "Staff": 0,
-     "BlockIndex": 0,
-     "RacketState": 0,
-     "SlotIndex": 0,
-     "CurrentProduction": 0,
-     "Stats": {
-      "MaxStaff": 0,
-      "OutputMultiplier": 1.0,
-      "ProductionTimeDivision": 1.0,
-      "UpgradeDiscountMultiplier": 1.0,
-      "ProductionInputDiscountDivision": 1.0,
-      "NoStaffSpawn": 0
-     },
-     "Production1": 0,
-     "Production2": 0,
-     "Production3": 0,
-     "Production4": 0,
-     "Production5": 0,
-     "Production6": 0,
-     "Production7": 0,
-     "Production8": 0,
-     "Production9": 0,
-     "Production10": 0
+    "FavoursBag": [
+      {
+        "FavourID": "5002",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "4674339735632853982",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5004",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "1413606770361098147",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5005",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "4057424853775557026",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5006",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "4826468819152681534",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5007",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "17255577589540720947",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5008",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "4014576093559448555",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5009",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "16975042127953556273",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5010",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "17754375093498055814",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5011",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "11505681455360175143",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5012",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "1411833156741362889",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5013",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "8000207808961048121",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5014",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "1476045238345828812",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5016",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "612392960794333211",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5017",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "6111640120662537118",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5018",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "4028409962269138823",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5019",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "930253324556974665",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5020",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "12549750845093533576",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5021",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "13850649658026666264",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5022",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "62188338259427095",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5023",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "894213182785809425",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5024",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "2052906575296370988",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5025",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "6045756219852158160",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5026",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "9131550187683566978",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5027",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "3057518515041127194",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5028",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "2826845593960459129",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5029",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "1160616623195409233",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5030",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "3843734315031792741",
+        "IsNew": 1
+      },
+      {
+        "FavourID": "5031",
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "FavourDefinitionUID": "13210396517289060483",
+        "IsNew": 1
+      }
+    ],
+    "EnforcerUpgradesBag": [
+      {
+        "Item1": "16767591587232365404",
+        "Item2": null
+      },
+      {
+        "Item1": "15526474533655601591",
+        "Item2": null
+      },
+      {
+        "Item1": "9647731628443237497",
+        "Item2": null
+      },
+      {
+        "Item1": "9768791412798439796",
+        "Item2": 0
+      }
+    ],
+    "InventoryBag": [
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "5666866140888112945",
+        "InventoryItemID": "7001",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "4038481858749259483",
+        "InventoryItemID": "7002",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "3804274233109258838",
+        "InventoryItemID": "7003",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "8028382423003688604",
+        "InventoryItemID": "7004",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "17207939462755657857",
+        "InventoryItemID": "7005",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "12492033749910771835",
+        "InventoryItemID": "7006",
+        "AccountID": "1"
+      },
+      {
+        "SecondsElapsed": 0,
+        "TotalSeconds": 0,
+        "StoreItemID": "12982242303449263853",
+        "InventoryItemID": "7007",
+        "AccountID": "1"
+      }
+    ],
+    "CustomizationBag": {
+      "ScalingPresetCortexUID": "0",
+      "ClothingOutfitCortexUID": "0",
+      "ClothingStoreItemUIDs": [
+        "-2805837140455801713",
+        "-1238804610953893759",
+        "-5954710323798779781",
+        "3804274233109258838",
+        "9180058721195260501",
+        "-5714111863852276637",
+        "8069071333314875150",
+        "8028382423003688604",
+        "-5464501770260287763"
+      ],
+      "MeleeWeapon": "4038481858749259483",
+      "OneHandedWeapon": "0",
+      "TwoHandedWeapon": "0"
     }
-   ],
-   "Commodities": []
   },
-  "FavoursBag": [
-   {
-    "FavourID": "5002",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "4674339735632853982",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5004",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "1413606770361098147",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5005",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "4057424853775557026",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5006",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "4826468819152681534",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5007",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "17255577589540720947",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5008",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "4014576093559448555",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5009",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "16975042127953556273",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5010",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "17754375093498055814",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5011",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "11505681455360175143",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5012",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "1411833156741362889",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5013",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "8000207808961048121",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5014",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "1476045238345828812",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5016",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "612392960794333211",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5017",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "6111640120662537118",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5018",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "4028409962269138823",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5019",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "930253324556974665",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5020",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "12549750845093533576",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5021",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "13850649658026666264",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5022",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "62188338259427095",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5023",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "894213182785809425",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5024",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "2052906575296370988",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5025",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "6045756219852158160",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5026",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "9131550187683566978",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5027",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "3057518515041127194",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5028",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "2826845593960459129",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5029",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "1160616623195409233",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5030",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "3843734315031792741",
-    "IsNew": 1
-   },
-   {
-    "FavourID": "5031",
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "FavourDefinitionUID": "13210396517289060483",
-    "IsNew": 1
-   }
+  "opponents": [
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2001",
+          "Name": "Big Smile Lee",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "2615402444794721281",
+          "AccountID": "2001",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00001",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "225501511964055524",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2002",
+          "Name": "Uncle Po",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "11294725079368944546",
+          "AccountID": "2002",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00002",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "2445664016155883607",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2003",
+          "Name": "Sonny Wo",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "14851303682440922652",
+          "AccountID": "2003",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00003",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "8243834201586633798",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2004",
+          "Name": "Broken Nose Jiang",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "2615402444794721281",
+          "AccountID": "2004",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00004",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "12099742056862485966",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2005",
+          "Name": "Two Chin Tsao",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "11294725079368944546",
+          "AccountID": "2005",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00005",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "225501511964055524",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2006",
+          "Name": "Pockmark Cheuk",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "14851303682440922652",
+          "AccountID": "2006",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00006",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "2445664016155883607",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    },
+    {
+      "type": 0,
+      "remaining_seconds": 86400,
+      "data": {
+        "PlayerDataBag": {
+          "PlayerDataID": "2007",
+          "Name": "Dogeyes Lin",
+          "Face": "0",
+          "LaunderedMoney": 0,
+          "LaundrySecondsRemaining": 0,
+          "EnforcerXP": 0,
+          "Triad": "2615402444794721281",
+          "AccountID": "2007",
+          "LastUsedVehicle": "0",
+          "GameplayState": "",
+          "AvatarUrl": "",
+          "PreferMatchmakingWithFriends": false,
+          "IsFavourListInitialized": true
+        },
+        "CurrencyBag": {
+          "CleanMoney": "25000",
+          "DirtyMoney": "5000"
+        },
+        "TurfBag": {
+          "Turf": {
+            "LocationName": "Turf-Turf00007",
+            "Safehouse": {
+              "RacketTypeUID": "7427838002936215495",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Warehouse": {
+              "RacketTypeUID": "6675658476745246410",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "Temple": {
+              "RacketTypeUID": "681339054293160616",
+              "RacketLevel": 1,
+              "Staff": 0,
+              "BlockIndex": -1,
+              "RacketState": 0,
+              "SlotIndex": 0,
+              "CurrentProduction": 0,
+              "Stats": {
+                "MaxStaff": 0,
+                "OutputMultiplier": 1.0,
+                "ProductionTimeDivision": 1.0,
+                "UpgradeDiscountMultiplier": 1.0,
+                "ProductionInputDiscountDivision": 1.0,
+                "NoStaffSpawn": 0
+              },
+              "Production1": 0,
+              "Production2": 0,
+              "Production3": 0,
+              "Production4": 0,
+              "Production5": 0,
+              "Production6": 0,
+              "Production7": 0,
+              "Production8": 0,
+              "Production9": 0,
+              "Production10": 0
+            },
+            "TurfTemplateUID": "8243834201586633798",
+            "RacketsBuilt": "0"
+          },
+          "Rackets": [],
+          "Commodities": []
+        },
+        "FavoursBag": [],
+        "EnforcerUpgradesBag": [],
+        "InventoryBag": []
+      }
+    }
   ],
-  "EnforcerUpgradesBag": [
-   {
-    "Item1": "16767591587232365404",
-    "Item2": null
-   },
-   {
-    "Item1": "15526474533655601591",
-    "Item2": null
-   },
-   {
-    "Item1": "9647731628443237497",
-    "Item2": null
-   },
-   {
-    "Item1": "9768791412798439796",
-    "Item2": 0
-   }
+  "gamestate": "84,67,48,49,38,0,7,0,160,58,70,42,181,112,221,1,73,110,116,114,111,32,45,32,67,104,111,111,115,101,32,84,117,114,102,0,0,0,0,0,0,0,0,0,0,0,0,0,184,20,0,0,179,172,33,112,115,98,192,248,109,45,102,42,99,127,49,96,50,46,66,156,169,119,251,91,160,69,18,195,33,253,71,103,209,216,77,156,195,128,179,235,98,59,116,56,229,212,211,2,207,27,47,137,198,213,152,248,127,214,163,84,162,198,65,97,205,198,59,138,209,243,55,111,230,191,248,188,97,209,34,81,24,121,141,231,92,30,151,247,127,43,248,169,51,236,53,85,193,186,47,126,161,149,230,30,149,110,167,107,204,210,94,141,90,166,186,20,69,99,181,21,156,243,192,113,251,212,34,66,174,167,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,239,199,118,169,115,184,249,25,69,110,6,85,248,88,46,102,221,182,239,179,148,14,153,200,149,225,245,79,0,178,224,64,199,30,235,156,166,235,44,76,21,232,239,35,129,225,183,239,250,251,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,69,62,179,2,165,5,219,19,255,123,211,57,235,101,240,31,148,30,53,143,64,242,32,128,7,94,43,220,230,43,108,140,248,241,102,181,88,184,142,198,61,22,79,19,244,110,249,40,231,163,99,254,150,72,118,214,9,166,67,244,254,67,132,164,16,9,126,205,112,208,166,222,85,46,103,43,12,134,17,64,13,89,109,199,120,42,88,184,72,124,190,242,156,225,34,66,158,52,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,221,52,1,178,188,1,66,98,203,13,243,152,72,168,126,182,33,209,27,223,192,58,197,244,193,13,33,123,44,222,12,108,243,74,23,200,210,23,88,120,228,221,82,161,68,164,122,178,190,88,30,69,9,131,14,61,226,135,7,97,18,196,242,82,217,48,253,174,184,253,62,94,202,195,56,135,42,138,96,152,15,232,33,229,198,64,203,250,254,109,136,51,5,183,229,69,8,132,40,217,227,40,105,137,245,238,99,178,85,181,139,195,58,19,76,16,241,107,246,37,242,62,82,172,93,15,61,157,12,232,133,82,252,65,130,162,174,8,54,133,40,136,94,150,13,230,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,94,174,216,21,121,217,175,231,34,41,136,76,45,167,50,97,46,122,142,232,153,75,121,217,96,183,132,53,63,132,197,229,81,74,191,14,177,17,231,31,253,246,56,12,7,129,12,59,80,254,122,212,133,55,101,197,76,163,112,33,43,112,177,209,61,54,171,250,157,253,211,11,130,91,148,88,57,179,62,109,223,14,162,149,176,98,144,240,67,92,126,47,57,126,191,223,75,68,185,8,171,11,225,25,144,105,162,102,71,193,76,123,72,148,168,2,179,101,147,243,20,235,28,140,125,194,3,35,159,161,119,198,105,201,159,215,78,39,96,36,5,127,10,57,6,82,102,192,113,35,81,177,56,143,92,13,23,92,157,189,124,125,146,1,234,74,32,88,35,253,33,229,198,64,203,250,199,19,39,129,50,228,18,114,249,80,29,206,216,29,94,126,234,227,88,167,74,170,128,184,173,79,154,151,180,46,185,232,125,48,71,161,82,4,50,146,25,112,61,238,248,61,126,158,10,3,120,199,106,202,160,216,79,40,97,37,6,128,11,58,234,38,233,150,228,150,196,36,15,225,230,151,161,230,39,71,179,172,33,112,19,115,73,129,248,209,10,206,175,41,180,227,176,252,16,106,27,205,251,91,109,115,140,30,239,52,117,149,129,244,155,234,141,237,195,251,114,75,132,72,41,163,46,93,42,118,138,228,149,71,117,213,92,179,128,49,59,128,193,225,224,100,29,158,60,156,114,170,125,121,197,137,106,228,111,158,107,183,203,37,214,136,182,22,157,244,193,114,124,193,2,34,142,135,252,75,238,78,36,92,242,140,89,130,145,11,150,197,170,175,168,2,179,101,147,243,122,209,158,79,89,158,223,255,107,100,217,40,203,43,1,57,176,137,194,134,103,225,108,155,128,52,151,127,210,132,178,18,141,229,65,242,252,65,130,162,14,7,124,203,110,206,164,220,83,44,101,41,10,132,15,62,11,87,107,197,118,40,86,182,224,101,27,200,152,221,30,62,90,172,147,226,133,229,187,243,106,67,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,215,176,17,182,72,168,126,182,225,138,139,79,48,170,53,100,49,125,145,235,156,78,124,220,99,186,135,56,66,135,200,232,84,77,194,17,180,20,234,34,215,180,95,111,137,3,142,189,34,5,169,3,180,102,148,244,123,210,159,80,90,159,224,0,108,101,218,41,204,44,2,58,177,138,195,135,104,226,109,156,7,185,28,191,149,71,117,213,216,10,164,85,95,164,229,5,113,106,223,46,209,49,7,63,182,143,200,140,109,231,114,161,110,186,206,40,217,139,185,25,123,9,190,2,175,244,53,85,161,183,255,78,241,81,39,95,214,175,232,172,141,7,146,193,142,218,238,72,249,171,217,57,192,23,228,149,159,228,37,69,135,234,252,165,104,200,158,214,113,15,240,180,149,15,154,201,150,226,246,80,1,179,225,65,200,31,236,157,167,236,45,77,185,178,39,118,25,121,79,135,33,161,173,11,198,64,203,250,223,217,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,230,191,248,188,157,23,162,209,184,175,231,176,19,197,243,83,46,166,254,175,185,254,63,95,203,196,57,136,43,139,97,153,16,233,34,230,199,65,204,251,200,20,40,130,51,229,19,115,135,10,246,108,118,187,252,28,88,47,210,33,196,36,250,50,169,130,187,127,96,218,101,148,97,173,193,27,204,126,172,12,147,234,183,104,114,183,248,24,72,189,92,251,153,249,207,7,210,19,54,250,219,85,224,15,220,40,60,150,71,249,39,135,14,101,50,227,237,50,115,147,255,248,109,188,95,191,149,205,57,45,51,193,239,105,244,35,120,230,2,92,13,191,237,77,212,43,248,169,179,248,57,89,197,190,51,130,37,133,91,147,10,227,28,224,193,59,198,245,119,160,224,10,80,2,48,144,115,39,221,142,152,221,30,62,170,163,24,103,10,106,64,120,239,200,1,197,166,32,171,218,167,243,7,97,18,196,242,82,54,54,248,191,139,208,17,49,221,154,254,77,240,80,38,94,213,174,231,171,140,6,145,192,141,217,237,71,248,170,216,56,191,22,227,148,158,227,36,68,199,179,181,99,29,125,83,139,30,2,69,9,234,100,239,30,235,55,75,165,86,8,54,150,29,116,65,242,252,65,130,162,14,7,124,203,110,206,164,220,243,104,113,254,12,134,17,64,245,61,137,227,148,70,116,212,91,178,127,48,58,127,192,224,76,69,186,9,172,12,226,26,145,106,163,103,72,194,77,124,34,8,118,233,73,251,41,137,196,148,132,53,63,132,197,229,81,74,191,14,177,17,231,31,150,111,168,108,77,199,82,129,78,154,174,8,185,107,153,249,178,174,152,79,30,99,164,196,128,98,152,231,138,234,192,248,111,72,129,69,38,160,43,90,39,115,135,225,146,68,114,210,89,176,125,46,56,125,190,222,96,89,204,138,165,5,219,19,6,99,118,58,27,149,32,79,28,104,124,214,135,57,103,199,78,165,114,35,45,114,179,211,63,56,173,252,159,255,213,13,250,122,136,53,234,100,239,30,131,90,13,103,24,202,248,88,223,54,3,180,190,3,68,100,208,201,62,141,48,144,102,158,21,238,39,235,204,70,209,0,89,198,127,158,56,234,24,120,187,40,235,156,166,235,44,76,184,177,38,117,24,120,78,134,253,214,15,211,180,46,185,232,181,1,21,111,32,210,0,96,107,236,56,221,190,3,68,100,240,194,54,133,40,136,94,150,13,230,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,48,28,105,211,72,168,126,182,209,89,154,94,63,185,68,115,64,140,160,250,171,93,139,235,114,201,150,71,81,150,215,247,99,92,209,32,195,35,249,49,234,209,253,155,77,199,82,129,150,166,103,193,114,36,82,178,57,144,93,14,24,93,158,190,42,35,152,231,138,234,192,248,111,72,129,69,38,160,43,90,179,90,172,105,193,115,161,1,60,114,244,165,175,244,53,85,193,186,47,126,33,129,87,143,6,223,24,220,189,55,194,241,190,10,30,120,41,219,9,105,167,12,180,223,102,171,236,12,232,84,31,110,17,113,71,127,246,207,8,204,173,39,178,225,174,250,14,104,25,203,249,89,224,55,4,181,191,4,69,101,150,122,154,169,76,172,130,186,93,188,60,0,225,91,230,21,226,46,66,156,77,255,45,141,20,107,56,233,243,56,121,153,5,254,115,194,101,197,155,211,16,134,186,251,161,27,166,213,234,18,129,219,140,62,108,204,83,170,119,40,50,119,184,216,68,61,178,1,164,4,218,18,137,98,155,95,64,186,69,116,3,25,14,96,97,19,65,161,12,8,97,18,28,97,162,194,46,39,156,235,142,238,196,252,115,76,133,73,42,164,47,94,43,119,139,229,150,72,118,214,72,231,45,61,151,220,29,61,169,168,126,205,112,208,166,222,85,46,103,43,12,134,17,64,13,89,109,199,120,42,88,184,63,150,99,20,30,99,164,196,19,154,48,188,136,232,190,246,177,154,199,139,108,230,113,160,109,185,205,39,216,138,184,24,159,246,195,116,126,195,4,36,144,137,254,77,240,80,38,94,229,156,187,62,138,4,143,190,51,175,43,133,54,232,22,118,253,84,33,210,220,33,98,130,238,231,92,171,78,174,132,188,51,12,69,9,234,100,239,30,210,71,77,235,210,132,178,18,13,226,56,233,243,56,121,153,5,254,115,194,101,197,155,211,74,35,92,32,1,123,6,53,2,78,98,188,109,31,77,173,255,242,247,149,28,97,162,194,94,173,183,6,169,9,223,23,142,103,160,100,69,191,74,121,70,146,166,0,177,99,145,241,120,207,156,77,87,156,221,253,52,58,241,33,201,41,255,55,226,185,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,232,225,86,165,72,168,126,182,208,117,102,62,44,166,49,96,5,167,193,27,204,126,172,12,147,234,183,104,114,183,248,24,132,125,242,65,228,68,26,82,201,162,219,159,128,250,133,180,166,137,160,123,233,155,201,41,180,223,164,85,95,164,229,5,113,106,223,46,209,49,7,63,182,143,200,140,109,231,114,161,110,186,206,40,217,139,185,25,11,116,247,126,126,195,4,36,112,129,51,130,37,133,91,147,10,227,28,224,193,59,198,245,194,14,34,124,45,223,13,109,244,75,24,201,211,24,89,121,254,0,156,68,78,174,132,188,143,199,59,255,224,90,229,20,225,45,65,155,76,254,44,140,19,106,55,232,242,55,120,152,4,253,114,193,100,196,154,210,23,4,218,237,79,201,84,131,200,31,176,10,187,109,155,251,130,217,166,87,97,166,231,7,115,108,225,48,211,51,9,65,184,145,202,142,111,233,116,163,119,225,35,243,18,196,242,82,173,35,34,211,221,34,99,131,239,232,93,172,79,175,133,189,52,13,70,10,235,101,240,31,236,56,76,166,87,9,55,151,199,40,99,75,119,188,253,29,217,176,135,214,121,217,175,231,94,55,112,52,21,143,26,73,22,98,118,208,129,51,97,193,72,159,108,29,39,108,173,205,68,0,148,35,229,69,27,83,230,249,216,156,125,247,130,177,126,202,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,129,78,10,180,201,67,206,253,194,64,182,16,193,115,161,1,136,223,172,93,103,172,237,13,121,114,231,54,217,57,15,71,190,151,208,148,117,239,122,169,47,58,50,106,80,2,48,144,243,44,227,148,158,227,36,68,176,169,30,109,16,112,70,126,245,206,7,203,172,38,177,224,173,249,13,103,24,202,248,88,134,98,213,6,115,184,249,25,69,121,151,230,137,233,191,247,110,71,128,68,37,159,42,89,38,114,134,224,145,67,113,209,88,175,124,45,55,124,189,221,219,75,198,65,10,106,64,120,115,234,164,104,73,195,78,125,74,150,170,4,181,103,149,245,124,211,160,81,91,160,225,1,109,102,219,42,205,45,3,59,127,102,233,128,204,70,209,0,181,137,53,143,64,242,32,128,7,94,43,220,230,43,108,140,248,241,102,181,88,184,142,198,61,22,79,19,244,110,249,40,142,220,198,186,241,163,209,49,236,137,150,71,81,150,215,247,99,92,209,32,195,35,249,49,168,129,186,126,95,217,100,147,96,172,192,26,203,125,171,11,133,95,10,72,130,199,8,40,164,130,143,222,129,225,183,239,102,63,120,60,29,151,34,81,30,106,126,216,137,59,105,201,80,167,116,37,47,116,181,213,135,65,158,209,127,223,181,237,104,29,232,172,141,7,146,193,142,218,238,72,249,171,217,57,192,23,228,149,159,228,37,69,177,170,31,110,17,113,71,127,192,141,57,53,24,146,29,76,241,172,205,39,216,138,184,24,159,246,195,116,126,195,4,36,144,137,254,77,240,80,38,94,213,174,231,171,140,6,145,192,208,205,8,79,77,255,45,141,208,23,63,240,250,63,128,160,12,5,122,201,108,204,162,218,81,42,99,39,8,130,13,60,9,85,105,195,116,38,84,180,28,19,134,214,221,34,99,131,79,238,188,11,174,14,228,28,147,108,165,105,74,196,79,126,75,151,171,5,182,104,150,246,125,212,161,82,92,161,226,2,14,41,164,207,196,36,250,50,213,138,171,111,80,202,85,132,81,157,177,11,188,110,156,252,131,218,167,88,98,167,232,8,116,109,226,49,212,52,10,66,27,78,142,208,70,192,75,122,31,82,201,35,212,134,180,20,155,242,191,112,122,191,0,32,140,133,250,73,236,76,34,90,209,170,227,167,136,2,141,188,153,128,24,121,147,69,115,211,110,44,200,121,131,200,9,41,149,142,3,82,245,85,43,99,218,179,236,176,145,11,150,197,146,222,242,76,253,175,221,61,66,2,119,179,45,114,179,211,47,4,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,221,52,1,178,188,1,66,98,26,6,30,58,235,75,33,89,60,234,132,72,41,163,46,93,42,118,138,228,149,71,117,213,92,179,128,49,59,128,193,225,77,70,187,10,173,13,227,27,213,179,199,231,111,233,116,163,184,111,96,186,107,29,75,171,50,137,86,7,17,86,151,183,35,28,145,224,131,227,185,241,104,65,122,62,31,153,36,83,216,63,190,85,125,47,93,189,224,75,99,20,30,99,164,196,48,41,158,237,144,240,198,254,117,78,135,75,44,166,49,96,45,121,141,231,152,74,120,216,238,37,145,249,81,150,215,247,227,89,23,102,9,105,63,119,238,199,0,196,165,31,170,217,166,242,6,96,17,195,241,81,216,47,252,173,183,252,61,93,200,131,223,219,138,234,192,248,51,104,197,137,106,228,111,158,107,183,203,37,214,136,182,22,157,244,193,114,124,193,2,34,142,135,252,75,238,78,36,92,163,111,252,57,159,25,164,211,152,235,214,48,225,147,193,33,168,255,204,125,135,204,13,45,153,146,7,86,249,89,47,103,222,183,240,180,149,15,154,201,177,117,185,135,245,167,213,53,168,49,55,232,242,55,120,152,4,253,114,193,100,196,154,210,73,34,91,31,0,122,5,52,1,77,97,187,108,30,76,172,107,249,86,19,97,166,231,7,131,178,147,226,133,229,187,243,106,67,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,124,61,104,162,161,1,215,15,74,103,101,41,10,132,15,62,11,87,107,197,118,40,86,182,61,148,97,18,28,97,162,194,46,39,156,235,142,238,196,252,17,12,108,147,228,94,233,24,77,145,108,198,119,41,87,183,62,149,98,19,29,98,163,195,47,40,157,236,143,239,197,253,116,77,134,74,43,165,48,95,137,118,8,115,133,55,101,197,200,15,161,82,92,161,226,2,110,103,220,43,206,46,4,60,179,140,197,137,106,228,111,158,107,183,203,37,214,136,182,22,75,122,30,130,47,116,181,213,33,62,91,170,77,173,131,187,50,11,68,8,233,99,238,29,234,54,74,164,85,7,53,149,28,115,64,241,251,64,129,161,17,128,34,161,21,117,75,131,198,246,12,208,177,43,182,229,178,254,18,108,29,207,253,93,228,59,8,185,195,8,73,105,213,206,67,146,53,149,107,163,124,70,37,24,135,1,140,187,144,117,66,156,77,255,45,141,20,107,56,233,243,56,121,153,5,254,115,194,101,197,155,211,74,35,92,32,1,123,6,53,191,151,121,183,19,197,243,83,46,169,198,119,129,198,7,39,147,140,1,80,243,83,41,97,216,177,234,174,143,9,148,195,144,220,240,74,251,173,219,59,181,3,184,187,211,24,89,121,53,242,32,111,18,114,72,128,247,208,9,205,174,40,179,226,175,251,15,105,26,204,250,90,225,56,5,182,192,5,70,102,28,130,147,17,204,44,2,58,29,53,41,237,206,72,211,2,207,27,47,137,58,236,26,122,1,88,37,214,224,37,102,134,242,235,96,175,82,178,136,192,36,166,92,161,75,197,80,127,196,130,79,169,90,12,58,154,33,120,69,246,0,69,134,166,18,11,128,207,114,210,168,224,87,48,105,45,14,136,19,66,78,147,156,167,100,22,68,164,79,108,228,149,159,228,37,69,177,170,31,110,17,113,71,127,246,207,8,204,173,39,178,225,174,250,14,104,25,203,249,89,232,255,31,221,242,55,120,152,68,254,193,16,179,19,233,33,152,113,170,110,79,201,84,131,80,156,176,10,187,109,155,251,130,217,166,87,97,166,231,7,71,106,1,124,78,174,132,188,47,64,1,197,166,32,171,218,167,243,7,97,18,196,242,82,217,48,253,174,184,253,62,94,202,195,56,135,42,138,96,152,96,211,183,159,61,183,66,113,198,222,252,86,7,185,231,71,206,37,242,163,173,242,51,83,191,184,45,124,31,127,85,141,4,221,22,218,187,53,192,239,78,150,169,243,82,4,50,146,205,105,150,71,81,150,215,247,99,92,209,32,195,35,249,49,168,129,186,126,95,217,100,147,96,172,192,26,203,125,171,11,250,66,189,201,43,112,177,209,137,68,182,5,168,8,222,22,141,102,159,99,68,190,73,120,69,145,165,255,176,98,144,240,119,206,155,76,86,155,220,252,152,93,45,59,73,169,127,183,186,132,24,220,189,55,194,241,190,10,30,120,41,219,9,105,240,71,20,197,207,20,85,117,225,218,79,158,65,161,119,175,204,150,102,184,139,5,144,191,248,179,200,34,211,133,179,19,154,241,190,111,121,190,255,31,139,132,249,72,235,75,33,89,208,169,226,166,135,1,140,187,196,100,72,185,84,6,52,148,103,9,54,231,241,54,119,151,3,252,113,192,99,195,153,209,72,33,90,30,255,121,4,51,0,76,96,186,107,29,75,171,163,109,248,214,128,197,6,38,246,154,91,170,77,173,131,187,50,11,68,8,233,99,238,29,234,54,74,164,85,7,53,149,28,115,64,241,251,64,129,161,154,5,66,14,233,73,31,87,110,165,188,128,97,219,102,149,98,174,194,28,205,127,173,13,148,235,184,105,115,184,249,25,133,126,243,66,229,69,27,83,82,30,183,121,206,72,211,2,71,115,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,230,191,248,188,157,23,162,209,155,54,61,80,53,231,21,117,144,204,244,165,175,244,53,85,0,85,108,96,47,159,56,145,7,105,162,102,71,193,76,123,72,148,168,2,179,101,147,243,122,209,158,79,89,158,223,255,107,100,217,40,203,43,1,57,176,137,194,134,103,225,108,155,104,180,200,34,211,133,179,19,155,31,236,157,166,184,249,25,132,201,62,141,48,144,102,158,20,1,58,254,223,89,228,19,225,133,153,243,164,86,132,228,107,194,143,64,74,143,208,240,92,85,202,25,188,28,242,42,161,122,179,119,88,210,93,140,89,165,185,19,196,118,164,4,139,226,175,96,106,175,240,16,124,117,234,57,84,143,131,187,51,67,124,64,32,94,233,24,228,17,37,127,48,226,16,112,247,78,27,204,215,148,213,245,97,90,207,30,193,33,247,47,167,9,66,6,231,97,236,27,232,52,72,162,82,51,97,193,73,107,56,233,243,56,121,153,0,22,139,218,125,221,179,235,98,59,116,56,25,147,30,77,26,102,122,212,133,55,101,197,76,163,112,33,43,112,177,209,61,54,171,250,157,253,211,11,130,91,148,88,57,179,62,109,58,134,154,244,165,87,133,229,108,195,144,65,75,144,209,241,93,86,203,26,189,29,243,43,162,123,180,120,89,211,94,141,90,166,186,20,197,119,165,5,140,227,176,97,107,176,241,17,125,118,235,58,221,61,19,75,194,155,212,152,121,243,126,173,122,198,218,52,229,151,197,37,172,3,208,129,139,208,17,49,157,150,11,90,253,93,51,107,226,187,244,184,153,19,158,205,154,230,250,84,5,183,229,69,204,35,240,161,171,240,49,81,189,182,43,122,29,125,83,139,2,219,20,216,185,51,190,237,186,6,26,116,37,215,5,101,236,67,16,193,203,16,81,113,221,214,75,154,63,41,255,55,175,13,70,10,218,124,69,228,121,241,225,254,118,40,86,182,61,148,97,18,28,97,162,194,46,39,156,235,143,46,4,60,185,83,140,80,96,62,233,28,61,16,53,9,135,174,20,4,5,35,36,11,246,50,94,200,46,148,88,75,101,1,201,130,218,42,40,135,143,238,84,64,117,113,128,57,179,195,241,81,218,11,216,137,14,32,194,223,177,211,236,60,44,248,206,6,106,231,32,228,62,110,103,179,48,240,29,49,241,8,160,38,231,92,72,0,78,94,81,231,230,111,120,205,74,86,201,80,226,48,245,217,133,4,182,86,58,172,192,137,12,126,192,164,102,211,240,183,238,1,165,120,252,149,45,82,193,182,58,15,225,53,175,116,32,167,169,79,221,244,106,107,173,238,148,202,94,87,82,133,133,215,237,122,38,45,70,161,169,109,103,56,204,31,88,28,255,47,186,233,23,35,12,103,149,36,224,16,223,139,88,9,18,36,101,133,80,119,68,90,22,195,153,209,179,168,66,60,28,33,172,219,24,106,201,170,141,140,186,26,96,139,39,139,107,95,160,192,82,82,249,30,221,236,194,250,116,249,162,15,49,9,148,195,101,191,233,183,50,19,65,161,201,36,109,170,48,207,16,48,171,189,133,231,110,37,251,51,169,55,254,163,8,187,70,117,157,166,184,234,81,123,169,9,97,85,249,19,28,184,249,25,200,172,206,69,176,193,151,207,18,190,7,143,80,163,46,93,166,41,36,3,150,159,205,45,176,238,199,51,183,50,115,147,237,28,39,219,40,15,229,29,105,199,103,252,112,195,78,125,60,135,217,80,216,59,105,201,46,71,5,186,87,123,188,220,11,211,214,220,160,10,224,24,229,141,114,196,188,193,76,123,96,223,54,183,29,45,91,187,167,131,183,234,157,33,98,130,212,66,218,215",
+  "gameplaystate": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;CopDrivingStage=5;CopShootingStage=5;TriadDefensiveStage=5;TriadOffensiveStage=5;GunplayUpgradeStage=5;VehicleRamUpgrade=1;CopXP=100000;TriadXP=100000;CopUpgradePoint=10;TriadUpgradePoint=10;MaxHealthUpgradePoint=50;EnableJadeStatueIndicators=1;EnableJadeStatueIndicatorsIcon=1;EnableJadeStatueIndicatorsText=1;EnableHealthShrineIndicators=1;EnableHealthShrineIndicatorsIcon=1;EnableHealthShrineIndicatorsText=1;EnableLockboxIndicators=1;EnableLockboxIndicatorsIcon=1;EnableLockboxIndicatorsText=1;EnableSpyCams=1;EnableSpyCamsIcon=1;EnableSpyCamsText=1;EnableSpyCamIndicators=1;EnableSpyCamIndicatorsIcon=1;EnableSpyCamIndicatorsText=1;EnableJumpIndicators=1;EnableValet=1;EnablePDA=1;EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1;HealthRegen_Activated=1;DLCRedeemed=1;TriadWarsTutorialComplete=1;PlayerCheckpointLocationX=840.50;PlayerCheckpointLocationY=-320.20;PlayerCheckpointLocationZ=5.30;PlayerLastStableLocationX=840.50;PlayerLastStableLocationY=-320.20;PlayerLastStableLocationZ=5.30;ActiveSafehouseSpawn=SafehouseNP",
+  "active_errands": [
+    {
+      "slot": 0,
+      "uid": "110624962204148299",
+      "state": 0,
+      "time_begun": 1794257741
+    },
+    {
+      "slot": 1,
+      "uid": "165701615963828379",
+      "state": 0,
+      "time_begun": 1794257741
+    },
+    {
+      "slot": 2,
+      "uid": "726902321891037803",
+      "state": 0,
+      "time_begun": 1794257741
+    },
+    {
+      "slot": 3,
+      "uid": "919935932594635868",
+      "state": 0,
+      "time_begun": 1794257741
+    }
   ],
-  "InventoryBag": [
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "5666866140888112945",
-    "InventoryItemID": "7001",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "4038481858749259483",
-    "InventoryItemID": "7002",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "3804274233109258838",
-    "InventoryItemID": "7003",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "8028382423003688604",
-    "InventoryItemID": "7004",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "17207939462755657857",
-    "InventoryItemID": "7005",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "12492033749910771835",
-    "InventoryItemID": "7006",
-    "AccountID": "1"
-   },
-   {
-    "SecondsElapsed": 0,
-    "TotalSeconds": 0,
-    "StoreItemID": "12982242303449263853",
-    "InventoryItemID": "7007",
-    "AccountID": "1"
-   }
-  ],
-  "CustomizationBag": {
-   "ScalingPresetCortexUID": "0",
-   "ClothingOutfitCortexUID": "0",
-   "ClothingStoreItemUIDs": [
-    "-2805837140455801713",
-    "-1238804610953893759",
-    "-5954710323798779781",
-    "3804274233109258838",
-    "9180058721195260501",
-    "-5714111863852276637",
-    "8069071333314875150",
-    "8028382423003688604",
-    "-5464501770260287763"
-   ],
-   "MeleeWeapon": "4038481858749259483",
-   "OneHandedWeapon": "0",
-   "TwoHandedWeapon": "0"
-  }
- },
- "opponents": [
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2001",
-     "Name": "Big Smile Lee",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "2615402444794721281",
-     "AccountID": "2001",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00001",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "225501511964055524",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2002",
-     "Name": "Uncle Po",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "11294725079368944546",
-     "AccountID": "2002",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00002",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "2445664016155883607",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2003",
-     "Name": "Sonny Wo",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "14851303682440922652",
-     "AccountID": "2003",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00003",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "8243834201586633798",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2004",
-     "Name": "Broken Nose Jiang",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "2615402444794721281",
-     "AccountID": "2004",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00004",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "12099742056862485966",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2005",
-     "Name": "Two Chin Tsao",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "11294725079368944546",
-     "AccountID": "2005",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00005",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "225501511964055524",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2006",
-     "Name": "Pockmark Cheuk",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "14851303682440922652",
-     "AccountID": "2006",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00006",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "2445664016155883607",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  },
-  {
-   "type": 0,
-   "remaining_seconds": 86400,
-   "data": {
-    "PlayerDataBag": {
-     "PlayerDataID": "2007",
-     "Name": "Dogeyes Lin",
-     "Face": "0",
-     "LaunderedMoney": 0,
-     "LaundrySecondsRemaining": 0,
-     "EnforcerXP": 0,
-     "Triad": "2615402444794721281",
-     "AccountID": "2007",
-     "LastUsedVehicle": "0",
-     "GameplayState": "",
-     "AvatarUrl": "",
-     "PreferMatchmakingWithFriends": false,
-     "IsFavourListInitialized": true
-    },
-    "CurrencyBag": {
-     "CleanMoney": "25000",
-     "DirtyMoney": "5000"
-    },
-    "TurfBag": {
-     "Turf": {
-      "LocationName": "Turf-Turf00007",
-      "Safehouse": {
-       "RacketTypeUID": "7427838002936215495",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Warehouse": {
-       "RacketTypeUID": "6675658476745246410",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "Temple": {
-       "RacketTypeUID": "681339054293160616",
-       "RacketLevel": 1,
-       "Staff": 0,
-       "BlockIndex": -1,
-       "RacketState": 0,
-       "SlotIndex": 0,
-       "CurrentProduction": 0,
-       "Stats": {
-        "MaxStaff": 0,
-        "OutputMultiplier": 1.0,
-        "ProductionTimeDivision": 1.0,
-        "UpgradeDiscountMultiplier": 1.0,
-        "ProductionInputDiscountDivision": 1.0,
-        "NoStaffSpawn": 0
-       },
-       "Production1": 0,
-       "Production2": 0,
-       "Production3": 0,
-       "Production4": 0,
-       "Production5": 0,
-       "Production6": 0,
-       "Production7": 0,
-       "Production8": 0,
-       "Production9": 0,
-       "Production10": 0
-      },
-      "TurfTemplateUID": "8243834201586633798",
-      "RacketsBuilt": "0"
-     },
-     "Rackets": [],
-     "Commodities": []
-    },
-    "FavoursBag": [],
-    "EnforcerUpgradesBag": [],
-    "InventoryBag": []
-   }
-  }
- ],
- "gamestate": "84,67,48,49,38,0,7,0,160,58,70,42,181,112,221,1,73,110,116,114,111,32,45,32,67,104,111,111,115,101,32,84,117,114,102,0,0,0,0,0,0,0,0,0,0,0,0,0,184,20,0,0,179,172,33,112,115,98,192,248,109,45,102,42,99,127,49,96,50,46,66,156,169,119,251,91,160,69,18,195,33,253,71,103,209,216,77,156,195,128,179,235,98,59,116,56,229,212,211,2,207,27,47,137,198,213,152,248,127,214,163,84,162,198,65,97,205,198,59,138,209,243,55,111,230,191,248,188,97,209,34,81,24,121,141,231,92,30,151,247,127,43,248,169,51,236,53,85,193,186,47,126,161,149,230,30,149,110,167,107,204,210,94,141,90,166,186,20,69,99,181,21,156,243,192,113,251,212,34,66,174,167,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,239,199,118,169,115,184,249,25,69,110,6,85,248,88,46,102,221,182,239,179,148,14,153,200,149,225,245,79,0,178,224,64,199,30,235,156,166,235,44,76,21,232,239,35,129,225,183,239,250,251,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,69,62,179,2,165,5,219,19,255,123,211,57,235,101,240,31,148,30,53,143,64,242,32,128,7,94,43,220,230,43,108,140,248,241,102,181,88,184,142,198,61,22,79,19,244,110,249,40,231,163,99,254,150,72,118,214,9,166,67,244,254,67,132,164,16,9,126,205,112,208,166,222,85,46,103,43,12,134,17,64,13,89,109,199,120,42,88,184,72,124,190,242,156,225,34,66,158,52,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,221,52,1,178,188,1,66,98,203,13,243,152,72,168,126,182,33,209,27,223,192,58,197,244,193,13,33,123,44,222,12,108,243,74,23,200,210,23,88,120,228,221,82,161,68,164,122,178,190,88,30,69,9,131,14,61,226,135,7,97,18,196,242,82,217,48,253,174,184,253,62,94,202,195,56,135,42,138,96,152,15,232,33,229,198,64,203,250,254,109,136,51,5,183,229,69,8,132,40,217,227,40,105,137,245,238,99,178,85,181,139,195,58,19,76,16,241,107,246,37,242,62,82,172,93,15,61,157,12,232,133,82,252,65,130,162,174,8,54,133,40,136,94,150,13,230,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,94,174,216,21,121,217,175,231,34,41,136,76,45,167,50,97,46,122,142,232,153,75,121,217,96,183,132,53,63,132,197,229,81,74,191,14,177,17,231,31,253,246,56,12,7,129,12,59,80,254,122,212,133,55,101,197,76,163,112,33,43,112,177,209,61,54,171,250,157,253,211,11,130,91,148,88,57,179,62,109,223,14,162,149,176,98,144,240,67,92,126,47,57,126,191,223,75,68,185,8,171,11,225,25,144,105,162,102,71,193,76,123,72,148,168,2,179,101,147,243,20,235,28,140,125,194,3,35,159,161,119,198,105,201,159,215,78,39,96,36,5,127,10,57,6,82,102,192,113,35,81,177,56,143,92,13,23,92,157,189,124,125,146,1,234,74,32,88,35,253,33,229,198,64,203,250,199,19,39,129,50,228,18,114,249,80,29,206,216,29,94,126,234,227,88,167,74,170,128,184,173,79,154,151,180,46,185,232,125,48,71,161,82,4,50,146,25,112,61,238,248,61,126,158,10,3,120,199,106,202,160,216,79,40,97,37,6,128,11,58,234,38,233,150,228,150,196,36,15,225,230,151,161,230,39,71,179,172,33,112,19,115,73,129,248,209,10,206,175,41,180,227,176,252,16,106,27,205,251,91,109,115,140,30,239,52,117,149,129,244,155,234,141,237,195,251,114,75,132,72,41,163,46,93,42,118,138,228,149,71,117,213,92,179,128,49,59,128,193,225,224,100,29,158,60,156,114,170,125,121,197,137,106,228,111,158,107,183,203,37,214,136,182,22,157,244,193,114,124,193,2,34,142,135,252,75,238,78,36,92,242,140,89,130,145,11,150,197,170,175,168,2,179,101,147,243,122,209,158,79,89,158,223,255,107,100,217,40,203,43,1,57,176,137,194,134,103,225,108,155,128,52,151,127,210,132,178,18,141,229,65,242,252,65,130,162,14,7,124,203,110,206,164,220,83,44,101,41,10,132,15,62,11,87,107,197,118,40,86,182,224,101,27,200,152,221,30,62,90,172,147,226,133,229,187,243,106,67,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,215,176,17,182,72,168,126,182,225,138,139,79,48,170,53,100,49,125,145,235,156,78,124,220,99,186,135,56,66,135,200,232,84,77,194,17,180,20,234,34,215,180,95,111,137,3,142,189,34,5,169,3,180,102,148,244,123,210,159,80,90,159,224,0,108,101,218,41,204,44,2,58,177,138,195,135,104,226,109,156,7,185,28,191,149,71,117,213,216,10,164,85,95,164,229,5,113,106,223,46,209,49,7,63,182,143,200,140,109,231,114,161,110,186,206,40,217,139,185,25,123,9,190,2,175,244,53,85,161,183,255,78,241,81,39,95,214,175,232,172,141,7,146,193,142,218,238,72,249,171,217,57,192,23,228,149,159,228,37,69,135,234,252,165,104,200,158,214,113,15,240,180,149,15,154,201,150,226,246,80,1,179,225,65,200,31,236,157,167,236,45,77,185,178,39,118,25,121,79,135,33,161,173,11,198,64,203,250,223,217,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,230,191,248,188,157,23,162,209,184,175,231,176,19,197,243,83,46,166,254,175,185,254,63,95,203,196,57,136,43,139,97,153,16,233,34,230,199,65,204,251,200,20,40,130,51,229,19,115,135,10,246,108,118,187,252,28,88,47,210,33,196,36,250,50,169,130,187,127,96,218,101,148,97,173,193,27,204,126,172,12,147,234,183,104,114,183,248,24,72,189,92,251,153,249,207,7,210,19,54,250,219,85,224,15,220,40,60,150,71,249,39,135,14,101,50,227,237,50,115,147,255,248,109,188,95,191,149,205,57,45,51,193,239,105,244,35,120,230,2,92,13,191,237,77,212,43,248,169,179,248,57,89,197,190,51,130,37,133,91,147,10,227,28,224,193,59,198,245,119,160,224,10,80,2,48,144,115,39,221,142,152,221,30,62,170,163,24,103,10,106,64,120,239,200,1,197,166,32,171,218,167,243,7,97,18,196,242,82,54,54,248,191,139,208,17,49,221,154,254,77,240,80,38,94,213,174,231,171,140,6,145,192,141,217,237,71,248,170,216,56,191,22,227,148,158,227,36,68,199,179,181,99,29,125,83,139,30,2,69,9,234,100,239,30,235,55,75,165,86,8,54,150,29,116,65,242,252,65,130,162,14,7,124,203,110,206,164,220,243,104,113,254,12,134,17,64,245,61,137,227,148,70,116,212,91,178,127,48,58,127,192,224,76,69,186,9,172,12,226,26,145,106,163,103,72,194,77,124,34,8,118,233,73,251,41,137,196,148,132,53,63,132,197,229,81,74,191,14,177,17,231,31,150,111,168,108,77,199,82,129,78,154,174,8,185,107,153,249,178,174,152,79,30,99,164,196,128,98,152,231,138,234,192,248,111,72,129,69,38,160,43,90,39,115,135,225,146,68,114,210,89,176,125,46,56,125,190,222,96,89,204,138,165,5,219,19,6,99,118,58,27,149,32,79,28,104,124,214,135,57,103,199,78,165,114,35,45,114,179,211,63,56,173,252,159,255,213,13,250,122,136,53,234,100,239,30,131,90,13,103,24,202,248,88,223,54,3,180,190,3,68,100,208,201,62,141,48,144,102,158,21,238,39,235,204,70,209,0,89,198,127,158,56,234,24,120,187,40,235,156,166,235,44,76,184,177,38,117,24,120,78,134,253,214,15,211,180,46,185,232,181,1,21,111,32,210,0,96,107,236,56,221,190,3,68,100,240,194,54,133,40,136,94,150,13,230,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,48,28,105,211,72,168,126,182,209,89,154,94,63,185,68,115,64,140,160,250,171,93,139,235,114,201,150,71,81,150,215,247,99,92,209,32,195,35,249,49,234,209,253,155,77,199,82,129,150,166,103,193,114,36,82,178,57,144,93,14,24,93,158,190,42,35,152,231,138,234,192,248,111,72,129,69,38,160,43,90,179,90,172,105,193,115,161,1,60,114,244,165,175,244,53,85,193,186,47,126,33,129,87,143,6,223,24,220,189,55,194,241,190,10,30,120,41,219,9,105,167,12,180,223,102,171,236,12,232,84,31,110,17,113,71,127,246,207,8,204,173,39,178,225,174,250,14,104,25,203,249,89,224,55,4,181,191,4,69,101,150,122,154,169,76,172,130,186,93,188,60,0,225,91,230,21,226,46,66,156,77,255,45,141,20,107,56,233,243,56,121,153,5,254,115,194,101,197,155,211,16,134,186,251,161,27,166,213,234,18,129,219,140,62,108,204,83,170,119,40,50,119,184,216,68,61,178,1,164,4,218,18,137,98,155,95,64,186,69,116,3,25,14,96,97,19,65,161,12,8,97,18,28,97,162,194,46,39,156,235,142,238,196,252,115,76,133,73,42,164,47,94,43,119,139,229,150,72,118,214,72,231,45,61,151,220,29,61,169,168,126,205,112,208,166,222,85,46,103,43,12,134,17,64,13,89,109,199,120,42,88,184,63,150,99,20,30,99,164,196,19,154,48,188,136,232,190,246,177,154,199,139,108,230,113,160,109,185,205,39,216,138,184,24,159,246,195,116,126,195,4,36,144,137,254,77,240,80,38,94,229,156,187,62,138,4,143,190,51,175,43,133,54,232,22,118,253,84,33,210,220,33,98,130,238,231,92,171,78,174,132,188,51,12,69,9,234,100,239,30,210,71,77,235,210,132,178,18,13,226,56,233,243,56,121,153,5,254,115,194,101,197,155,211,74,35,92,32,1,123,6,53,2,78,98,188,109,31,77,173,255,242,247,149,28,97,162,194,94,173,183,6,169,9,223,23,142,103,160,100,69,191,74,121,70,146,166,0,177,99,145,241,120,207,156,77,87,156,221,253,52,58,241,33,201,41,255,55,226,185,31,227,196,62,201,248,197,17,37,127,48,226,16,112,247,78,27,204,214,27,92,124,232,225,86,165,72,168,126,182,208,117,102,62,44,166,49,96,5,167,193,27,204,126,172,12,147,234,183,104,114,183,248,24,132,125,242,65,228,68,26,82,201,162,219,159,128,250,133,180,166,137,160,123,233,155,201,41,180,223,164,85,95,164,229,5,113,106,223,46,209,49,7,63,182,143,200,140,109,231,114,161,110,186,206,40,217,139,185,25,11,116,247,126,126,195,4,36,112,129,51,130,37,133,91,147,10,227,28,224,193,59,198,245,194,14,34,124,45,223,13,109,244,75,24,201,211,24,89,121,254,0,156,68,78,174,132,188,143,199,59,255,224,90,229,20,225,45,65,155,76,254,44,140,19,106,55,232,242,55,120,152,4,253,114,193,100,196,154,210,23,4,218,237,79,201,84,131,200,31,176,10,187,109,155,251,130,217,166,87,97,166,231,7,115,108,225,48,211,51,9,65,184,145,202,142,111,233,116,163,119,225,35,243,18,196,242,82,173,35,34,211,221,34,99,131,239,232,93,172,79,175,133,189,52,13,70,10,235,101,240,31,236,56,76,166,87,9,55,151,199,40,99,75,119,188,253,29,217,176,135,214,121,217,175,231,94,55,112,52,21,143,26,73,22,98,118,208,129,51,97,193,72,159,108,29,39,108,173,205,68,0,148,35,229,69,27,83,230,249,216,156,125,247,130,177,126,202,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,129,78,10,180,201,67,206,253,194,64,182,16,193,115,161,1,136,223,172,93,103,172,237,13,121,114,231,54,217,57,15,71,190,151,208,148,117,239,122,169,47,58,50,106,80,2,48,144,243,44,227,148,158,227,36,68,176,169,30,109,16,112,70,126,245,206,7,203,172,38,177,224,173,249,13,103,24,202,248,88,134,98,213,6,115,184,249,25,69,121,151,230,137,233,191,247,110,71,128,68,37,159,42,89,38,114,134,224,145,67,113,209,88,175,124,45,55,124,189,221,219,75,198,65,10,106,64,120,115,234,164,104,73,195,78,125,74,150,170,4,181,103,149,245,124,211,160,81,91,160,225,1,109,102,219,42,205,45,3,59,127,102,233,128,204,70,209,0,181,137,53,143,64,242,32,128,7,94,43,220,230,43,108,140,248,241,102,181,88,184,142,198,61,22,79,19,244,110,249,40,142,220,198,186,241,163,209,49,236,137,150,71,81,150,215,247,99,92,209,32,195,35,249,49,168,129,186,126,95,217,100,147,96,172,192,26,203,125,171,11,133,95,10,72,130,199,8,40,164,130,143,222,129,225,183,239,102,63,120,60,29,151,34,81,30,106,126,216,137,59,105,201,80,167,116,37,47,116,181,213,135,65,158,209,127,223,181,237,104,29,232,172,141,7,146,193,142,218,238,72,249,171,217,57,192,23,228,149,159,228,37,69,177,170,31,110,17,113,71,127,192,141,57,53,24,146,29,76,241,172,205,39,216,138,184,24,159,246,195,116,126,195,4,36,144,137,254,77,240,80,38,94,213,174,231,171,140,6,145,192,208,205,8,79,77,255,45,141,208,23,63,240,250,63,128,160,12,5,122,201,108,204,162,218,81,42,99,39,8,130,13,60,9,85,105,195,116,38,84,180,28,19,134,214,221,34,99,131,79,238,188,11,174,14,228,28,147,108,165,105,74,196,79,126,75,151,171,5,182,104,150,246,125,212,161,82,92,161,226,2,14,41,164,207,196,36,250,50,213,138,171,111,80,202,85,132,81,157,177,11,188,110,156,252,131,218,167,88,98,167,232,8,116,109,226,49,212,52,10,66,27,78,142,208,70,192,75,122,31,82,201,35,212,134,180,20,155,242,191,112,122,191,0,32,140,133,250,73,236,76,34,90,209,170,227,167,136,2,141,188,153,128,24,121,147,69,115,211,110,44,200,121,131,200,9,41,149,142,3,82,245,85,43,99,218,179,236,176,145,11,150,197,146,222,242,76,253,175,221,61,66,2,119,179,45,114,179,211,47,4,28,107,14,110,68,124,243,204,5,201,170,36,175,222,171,247,11,101,22,200,246,86,221,52,1,178,188,1,66,98,26,6,30,58,235,75,33,89,60,234,132,72,41,163,46,93,42,118,138,228,149,71,117,213,92,179,128,49,59,128,193,225,77,70,187,10,173,13,227,27,213,179,199,231,111,233,116,163,184,111,96,186,107,29,75,171,50,137,86,7,17,86,151,183,35,28,145,224,131,227,185,241,104,65,122,62,31,153,36,83,216,63,190,85,125,47,93,189,224,75,99,20,30,99,164,196,48,41,158,237,144,240,198,254,117,78,135,75,44,166,49,96,45,121,141,231,152,74,120,216,238,37,145,249,81,150,215,247,227,89,23,102,9,105,63,119,238,199,0,196,165,31,170,217,166,242,6,96,17,195,241,81,216,47,252,173,183,252,61,93,200,131,223,219,138,234,192,248,51,104,197,137,106,228,111,158,107,183,203,37,214,136,182,22,157,244,193,114,124,193,2,34,142,135,252,75,238,78,36,92,163,111,252,57,159,25,164,211,152,235,214,48,225,147,193,33,168,255,204,125,135,204,13,45,153,146,7,86,249,89,47,103,222,183,240,180,149,15,154,201,177,117,185,135,245,167,213,53,168,49,55,232,242,55,120,152,4,253,114,193,100,196,154,210,73,34,91,31,0,122,5,52,1,77,97,187,108,30,76,172,107,249,86,19,97,166,231,7,131,178,147,226,133,229,187,243,106,67,124,64,33,155,38,85,34,110,130,220,141,63,109,205,84,171,120,41,51,120,185,217,124,61,104,162,161,1,215,15,74,103,101,41,10,132,15,62,11,87,107,197,118,40,86,182,61,148,97,18,28,97,162,194,46,39,156,235,142,238,196,252,17,12,108,147,228,94,233,24,77,145,108,198,119,41,87,183,62,149,98,19,29,98,163,195,47,40,157,236,143,239,197,253,116,77,134,74,43,165,48,95,137,118,8,115,133,55,101,197,200,15,161,82,92,161,226,2,110,103,220,43,206,46,4,60,179,140,197,137,106,228,111,158,107,183,203,37,214,136,182,22,75,122,30,130,47,116,181,213,33,62,91,170,77,173,131,187,50,11,68,8,233,99,238,29,234,54,74,164,85,7,53,149,28,115,64,241,251,64,129,161,17,128,34,161,21,117,75,131,198,246,12,208,177,43,182,229,178,254,18,108,29,207,253,93,228,59,8,185,195,8,73,105,213,206,67,146,53,149,107,163,124,70,37,24,135,1,140,187,144,117,66,156,77,255,45,141,20,107,56,233,243,56,121,153,5,254,115,194,101,197,155,211,74,35,92,32,1,123,6,53,191,151,121,183,19,197,243,83,46,169,198,119,129,198,7,39,147,140,1,80,243,83,41,97,216,177,234,174,143,9,148,195,144,220,240,74,251,173,219,59,181,3,184,187,211,24,89,121,53,242,32,111,18,114,72,128,247,208,9,205,174,40,179,226,175,251,15,105,26,204,250,90,225,56,5,182,192,5,70,102,28,130,147,17,204,44,2,58,29,53,41,237,206,72,211,2,207,27,47,137,58,236,26,122,1,88,37,214,224,37,102,134,242,235,96,175,82,178,136,192,36,166,92,161,75,197,80,127,196,130,79,169,90,12,58,154,33,120,69,246,0,69,134,166,18,11,128,207,114,210,168,224,87,48,105,45,14,136,19,66,78,147,156,167,100,22,68,164,79,108,228,149,159,228,37,69,177,170,31,110,17,113,71,127,246,207,8,204,173,39,178,225,174,250,14,104,25,203,249,89,232,255,31,221,242,55,120,152,68,254,193,16,179,19,233,33,152,113,170,110,79,201,84,131,80,156,176,10,187,109,155,251,130,217,166,87,97,166,231,7,71,106,1,124,78,174,132,188,47,64,1,197,166,32,171,218,167,243,7,97,18,196,242,82,217,48,253,174,184,253,62,94,202,195,56,135,42,138,96,152,96,211,183,159,61,183,66,113,198,222,252,86,7,185,231,71,206,37,242,163,173,242,51,83,191,184,45,124,31,127,85,141,4,221,22,218,187,53,192,239,78,150,169,243,82,4,50,146,205,105,150,71,81,150,215,247,99,92,209,32,195,35,249,49,168,129,186,126,95,217,100,147,96,172,192,26,203,125,171,11,250,66,189,201,43,112,177,209,137,68,182,5,168,8,222,22,141,102,159,99,68,190,73,120,69,145,165,255,176,98,144,240,119,206,155,76,86,155,220,252,152,93,45,59,73,169,127,183,186,132,24,220,189,55,194,241,190,10,30,120,41,219,9,105,240,71,20,197,207,20,85,117,225,218,79,158,65,161,119,175,204,150,102,184,139,5,144,191,248,179,200,34,211,133,179,19,154,241,190,111,121,190,255,31,139,132,249,72,235,75,33,89,208,169,226,166,135,1,140,187,196,100,72,185,84,6,52,148,103,9,54,231,241,54,119,151,3,252,113,192,99,195,153,209,72,33,90,30,255,121,4,51,0,76,96,186,107,29,75,171,163,109,248,214,128,197,6,38,246,154,91,170,77,173,131,187,50,11,68,8,233,99,238,29,234,54,74,164,85,7,53,149,28,115,64,241,251,64,129,161,154,5,66,14,233,73,31,87,110,165,188,128,97,219,102,149,98,174,194,28,205,127,173,13,148,235,184,105,115,184,249,25,133,126,243,66,229,69,27,83,82,30,183,121,206,72,211,2,71,115,222,56,233,155,201,41,176,7,212,133,143,212,21,53,161,154,15,94,1,97,55,111,230,191,248,188,157,23,162,209,155,54,61,80,53,231,21,117,144,204,244,165,175,244,53,85,0,85,108,96,47,159,56,145,7,105,162,102,71,193,76,123,72,148,168,2,179,101,147,243,122,209,158,79,89,158,223,255,107,100,217,40,203,43,1,57,176,137,194,134,103,225,108,155,104,180,200,34,211,133,179,19,155,31,236,157,166,184,249,25,132,201,62,141,48,144,102,158,20,1,58,254,223,89,228,19,225,133,153,243,164,86,132,228,107,194,143,64,74,143,208,240,92,85,202,25,188,28,242,42,161,122,179,119,88,210,93,140,89,165,185,19,196,118,164,4,139,226,175,96,106,175,240,16,124,117,234,57,84,143,131,187,51,67,124,64,32,94,233,24,228,17,37,127,48,226,16,112,247,78,27,204,215,148,213,245,97,90,207,30,193,33,247,47,167,9,66,6,231,97,236,27,232,52,72,162,82,51,97,193,73,107,56,233,243,56,121,153,0,22,139,218,125,221,179,235,98,59,116,56,25,147,30,77,26,102,122,212,133,55,101,197,76,163,112,33,43,112,177,209,61,54,171,250,157,253,211,11,130,91,148,88,57,179,62,109,58,134,154,244,165,87,133,229,108,195,144,65,75,144,209,241,93,86,203,26,189,29,243,43,162,123,180,120,89,211,94,141,90,166,186,20,197,119,165,5,140,227,176,97,107,176,241,17,125,118,235,58,221,61,19,75,194,155,212,152,121,243,126,173,122,198,218,52,229,151,197,37,172,3,208,129,139,208,17,49,157,150,11,90,253,93,51,107,226,187,244,184,153,19,158,205,154,230,250,84,5,183,229,69,204,35,240,161,171,240,49,81,189,182,43,122,29,125,83,139,2,219,20,216,185,51,190,237,186,6,26,116,37,215,5,101,236,67,16,193,203,16,81,113,221,214,75,154,63,41,255,55,175,13,70,10,218,124,69,228,121,241,225,254,118,40,86,182,61,148,97,18,28,97,162,194,46,39,156,235,143,46,4,60,185,83,140,80,96,62,233,28,61,16,53,9,135,174,20,4,5,35,36,11,246,50,94,200,46,148,88,75,101,1,201,130,218,42,40,135,143,238,84,64,117,113,128,57,179,195,241,81,218,11,216,137,14,32,194,223,177,211,236,60,44,248,206,6,106,231,32,228,62,110,103,179,48,240,29,49,241,8,160,38,231,92,72,0,78,94,81,231,230,111,120,205,74,86,201,80,226,48,245,217,133,4,182,86,58,172,192,137,12,126,192,164,102,211,240,183,238,1,165,120,252,149,45,82,193,182,58,15,225,53,175,116,32,167,169,79,221,244,106,107,173,238,148,202,94,87,82,133,133,215,237,122,38,45,70,161,169,109,103,56,204,31,88,28,255,47,186,233,23,35,12,103,149,36,224,16,223,139,88,9,18,36,101,133,80,119,68,90,22,195,153,209,179,168,66,60,28,33,172,219,24,106,201,170,141,140,186,26,96,139,39,139,107,95,160,192,82,82,249,30,221,236,194,250,116,249,162,15,49,9,148,195,101,191,233,183,50,19,65,161,201,36,109,170,48,207,16,48,171,189,133,231,110,37,251,51,169,55,254,163,8,187,70,117,157,166,184,234,81,123,169,9,97,85,249,19,28,184,249,25,200,172,206,69,176,193,151,207,18,190,7,143,80,163,46,93,166,41,36,3,150,159,205,45,176,238,199,51,183,50,115,147,237,28,39,219,40,15,229,29,105,199,103,252,112,195,78,125,60,135,217,80,216,59,105,201,46,71,5,186,87,123,188,220,11,211,214,220,160,10,224,24,229,141,114,196,188,193,76,123,96,223,54,183,29,45,91,187,167,131,183,234,157,33,98,130,212,66,218,215",
- "gameplaystate": "SafehouseUnlocked=1;UndercoverSafehouse=1;SafehouseNP=1;Door_SafehouseNP=0;SafehouseCT=1;Door_SafehouseCT=0;SafehouseAB=1;Door_SafehouseAB=0;SafehouseKT=1;Door_SafehouseKT=0;FIGHTCLUB_INTRO_COMPLETE=1;StatueUpgradePoint=11;StatueDefensiveStage=5;StatueOffensiveStage=5;CopDrivingStage=5;CopShootingStage=5;TriadDefensiveStage=5;TriadOffensiveStage=5;GunplayUpgradeStage=5;VehicleRamUpgrade=1;CopXP=100000;TriadXP=100000;CopUpgradePoint=10;TriadUpgradePoint=10;MaxHealthUpgradePoint=50;EnableJadeStatueIndicators=1;EnableJadeStatueIndicatorsIcon=1;EnableJadeStatueIndicatorsText=1;EnableHealthShrineIndicators=1;EnableHealthShrineIndicatorsIcon=1;EnableHealthShrineIndicatorsText=1;EnableLockboxIndicators=1;EnableLockboxIndicatorsIcon=1;EnableLockboxIndicatorsText=1;EnableSpyCams=1;EnableSpyCamsIcon=1;EnableSpyCamsText=1;EnableSpyCamIndicators=1;EnableSpyCamIndicatorsIcon=1;EnableSpyCamIndicatorsText=1;EnableJumpIndicators=1;EnableValet=1;EnablePDA=1;EnableKaraoke=1;MassageParlourBuff_Activated=1;StrikingBuff_Activated=1;HealthRegen_Activated=1;DLCRedeemed=1;TriadWarsTutorialComplete=1;PlayerCheckpointLocationX=840.50;PlayerCheckpointLocationY=-320.20;PlayerCheckpointLocationZ=5.30;PlayerLastStableLocationX=840.50;PlayerLastStableLocationY=-320.20;PlayerLastStableLocationZ=5.30;ActiveSafehouseSpawn=SafehouseNP",
- "active_errands": [
-  {
-   "slot": 0,
-   "uid": "110624962204148299",
-   "state": 0,
-   "time_begun": 1794257741
-  },
-  {
-   "slot": 1,
-   "uid": "165701615963828379",
-   "state": 0,
-   "time_begun": 1794257741
-  },
-  {
-   "slot": 2,
-   "uid": "726902321891037803",
-   "state": 0,
-   "time_begun": 1794257741
-  },
-  {
-   "slot": 3,
-   "uid": "919935932594635868",
-   "state": 0,
-   "time_begun": 1794257741
-  }
- ],
- "collected_crime_scenes": [],
- "default_inventory": "39033814088229358",
- "preferred_starter_vehicle_uid": "3116199975099848891"
+  "collected_crime_scenes": [],
+  "default_inventory": "39033814088229358",
+  "preferred_starter_vehicle_uid": "3116199975099848891"
 }
