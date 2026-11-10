@@ -1372,25 +1372,32 @@ def purchase(req, method, parts, body, query):
     # every pack holds upgrade favours, the kind this server can honour.
     store_uid, item_uid = (parts[1:3] + ["", ""])[:2]
     catalogue = state.STORE_ITEMS.get(store_uid)
-    if catalogue is None or item_uid not in catalogue["items"]:
-        return _ok_bags()
-    currency, price = _store_price(catalogue, item_uid)
+    if catalogue and item_uid in catalogue.get("items", []):
+        currency, price = _store_price(catalogue, item_uid)
+        store_type = catalogue.get("type", "UFG::StoreVehicle")
+    else:
+        # Fallback for dynamic / uncatalogued vehicle & item stores
+        currency = CURRENCY_DIRTY
+        price = 1000
+        store_type = "UFG::StoreVehicle"
+
     data = {"CortexUID": item_uid}
     with STATE.lock:
         player = _player()
-        if _money(CURRENCY_BAG_KEY[currency]) < price:
+        cur_key = CURRENCY_BAG_KEY.get(currency, "DirtyMoney")
+        if _money(cur_key) < price:
             # Auto top-up in offline mode so purchases never fail
-            _money(CURRENCY_BAG_KEY[currency], price + 100000)
-        _money(CURRENCY_BAG_KEY[currency], -price)
+            _money(cur_key, price + 100000)
+        _money(cur_key, -price)
 
         def open_pack():
             return [{"FavourDefinitionUIDString": uid}
                     for uid in _award_favours(player, PACK_FAVOUR_COUNT)]
 
-        if catalogue["type"] == "UFG::StoreBundle":
+        if catalogue and store_type == "UFG::StoreBundle":
             data["ItemContext"] = [{"StoreItemIDStr": pack, "FavourResults": open_pack()}
-                                   for pack in catalogue["packs"][item_uid]]
-        elif catalogue["type"] == "UFG::StoreContactBundle":
+                                   for pack in catalogue["packs"].get(item_uid, [])]
+        elif catalogue and store_type == "UFG::StoreContactBundle":
             data["ItemContext"] = open_pack()
         else:
             bag = player.setdefault("InventoryBag", [])
