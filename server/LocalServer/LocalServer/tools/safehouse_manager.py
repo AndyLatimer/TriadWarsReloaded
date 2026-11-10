@@ -377,28 +377,21 @@ def set_favorite_vehicle(target):
 
     uid = str(found["uid"])
     state = load_json(STATE_FILE)
-    state.setdefault("player", {}).setdefault("PlayerDataBag", {})["LastUsedVehicle"] = uid
-
-    gps = state.get("gameplaystate", "")
-    flags = [f.strip() for f in gps.split(";") if f.strip()]
-    flags = [f for f in flags if not (f.startswith("LastUsedVehicle=") or f.startswith("GarageVehicle="))]
-    flags.append(f"LastUsedVehicle={uid}")
-    flags.append(f"GarageVehicle={uid}")
-    new_gps = ";".join(flags)
-    state["gameplaystate"] = new_gps
-    state["player"]["PlayerDataBag"]["GameplayState"] = new_gps
+    # Store catalogue preference separately. LastUsedVehicle is the game's
+    # 32-bit driving ID, not the 64-bit store UID of the selected car.
+    state["preferred_starter_vehicle_uid"] = uid
     save_json(STATE_FILE, state)
 
     print("=" * 70)
     print(f"VEHÍCULO DE GARAJE ACTUALIZADO: {found['name']} ({found['class']})")
     print(f"UID del Vehículo:   {uid}")
-    print(f"Servicio Valet:     Entrega automática lista en el exterior del piso franco")
+    print(f"Preferencia de garaje guardada; no se modifica el ID activo del juego.")
     print("=" * 70)
 
 
 def get_favorite_vehicle():
     state = load_json(STATE_FILE)
-    uid = str(state.get("player", {}).get("PlayerDataBag", {}).get("LastUsedVehicle", "3116199975099848891"))
+    uid = str(state.get("preferred_starter_vehicle_uid", "3116199975099848891"))
     missions = load_json(MISSIONS_FILE)
     for v in missions.get("starter_vehicles", []):
         if str(v.get("uid")) == uid:

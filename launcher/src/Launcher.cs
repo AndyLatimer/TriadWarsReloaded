@@ -826,10 +826,20 @@ namespace TriadWarsLauncher
             }
         }
 
-        private void LaunchClientOnly()
+        private void LaunchClientOnly(bool applySelections = true)
         {
-            ApplySelectedSpawn();
-            ApplySelectedVehicle();
+            if (applySelections)
+            {
+                if (IsPortListening(443))
+                {
+                    LogMessage("Servidor ya activo: no se modificará state.json mientras está cargado en memoria.");
+                }
+                else
+                {
+                    ApplySelectedSpawn();
+                    ApplySelectedVehicle();
+                }
+            }
             string exePath = Path.Combine(betaDir, "TriadWars.exe");
             if (!File.Exists(exePath))
             {
@@ -857,11 +867,19 @@ namespace TriadWarsLauncher
         {
             if (!IsPortListening(443))
             {
+                // Update the saved selections before Python loads state.json.
+                // Writing them after server startup creates an out-of-sync state.
+                ApplySelectedSpawn();
+                ApplySelectedVehicle();
                 StartServer();
                 Thread.Sleep(1000);
             }
+            else
+            {
+                LogMessage("Servidor activo: usando el estado ya cargado. Reinícialo para aplicar nuevas selecciones.");
+            }
 
-            LaunchClientOnly();
+            LaunchClientOnly(false);
         }
 
         private void TogglePatch()

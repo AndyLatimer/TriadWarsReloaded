@@ -58,6 +58,17 @@ def main():
         assert isinstance(pdb["PlayerDataID"], str) and isinstance(pdb["Face"], str)
         return "player %r, turf %s" % (pdb["Name"], bags["TurfBag"]["Turf"]["LocationName"])
 
+    def vehicle_id_layout():
+        pdb = get("game/api/v1/playerdata/serializedplayerdata/1")["PlayerDataBag"]
+        runtime_uid = pdb.get("LastUsedVehicle", "0")
+        assert isinstance(runtime_uid, str) and runtime_uid.isdecimal(), "runtime ID must be a decimal string"
+        assert 0 <= int(runtime_uid) <= 0xFFFFFFFF, "runtime driving ID must fit uint32"
+
+        selection = get("game/api/v1/vehicles/starter")
+        store_uids = {str(v["uid"]) for v in selection["mStarterVehicles"]}
+        assert selection["mActiveVehicleUID"] in store_uids, "unknown preferred catalogue vehicle"
+        return "uint32 runtime ID and separate valid garage UID"
+
     def rivals():
         r = get("game/api/v1/playerdata/opponents")
         assert len(r["mOpponents"]) == 7 and len(r["mOpponentDataBags"]) == 7
@@ -151,6 +162,7 @@ def main():
 
     check("server answers", store_access)
     check("player data", player)
+    check("vehicle IDs", vehicle_id_layout)
     check("rivals", rivals)
     check("face tiers", face_tiers)
     check("black market quotes", quotes)

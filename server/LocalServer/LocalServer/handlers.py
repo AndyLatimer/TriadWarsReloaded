@@ -580,38 +580,48 @@ def event_log(req, method, parts, body, query):
 
 @route("game", "playerdata/lastusedvehicle")
 def last_used_vehicle(req, method, parts, body, query):
+    # The original endpoint uses %u (an unsigned 32-bit in-game vehicle ID).
+    # Do not overwrite it with the 64-bit store UID selected by our custom launcher.
+    raw = parts[2] if len(parts) > 2 else None
+    try:
+        vehicle_id = int(raw)
+    except (TypeError, ValueError):
+        return {"mReturnCode": 1, "mMessage": "Invalid in-game vehicle ID"}
+    if not 0 <= vehicle_id <= 0xFFFFFFFF:
+        return {"mReturnCode": 1, "mMessage": "In-game vehicle ID exceeds uint32"}
+
     with STATE.lock:
-        STATE.data["player"]["PlayerDataBag"]["LastUsedVehicle"] = str(_int(parts[2] if len(parts) > 2 else None))
-    STATE.save()
+        STATE.data["player"]["PlayerDataBag"]["LastUsedVehicle"] = str(vehicle_id)
+        STATE.save()
     return ok()
 
 
 @route("game", "vehicles/starter")
 def starter_vehicles_list(req, method, parts, body, query):
     starters = MISSIONS.get("starter_vehicles", [])
-    active_vehicle = STATE.data.get("player", {}).get("PlayerDataBag", {}).get("LastUsedVehicle", "3116199975099848891")
+    default_uid = str(starters[0]["uid"]) if starters else "0"
+    with STATE.lock:
+        preferred_uid = str(STATE.data.get("preferred_starter_vehicle_uid", default_uid))
+    if not any(str(vehicle["uid"]) == preferred_uid for vehicle in starters):
+        preferred_uid = default_uid
     return {
         "mReturnCode": 0,
-        "mActiveVehicleUID": str(active_vehicle),
+        "mActiveVehicleUID": preferred_uid,
         "mStarterVehicles": starters,
     }
 
 
 @route("game", "vehicles/setfavorite")
 def set_favorite_vehicle(req, method, parts, body, query):
-    veh_uid = parts[2] if len(parts) > 2 else "3116199975099848891"
+    # Launcher/store selection is a 64-bit catalogue UID, NOT the uint32
+    # LastUsedVehicle recorded by the original game's driving code.
+    veh_uid = str(parts[2]) if len(parts) > 2 else ""
+    if not any(str(v["uid"]) == veh_uid for v in MISSIONS.get("starter_vehicles", [])):
+        return {"mReturnCode": 1, "mMessage": "Unknown starter vehicle UID"}
     with STATE.lock:
-        STATE.data.setdefault("player", {}).setdefault("PlayerDataBag", {})["LastUsedVehicle"] = str(veh_uid)
-        gps = STATE.data.get("gameplaystate", "")
-        flags = [f.strip() for f in gps.split(";") if f.strip()]
-        flags = [f for f in flags if not (f.startswith("LastUsedVehicle=") or f.startswith("GarageVehicle="))]
-        flags.append(f"LastUsedVehicle={veh_uid}")
-        flags.append(f"GarageVehicle={veh_uid}")
-        new_gps = ";".join(flags)
-        STATE.data["gameplaystate"] = new_gps
-        STATE.data["player"]["PlayerDataBag"]["GameplayState"] = new_gps
+        STATE.data["preferred_starter_vehicle_uid"] = veh_uid
         STATE.save()
-    return {"mReturnCode": 0, "mLastUsedVehicle": str(veh_uid)}
+    return {"mReturnCode": 0, "mActiveVehicleUID": veh_uid, "mLastUsedVehicle": veh_uid}
 
 
 @route("game", "landmarks")
