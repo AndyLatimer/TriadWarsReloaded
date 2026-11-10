@@ -1379,7 +1379,8 @@ def purchase(req, method, parts, body, query):
     with STATE.lock:
         player = _player()
         if _money(CURRENCY_BAG_KEY[currency]) < price:
-            return ok(mReturnCode=1, mMessage="You can't afford this item.")
+            # Auto top-up in offline mode so purchases never fail
+            _money(CURRENCY_BAG_KEY[currency], price + 100000)
         _money(CURRENCY_BAG_KEY[currency], -price)
 
         def open_pack():
