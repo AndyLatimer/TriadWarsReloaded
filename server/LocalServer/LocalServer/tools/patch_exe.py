@@ -58,6 +58,15 @@ XFORM_OLD = bytes.fromhex("488b5168" "488bf9" "4885d2" "754b" "395170" "0f846002
 XFORM_NEW = bytes.fromhex("4885c9" "0f846c020000" "488b5168" "488bf9" "4885d2" "7542")
 assert len(XFORM_NEW) == len(XFORM_OLD) == 21
 
+# Patch 3: Spawn prefab parent TransformNode null-check (crash at 14055fe3d/14141f299 reading [0x80])
+PREFAB_PAD_VA = 0x14055FD79
+PREFAB_PAD_OLD = bytes([0xCC] * 7)
+PREFAB_PAD_NEW = bytes([0x4D, 0x85, 0xFF, 0x74, 0x4D, 0xEB, 0x58])  # test r15, r15; je 0x14055fdcb; jmp 0x14055fdd8
+
+PREFAB_JNE_VA = 0x14055FDB5
+PREFAB_JNE_OLD = bytes([0x75, 0x21])                                 # jne 0x14055fdd8
+PREFAB_JNE_NEW = bytes([0x75, 0xC2])                                 # jne 0x14055fd79
+
 
 def _off(va):
     return va - TEXT_VA + TEXT_RAW
@@ -80,6 +89,8 @@ def patches():
         (_off(SITE_VA), SITE_OLD, site),
         (_off(CAVE_VA), bytes(CAVE_LEN), cave),
         (_off(XFORM_VA), XFORM_OLD, XFORM_NEW),
+        (_off(PREFAB_PAD_VA), PREFAB_PAD_OLD, PREFAB_PAD_NEW),
+        (_off(PREFAB_JNE_VA), PREFAB_JNE_OLD, PREFAB_JNE_NEW),
     ]
 
 
