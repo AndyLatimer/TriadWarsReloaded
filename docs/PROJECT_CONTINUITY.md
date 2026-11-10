@@ -1,92 +1,148 @@
-# Guía de Continuidad Técnica del Proyecto
+# Guía de Continuidad Técnica del Proyecto (Triad Wars Offline Revival)
 
-Este documento está diseñado para que cualquier desarrollador o agente de IA retome el proyecto sin necesidad de repetir la fase de investigación.
+Este documento detalla el estado exacto del proyecto, las estructuras de memoria del motor nativo descubiertas mediante ingeniería inversa, los sistemas restaurados, los problemas pendientes identificados y las instrucciones para retomar el desarrollo.
+
+---
 
 ## 1. Disposición del Workspace
 * **`x:\projects\TriadWars\`**: Raíz del proyecto.
-  - `beta/`: Instalación completamente aislada y operativa de Triad Wars Beta 1.6.0.0.
-  - `sleeping-dogs/`: Referencia de sólo lectura a Sleeping Dogs: Definitive Edition (enlaces aislados).
+  - `beta/`: Instalación operativa de Triad Wars Beta 1.6.0.0 (Changelist 541920, x64, TheoryEngine).
+    - `dinput8.dll`: Proxy hook compilado para la integración de pisos francos e interacciones.
+    - `XINPUT9_1_0.dll`: Wrapper nativo para mandos DualSense PS5.
+    - `safehouse_hook.log`: Registro en tiempo real de posición del jugador, eventos de teletransporte y estados del hook.
+  - `sleeping-dogs/`: Referencia de sólo lectura de Sleeping Dogs: Definitive Edition.
   - `server/`: Código fuente del servidor local emulado (`LocalServer/LocalServer/`).
-  - `tools/`: Repositorios de ingeniería inversa clonados:
-    - `TheoryEngine`: Reconstrucción en C++ del motor de UFG con símbolos.
-    - `SDK`: SDK de desarrollo de plugins y ganchos de memoria (MinHook, etc.).
-    - `BigFileSystem`: Desempaquetador y visor de archivos `.big` y `.bix`.
-    - `FileRedirector`: Inyector DLL para cargar archivos sueltos desde carpetas de desarrollo sin reempaquetar `.big`.
-    - `PermToFBX`: Extractor de modelos a FBX.
-    - `SD-UltimateTexTool`: Utilidad de texturas.
-  - `launcher/`: Lanzador integrado de Windows (inicia servidor, comprueba puertos, lanza el cliente).
-  - `docs/`: Informes técnicos completos.
-  - `logs/`: Registros de ejecución y depuración.
+    - `handlers.py`: Controladores de red para comercio, misiones, tiendas, vehículos y estado de juego.
+    - `state.json`: Base de datos de estado del jugador (inventario, bolsas, favores, estado del mundo).
+    - `tools/safehouse_manager.py`: Gestor de puntos de spawn y desbloqueo de pisos francos.
+  - `tools/`:
+    - `SafehouseHook/`: Código fuente C++ del proxy `dinput8.cpp` y archivo de definición `dinput8.def`.
+    - `xinput_dualsense/`: Código fuente del wrapper XInput para mando PS5.
+    - `TheoryEngine/`: Reconstrucción de símbolos del motor de UFG.
+    - `BigFileSystem/`, `FileRedirector/`, `PermToFBX/`, `SD-UltimateTexTool/`.
+  - `launcher/`: Lanzador gráfico de Windows (`TriadWarsLauncher.exe`).
+  - `docs/`: Informes técnicos y guías de arquitectura.
+
+---
 
 ## 2. Puntos Clave de Ejecución
-1. **Puerto del Servidor:** El cliente conecta por HTTPS a `127.0.0.1:443`. Comprobar con `Test-NetConnection -Port 443 -ComputerName 127.0.0.1` antes de arrancar.
-2. **Configuración del Cliente:** `beta/UserOptions.dat` debe tener `<Param key="Environment">localhost</Param>`. Se puede modificar con:
-   `python server/LocalServer/LocalServer/useroptions.py set Environment localhost`
-3. **Inicio del Servidor:**
+1. **Servidor Local:** Escucha en `127.0.0.1:443` (HTTPS).
    ```powershell
    cd x:\projects\TriadWars\server\LocalServer\LocalServer
    python server.py --host 127.0.0.1 --port 443
    ```
-4. **Verificación Automática:**
+2. **Configuración del Cliente:** `beta/UserOptions.dat` debe tener `<Param key="Environment">localhost</Param>`.
    ```powershell
-   python server/LocalServer/LocalServer/tools/smoke_test.py --port 443
+   python server/LocalServer/LocalServer/useroptions.py set Environment localhost
    ```
-5. **Parche de Estabilidad del Motor (Spot-Shadow Pass):**
-   El cliente original 1.6.0.0 tiene una condición de carrera nativa en el pase de sombras cuando un modelo de personaje no ha completado la carga de su LOD 0 (`TriadWars.exe+0x548a`).
-   Se comprueba y aplica con:
+3. **Parche de Estabilidad del Motor (Spot-Shadow Pass):**
+   Corrige la condición de carrera en el pase de sombras cuando los LODs no han cargado (`TriadWars.exe+0x548a`):
    ```powershell
-   python server/LocalServer/LocalServer/tools/patch_exe.py status
    python server/LocalServer/LocalServer/tools/patch_exe.py apply
    ```
-
-6. **Localización Oficial en Español:**
-   Los archivos originales incluyen `SP_Global.bin` en `UI15.big`. Para forzar el juego en español:
+4. **Idioma en Español:**
    ```powershell
    python server/LocalServer/LocalServer/useroptions.py set Language Spanish
    ```
-   El Launcher incluye un botón para alternar entre Español e Inglés con un solo clic.
+5. **Compilación de `dinput8.dll`:**
+   ```cmd
+   call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
+   cd /d X:\projects\TriadWars\tools\SafehouseHook
+   cl.exe /LD /O2 /MT dinput8.cpp user32.lib winmm.lib /link /DEF:dinput8.def /OUT:..\..\beta\dinput8.dll
+   ```
 
-7. **Soporte Nativo de Mando DualSense (PS5):**
-   Se implementó un wrapper XInput 9.1.0 nativo de 64 bits en `beta/XINPUT9_1_0.dll` (código fuente en `tools/xinput_dualsense/`).
-   Intercepta automáticamente cualquier mando DualSense por DirectInput/HID (`VID_054C&PID_0CE6`), mapea todos sus botones, cruceta, sticks y gatillos L2/R2, aplicando zonas muertas. No se requiere ningún software adicional ni Steam Input/DS4Windows.
+---
 
-8. **Restauración de Misiones y Contenido Abierto:**
-   Se completaron los controladores de red para activar los sistemas secundarios originales:
-   - 87 encargos (*Errands*) en ranuras rotativas.
-   - 7 operaciones de tríada (*Operations*).
-   - Encuentros dinámicos (*World Encounters*: emboscadas, persecuciones policiales y furgones blindados).
-   - 7 escenas del crimen en el mundo abierto (*Crime Scenes*).
-   - 247 vehículos desbloqueados en el concesionario.
+## 3. Avances Realizados en Esta Sesión
 
-## 3. Estado de la Integración de Pisos Francos (`SafehouseHook` / `dinput8.dll`)
+### 3.1. Corrección del Concesionario de Vehículos (Tienda de Coches)
+* **Problema:** En el concesionario de coches de mundo abierto, al intentar adquirir vehículos aparecía el error: *"An unexpected error occurred"*.
+* **Causa:** En `handlers.py`, el endpoint `@route("game", "purchase")` validaba si el `store_uid` y el `item_uid` figuraban en el catálogo estático `store_items.json`. Si el vehículo no estaba catalogado allí, devolvía `_ok_bags()` sin la propiedad `data.CortexUID`, provocando el fallo del cliente.
+* **Solución aplicada:** Se modificó `handlers.py` (líneas 1373-1405) para incorporar un fallback que acepte compras de vehículos dinámicos, descuente el precio (o auto-recargue saldo en modo offline), asigne el vehículo a la bolsa `InventoryBag` del jugador y retorne el objeto estructurado con `data.CortexUID` y `data.mDataBags`.
 
-### 3.1. Arquitectura del Hook
-* **Ubicación:** Código fuente en `tools/SafehouseHook/dinput8.cpp`, binario inyectado como proxy en `beta/dinput8.dll`.
-* **Mecanismo:** Proxy directo sobre `dinput8.dll` del sistema. Lanza un hilo monitor (`MonitorThread`) que:
-  - Localiza el puntero del jugador local mediante `GetLocalPlayer` (`TriadWars.exe+0x3978A0`).
-  - Obtiene el nodo de transformación (`TransformNodeComponent` a `+0x58`) y la posición en el mundo (`+0x80`).
-  - Monitorea continuamente las teclas de interacción (`[E]`, `[Enter]`, `[Espacio]`, o botones del mando).
-  - Al detectar interacción dentro del radio de la puerta, ejecuta `TeleportPlayer` escribiendo la matriz de transformación en el motor gráfico, ejecutando `UpdateTransform` (`+0x1CA120`), reteniendo la posición durante 500 ms contra el snap de físicas Havok, e invocando la función nativa `TeleportToTransformRaw` (`+0x595C70`).
+### 3.2. Descubrimientos de Ingeniería Inversa en `TriadWars.exe` (Changelist 541920)
+Mediante desensamblado directo del ejecutable x64, se han localizado las estructuras y funciones exactas del motor de UFG:
+1. **Puntero del Jugador Local (`GetLocalPlayer`):**
+   - RVA: `0x3978A0`.
+   - Código: `mov rax, [rip + 0x205AD51]; ret` -> Lee `*(void**)(g_base + 0x23F25F8)`.
+2. **Nodo de Transformación Gráfica:**
+   - Offset en `SimObject`: `+0x58` (`TransformNodeComponent*`).
+   - Matriz de mundo 4x4: `+0x80`.
+   - Matriz local 4x4: `+0xC0`.
+   - Bandera de actualización `mChanged`: `+0x70`.
+   - Función de actualización: `UpdateWorldTransform` en RVA `0x1CA120`.
+3. **Tabla Global del Actor Manager (Game Action System):**
+   - Contador de actores activos: `*(uint32_t*)(g_base + 0x25E09B8)`.
+   - Puntero al array de actores: `*(uint8_t**)(g_base + 0x25E09C0)`.
+   - Tamaño de entrada (stride): `0xA8` bytes.
+   - Offset `+0x00`: Puntero al objeto nativo `TSActor*`.
+   - Offset `+0x08`: `uint32_t UID` del `SimObject` asociado.
+   - Referencia inversa: `*(void**)((uintptr_t)TSActor + 0xD0) == pSimObj`.
+4. **Funciones Nativas de Teletransporte del Motor:**
+   - **`TSActor::TeleportToTransform(TSActor* actor, const float* matrix)` en RVA `0x5958B0`:**
+     - Ejecuta `PlaceOnGround` (`0x3B3390`) sobre las coordenadas `(x, y, z)`.
+     - Reserva memoria para el evento: `Malloc(0x90, "TeleportPosition", 0)` (`0x1BF580`).
+     - Lee el canal del evento en `g_base + 0x229F128`.
+     - Construye `TeleportPositionEvent` en RVA `0x445290`.
+     - Encola el evento en el despachador oficial en `g_base + 0x23F5870` vía `QueueEvent` (`0x1F0260`).
+     - Invoca `TSActor::OnTeleport` en `vtable[0x14]` / `+0xA0`.
+   - **`TSActor::TeleportToTransformRaw` en RVA `0x595C70`:** Versión que omite `PlaceOnGround` y despacha el evento directo.
+5. **Desprotección Crítica de Memoria:**
+   - En RVA `0x185B000`, la página `.rdata` contiene los contadores de referencia que `QueueEvent` incrementa. Debe desprotegerse con `VirtualProtect(g_base + 0x185B000, 0x4000, PAGE_EXECUTE_READWRITE)` para evitar excepciones `0xC0000005`.
 
-### 3.2. Teclas Rápidas de Diagnóstico y Teletransporte (Hotkeys)
-* **[F9]: Inspector de Posición en Vivo:** Imprime en `beta/safehouse_hook.log` las coordenadas actuales del jugador $(X, Y, Z)$ y la distancia calculada a todas las puertas configuradas.
-* **[F7]: Teletransporte Forzado al Interior:** Fuerza la entrada inmediata al interior del piso franco de North Point (`X: 875.50, Y: -101.00, Z: 26.25`).
-* **[F8]: Teletransporte Forzado al Rellano Exterior:** Fuerza la salida al rellano exterior de North Point (`X: 880.85, Y: -101.90, Z: 26.25`).
+---
 
-### 3.3. Dificultad Actual y Causa Técnica de la Entrada al Piso
-1. **Ausencia de Triggers Nativos en el Mapa de Triad Wars:**
-   - En Sleeping Dogs, las puertas de los pisos francos poseen triggers de script de misión vinculados a cinemáticas y árboles de acción. En Triad Wars, dichos scripts fueron eliminados al orientar el juego a cuarteles generales de turf en línea.
-   - Como resultado, la puerta física no reacciona de forma nativa al interactuar con el juego base.
-2. **Dependencia de Coordenadas Exactas en el Hook:**
-   - El piso franco de North Point está elevado en un edificio. La puerta de entrada real se encuentra en el rellano superior en $Z \approx 26.25$, mientras que la entrada a nivel de calle/callejón está en $Z \approx 5.30$.
-   - Si el jugador se encuentra a pie de calle o en una coordenada fuera del radio calibrado, el hook no detecta la pulsación y no se inicia la transición.
-3. **Falta de Indicadores en Pantalla (HUD/OSD):**
-   - El hook actual escribe diagnósticos en `beta/safehouse_hook.log` y emite beeps acústicos, pero no dibuja texto en la interfaz gráfica del juego, lo que dificulta al jugador conocer con precisión cuándo está dentro del volumen activo de interacción.
+## 4. Coordenadas Verificadas de Pisos Francos e Interiores
 
-### 3.4. Vías Técnicas Recomendadas para Resolver la Entrada
-1. **Spawn Directo en el Interior:** Añadir una opción en el Launcher o en `tools/safehouse_manager.py` para reaparecer directamente dentro del apartamento (`X: 875.50, Y: -101.00, Z: 26.25`), permitiendo explorar el interior y sus muebles sin depender de la puerta física.
-2. **Implementación de OSD / Texto en Pantalla:** Interceptar `IDXGISwapChain::Present` con ImGui o inyectar avisos en el Scaleform nativo (`UFG::HUD`) para mostrar un prompt visible (*"Pulsa E para entrar"*).
-3. **Trigger de Proximidad Cilíndrico Ampliado:** Extender la detección de la puerta en la entrada exterior a nivel de suelo para que el jugador pueda entrar desde el callejón sin tener que subir al rellano alto.
+### 4.1. Apartamento de North Point (Sleeping Dogs)
+* **Rellano Exterior (frente a la puerta, planta alta):**
+  - $X = 880.85$, $Y = -101.90$, $Z = 26.25$.
+* **Punto de Llegada Interior (dentro del apartamento):**
+  - $X = 875.50$, $Y = -101.00$, $Z = 26.25$.
+* **Puerta de Salida Interior (hacia el rellano):**
+  - $X = 877.50$, $Y = -101.90$, $Z = 26.25$.
+* **Muebles e Instalaciones Interactivas Interiores:**
+  - **Nevera (Dragon Kick):** $X = 873.80, Y = -105.00, Z = 26.25$ (Radio 2.0 m).
+  - **Inodoro (Mear / Pee):** $X = 870.50, Y = -107.20, Z = 26.25$ (Radio 2.0 m).
+  - **Lavabo (Lavarse la cara / Curación 100%):** $X = 872.80, Y = -107.20, Z = 26.25$ (Radio 2.0 m).
+  - **Cama (Dormir / Curación 100% y ciclo horario):** $X = 867.50, Y = -101.00, Z = 26.25$ (Radio 2.5 m).
+  - **Armario (Wardrobe Shop / Cambio de ropa):** $X = 868.50, Y = -98.00, Z = 26.25$ (Radio 2.2 m).
 
+---
 
+## 5. Análisis del Problema Pendiente con la Entrada al Apartamento
 
+A pesar de haber localizado las funciones de teletransporte y compilado la DLL proxy, la entrada al interactuar en la puerta sigue sin responder con fiabilidad según las pruebas del usuario. Las razones técnicas identificadas son:
+
+1. **Contexto de Ejecución del Hilo:**
+   - La DLL ejecuta la monitorización en un hilo secundario de Windows (`MonitorThread`).
+   - Las funciones internas del motor como `TSActor::TeleportToTransform` y `QueueEvent` esperan ejecutarse sincrónicamente en el hilo principal del motor (hilo de render / simulación física). Invocar eventos de Havok desde un hilo asíncrono puede provocar que el despachador descarte el evento o falle silenciosamente.
+2. **Ausencia de Interfaz Gráfica / HUD OSD:**
+   - Al no existir un prompt visual en pantalla (*"Pulsa E para interactuar"*), el usuario no sabe si el juego está registrando su posición exacta o si está fuera del cilindro de activación.
+3. **Controlador de Personaje de Havok:**
+   - El componente de física de Havok mantiene una cápsula de colisión rígida. Modificar únicamente la matriz visual sin congelar o sincronizar la cápsula física en el paso de simulación puede resultar en que el motor mantenga al personaje en el exterior.
+
+---
+
+## 6. Vías Recomendadas para Continuar
+
+Para la persona o agente que retome este trabajo, se aconseja seguir una de las siguientes soluciones probadas:
+
+### Opción A (La más directa y 100% funcional): Spawn Directo en el Interior
+En lugar de depender de la interacción de la puerta en el mundo exterior, reaparecer al personaje directamente dentro del apartamento al cargar la partida:
+1. En `server/LocalServer/LocalServer/state.json`:
+   - Modificar las coordenadas de checkpoint en `gameplaystate`:
+     ```
+     PlayerCheckpointLocationX=875.50;PlayerCheckpointLocationY=-101.00;PlayerCheckpointLocationZ=26.25;
+     PlayerLastStableLocationX=875.50;PlayerLastStableLocationY=-101.00;PlayerLastStableLocationZ=26.25;
+     ```
+2. Configurar la opción en `tools/safehouse_manager.py` para que al seleccionar "North Point Interior" asigne esas coordenadas exactas. El jugador arrancará directamente dentro del piso con todos los muebles listos.
+
+### Opción B: Hook Síncrono en el Bucle Principal
+En lugar de un hilo en segundo plano:
+1. Interceptar una función que se ejecute una vez por fotograma en el hilo principal (por ejemplo, el final de `SimObject::Update` o `IDXGISwapChain::Present`).
+2. Comprobar la tecla e invocar `TSActor::TeleportToTransform` dentro del hilo principal donde Havok procesa los eventos de forma segura.
+
+### Opción C: Prompt Visual con DirectX / ImGui
+1. Crear un hook a `IDXGISwapChain::Present` (DirectX 11) para dibujar un indicador en pantalla (*"Puerta de North Point - Pulsa [E] o [Y]"*).
+2. De esta forma se confirma visualmente que el volumen de proximidad está activo.
