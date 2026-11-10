@@ -58,4 +58,35 @@ Este documento está diseñado para que cualquier desarrollador o agente de IA r
    - 7 escenas del crimen en el mundo abierto (*Crime Scenes*).
    - 247 vehículos desbloqueados en el concesionario.
 
+## 3. Estado de la Integración de Pisos Francos (`SafehouseHook` / `dinput8.dll`)
+
+### 3.1. Arquitectura del Hook
+* **Ubicación:** Código fuente en `tools/SafehouseHook/dinput8.cpp`, binario inyectado como proxy en `beta/dinput8.dll`.
+* **Mecanismo:** Proxy directo sobre `dinput8.dll` del sistema. Lanza un hilo monitor (`MonitorThread`) que:
+  - Localiza el puntero del jugador local mediante `GetLocalPlayer` (`TriadWars.exe+0x3978A0`).
+  - Obtiene el nodo de transformación (`TransformNodeComponent` a `+0x58`) y la posición en el mundo (`+0x80`).
+  - Monitorea continuamente las teclas de interacción (`[E]`, `[Enter]`, `[Espacio]`, o botones del mando).
+  - Al detectar interacción dentro del radio de la puerta, ejecuta `TeleportPlayer` escribiendo la matriz de transformación en el motor gráfico, ejecutando `UpdateTransform` (`+0x1CA120`), reteniendo la posición durante 500 ms contra el snap de físicas Havok, e invocando la función nativa `TeleportToTransformRaw` (`+0x595C70`).
+
+### 3.2. Teclas Rápidas de Diagnóstico y Teletransporte (Hotkeys)
+* **[F9]: Inspector de Posición en Vivo:** Imprime en `beta/safehouse_hook.log` las coordenadas actuales del jugador $(X, Y, Z)$ y la distancia calculada a todas las puertas configuradas.
+* **[F7]: Teletransporte Forzado al Interior:** Fuerza la entrada inmediata al interior del piso franco de North Point (`X: 875.50, Y: -101.00, Z: 26.25`).
+* **[F8]: Teletransporte Forzado al Rellano Exterior:** Fuerza la salida al rellano exterior de North Point (`X: 880.85, Y: -101.90, Z: 26.25`).
+
+### 3.3. Dificultad Actual y Causa Técnica de la Entrada al Piso
+1. **Ausencia de Triggers Nativos en el Mapa de Triad Wars:**
+   - En Sleeping Dogs, las puertas de los pisos francos poseen triggers de script de misión vinculados a cinemáticas y árboles de acción. En Triad Wars, dichos scripts fueron eliminados al orientar el juego a cuarteles generales de turf en línea.
+   - Como resultado, la puerta física no reacciona de forma nativa al interactuar con el juego base.
+2. **Dependencia de Coordenadas Exactas en el Hook:**
+   - El piso franco de North Point está elevado en un edificio. La puerta de entrada real se encuentra en el rellano superior en $Z \approx 26.25$, mientras que la entrada a nivel de calle/callejón está en $Z \approx 5.30$.
+   - Si el jugador se encuentra a pie de calle o en una coordenada fuera del radio calibrado, el hook no detecta la pulsación y no se inicia la transición.
+3. **Falta de Indicadores en Pantalla (HUD/OSD):**
+   - El hook actual escribe diagnósticos en `beta/safehouse_hook.log` y emite beeps acústicos, pero no dibuja texto en la interfaz gráfica del juego, lo que dificulta al jugador conocer con precisión cuándo está dentro del volumen activo de interacción.
+
+### 3.4. Vías Técnicas Recomendadas para Resolver la Entrada
+1. **Spawn Directo en el Interior:** Añadir una opción en el Launcher o en `tools/safehouse_manager.py` para reaparecer directamente dentro del apartamento (`X: 875.50, Y: -101.00, Z: 26.25`), permitiendo explorar el interior y sus muebles sin depender de la puerta física.
+2. **Implementación de OSD / Texto en Pantalla:** Interceptar `IDXGISwapChain::Present` con ImGui o inyectar avisos en el Scaleform nativo (`UFG::HUD`) para mostrar un prompt visible (*"Pulsa E para entrar"*).
+3. **Trigger de Proximidad Cilíndrico Ampliado:** Extender la detección de la puerta en la entrada exterior a nivel de suelo para que el jugador pueda entrar desde el callejón sin tener que subir al rellano alto.
+
+
 

@@ -200,7 +200,7 @@ flowchart LR
 
 | Componente | Estado | Integración en Triad Wars |
 | :--- | :---: | :--- |
-| **4 Pisos Francos** | **COMPLETO** | North Point, Central, Aberdeen y Kennedy Town con streaming 3D de interiores, garajes exteriores y spawn inicial. |
+| **4 Pisos Francos** | **EN CALIBRACIÓN** | North Point, Central, Aberdeen y Kennedy Town con streaming 3D de interiores, garajes exteriores y spawn inicial. El hook de puerta física (`dinput8.dll`) está en calibración de volumen de activación (hotkeys de ayuda: `F7` entrar, `F8` salir, `F9` inspector). |
 | **Dojo de Artes Marciales (Sifu)** | **COMPLETO** | Interior del Dojo activo, 11 estatuas de Jade registradas, árbol de combate Kung Fu al nivel 5 y 12 movimientos cuerpo a cuerpo desbloqueados. |
 | **4 Clubes de Pelea de Distrito** | **COMPLETO** | North Point, Central, Aberdeen y Kennedy Town con torneos de 6 rondas y recompensas de Face/HK$. |
 | **Coleccionables y Minimapa** | **COMPLETO** | Indicadores de mapa activos con iconos y texto: 50 Santuarios de Salud (+100% vida), Cajas Fuertes, Estatuas de Jade, Cámaras de Vigilancia Policial y Rampas de Salto Acrobático. |

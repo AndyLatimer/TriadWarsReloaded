@@ -111,17 +111,17 @@ struct SafehouseDoor {
 static SafehouseDoor g_Doors[] = {
     // 1. North Point Safehouse (Wei Shen's iconic apartment in North Point)
     // Exterior landing outside the door (Z=26.25) vs apartment interior (Z=26.25)
-    { "North Point Safehouse",  880.85f, -101.90f, 26.25f,   875.50f, -101.00f, 26.25f, 4.5f },
+    { "North Point Safehouse",  880.85f, -101.90f, 26.25f,   875.50f, -101.00f, 26.25f, 2.5f },
     // Backup North Point alternate door (street/docks)
-    { "North Point (Docks)",    840.50f, -320.20f,  5.30f,   843.00f, -314.50f,  5.50f, 4.0f },
+    { "North Point (Docks)",    840.50f, -320.20f,  5.30f,   843.00f, -314.50f,  5.50f, 3.5f },
     // 2. Central Safehouse
-    { "Central Safehouse",     -360.40f, -120.70f, 18.20f,  -365.00f, -118.00f, 18.50f, 4.0f },
+    { "Central Safehouse",     -360.40f, -120.70f, 18.20f,  -365.00f, -118.00f, 18.50f, 3.5f },
     // 3. Aberdeen Safehouse (Houseboat)
-    { "Aberdeen Safehouse",    -650.10f, -780.40f,  4.80f,  -655.00f, -785.00f,  5.00f, 4.0f },
+    { "Aberdeen Safehouse",    -650.10f, -780.40f,  4.80f,  -655.00f, -785.00f,  5.00f, 3.5f },
     // 4. Kennedy Town Safehouse (Luxury Penthouse)
-    { "Kennedy Town Safehouse",-1150.30f, 120.50f, 25.10f, -1155.00f,  125.00f, 25.50f, 4.0f },
+    { "Kennedy Town Safehouse",-1150.30f, 120.50f, 25.10f, -1155.00f,  125.00f, 25.50f, 3.5f },
     // 5. Sifu Martial Arts Dojo (North Point)
-    { "Sifu Dojo",             795.00f, -290.00f,  5.50f,   795.00f, -282.00f,  5.50f, 4.0f }
+    { "Sifu Dojo",             795.00f, -290.00f,  5.50f,   795.00f, -282.00f,  5.50f, 3.5f }
 };
 
 static const int NUM_DOORS = sizeof(g_Doors) / sizeof(g_Doors[0]);
@@ -135,11 +135,11 @@ struct SafehouseFixture {
 };
 
 static SafehouseFixture g_Fixtures[] = {
-    { "Nevera / Fridge (Dragon Kick)",  873.80f, -105.00f, 26.25f, 2.0f, "Beber Dragon Kick (+Buff combate)" },
-    { "Inodoro / Toilet (Mear)",        870.50f, -107.20f, 26.25f, 2.0f, "Mear / Orinar (+Face / Satisfaccion)" },
-    { "Lavabo / Sink (Lavarse la cara)", 872.80f, -107.20f, 26.25f, 2.0f, "Lavarse la cara (+Salud al 100%)" },
-    { "Cama / Bed (Dormir)",            867.50f, -101.00f, 26.25f, 2.5f, "Dormir (+Curacion 100% y ciclo dia/noche)" },
-    { "Armario / Wardrobe (Ropa)",      868.50f,  -98.00f, 26.25f, 2.2f, "Abrir Armario / Cambiar Ropa" }
+    { "Nevera / Fridge (Dragon Kick)",  873.80f, -105.00f, 26.25f, 1.8f, "Beber Dragon Kick (+Buff combate)" },
+    { "Inodoro / Toilet (Mear)",        870.50f, -107.20f, 26.25f, 1.8f, "Mear / Orinar (+Face / Satisfaccion)" },
+    { "Lavabo / Sink (Lavarse la cara)", 872.80f, -107.20f, 26.25f, 1.8f, "Lavarse la cara (+Salud al 100%)" },
+    { "Cama / Bed (Dormir)",            867.50f, -101.00f, 26.25f, 2.2f, "Dormir (+Curacion 100% y ciclo dia/noche)" },
+    { "Armario / Wardrobe (Ropa)",      868.50f,  -98.00f, 26.25f, 2.0f, "Abrir Armario / Cambiar Ropa" }
 };
 
 static const int NUM_FIXTURES = sizeof(g_Fixtures) / sizeof(g_Fixtures[0]);
@@ -155,7 +155,7 @@ static float g_lastPeriodicY = 0.0f;
 static float g_lastPeriodicZ = 0.0f;
 static volatile bool g_bRunning = true;
 
-// Anti-Havok snap continuous hold state
+// Anti-Havok snap hold state
 static DWORD g_teleportHoldUntil = 0;
 static float g_holdX = 0.0f;
 static float g_holdY = 0.0f;
@@ -175,45 +175,27 @@ static void* FindTSActorFromSimObject(void* pSimObj)
 
     __try
     {
-        uint32_t targetUID = *(uint32_t*)((uintptr_t)pSimObj + 0x40);
-
-        // 1. Direct Actor Manager scan (0x25E09B8 count, 0x25E09C0 array, stride 0xA8)
-        uint32_t count = *(uint32_t*)(g_base + 0x25E09B8);
-        uint8_t* pEntries = *(uint8_t**)(g_base + 0x25E09C0);
-        if (pEntries && count > 0 && count < 5000)
-        {
-            for (uint32_t i = 0; i < count; ++i)
-            {
-                uint8_t* entry = pEntries + i * 0xA8;
-                void* pActor = *(void**)entry;
-                uint32_t uid = *(uint32_t*)(entry + 8);
-                if (pActor && ((uintptr_t)pActor > 0x10000) && ((uintptr_t)pActor & 0x7) == 0)
-                {
-                    if (uid == targetUID || *(void**)((uintptr_t)pActor + 0xD0) == pSimObj)
-                    {
-                        return pActor;
-                    }
-                }
-            }
-        }
-
-        // 2. Fallback scan in SimObject components
         uint32_t numComp = *(uint32_t*)((uintptr_t)pSimObj + 0x60);
         void** pData = *(void***)((uintptr_t)pSimObj + 0x68);
-        if (pData && numComp <= 128)
-        {
-            for (uint32_t i = 0; i < numComp; ++i)
-            {
-                void* comp = pData[i * 2];
-                if (!comp || (uintptr_t)comp < 0x10000) continue;
 
+        if (!pData || numComp > 100) return NULL;
+
+        for (uint32_t i = 0; i < numComp; ++i)
+        {
+            void* comp = pData[i * 2];
+            uint32_t typeUID = *(uint32_t*)((uintptr_t)pData + i * 16 + 8);
+
+            // TSActorComponent has TypeUID high byte 0x8A (0x8A000001)
+            if ((typeUID & 0xFE000000) == 0x8A000000 && comp && (uintptr_t)comp > 0x10000)
+            {
+                // Scan pointers inside TSActorComponent for candidate where candidate->offset(0xd0) == pSimObj
                 uintptr_t* pFields = (uintptr_t*)comp;
-                for (int f = 0; f < 32; ++f)
+                for (int f = 0; f < 16; ++f)
                 {
                     uintptr_t candidate = pFields[f];
                     if (candidate > 0x10000 && (candidate & 0x7) == 0)
                     {
-                        void* backRef = *(void**)(candidate + 0xD0);
+                        void* backRef = *(void**)(candidate + 0xd0);
                         if (backRef == pSimObj)
                         {
                             return (void*)candidate;
@@ -300,43 +282,33 @@ static void TeleportPlayer(void* pSimObj, void* pTransformNode, float tx, float 
             pUpdate(pTransformNode);
         }
 
-        // 3. Set Anti-Havok snap hold for 600ms across physics ticks
+        // 3. Set Anti-Havok snap hold for 500ms across physics ticks
         g_holdX = tx;
         g_holdY = ty;
         g_holdZ = tz;
-        g_teleportHoldUntil = GetTickCount() + 600;
+        g_teleportHoldUntil = GetTickCount() + 500;
 
-        // 4. Locate TSActor and invoke canonical native engine teleport functions
+        // 4. Locate TSActor and invoke canonical native engine teleport (0x595C70)
         void* pTSActor = FindTSActorFromSimObject(pSimObj);
         if (pTSActor)
         {
-            Log("[TELEPORT] TSActor localizado (0x%p). Despachando eventos de teleportacion nativa...", pTSActor);
-            
-            // Primary: TSActor::TeleportToTransform (0x5958B0) -> PlaceOnGround + QueueEvent + OnTeleport
-            FnTeleportToTransform pTeleport = (FnTeleportToTransform)(g_base + 0x5958B0);
-            if (pTeleport)
-            {
-                pTeleport(pTSActor, matrix);
-            }
-
-            // Secondary: TSActor::TeleportToTransformRaw (0x595C70) -> Direct physics event + OnTeleport
+            Log("[TELEPORT] TSActor localizado (0x%p). Invocando TeleportToTransformRaw (0x595C70)...", pTSActor);
             FnTeleportToTransform pTeleportRaw = (FnTeleportToTransform)(g_base + 0x595C70);
             if (pTeleportRaw)
             {
                 pTeleportRaw(pTSActor, matrix);
+                Log("[TELEPORT] EXITO: TeleportToTransformRaw completado!");
             }
-
-            Log("[TELEPORT] EXITO: Teleportacion nativa completada al 100%% en motor!");
         }
         else
         {
-            Log("[TELEPORT] AVISO: TSActor no encontrado en este tick; posicion directa mantenida via TransformNode.");
+            Log("[TELEPORT] AVISO: TSActor no encontrado en SimObject, posicion directa mantenida.");
         }
 
-        // Sound cue: transition confirmation chime
-        PlaySoundA("SystemAsterisk", NULL, SND_ALIAS | SND_ASYNC);
+        // Sound cue: door transition sound
+        MessageBeep(MB_OK);
 
-        Log("[TELEPORT] EXITO: Wei Shen ubicado en %s (X=%.2f, Y=%.2f, Z=%.2f)", name, tx, ty, tz);
+        Log("[TELEPORT] EXITO: Jugador ubicado en %s (X=%.2f, Y=%.2f, Z=%.2f)", name, tx, ty, tz);
     }
     __except (EXCEPTION_EXECUTE_HANDLER)
     {
@@ -428,16 +400,15 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
     // Check interaction keys
     bool isActionPressed = false;
 
-    // Keyboard: [E], [Enter], [Space], [F]
+    // Keyboard: [E], [Enter], or [Space]
     if ((GetAsyncKeyState('E') & 0x8000) != 0 ||
         (GetAsyncKeyState(VK_RETURN) & 0x8000) != 0 ||
-        (GetAsyncKeyState(VK_SPACE) & 0x8000) != 0 ||
-        (GetAsyncKeyState('F') & 0x8000) != 0)
+        (GetAsyncKeyState(VK_SPACE) & 0x8000) != 0)
     {
         isActionPressed = true;
     }
 
-    // Gamepad via XInput: [Y/Triangle], [A/Cross], [X/Square], [B/Circle]
+    // Gamepad via XInput: [Y/Triangle], [A/Cross], or [X/Square]
     if (!isActionPressed && g_pfnXInputGetState)
     {
         XINPUT_STATE xs = { 0 };
@@ -457,9 +428,9 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
     const SafehouseDoor& npDoor = g_Doors[0]; // North Point Safehouse
 
     // Partition strictly by X coordinate:
-    // Outside the door landing: px >= 878.5f
-    // Inside the apartment: px < 878.5f
-    bool isInside = (px < 878.5f);
+    // Outside the door landing: px >= 879.0f
+    // Inside the apartment: px < 878.0f
+    bool isInside = (px < 878.0f);
 
     if (!isInside)
     {
@@ -471,7 +442,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
         float dz = fabsf(pz - npDoor.ext_z);
         float dist = sqrtf(dx * dx + dy * dy);
 
-        if (dist <= npDoor.trigger_radius && dz <= 4.0f)
+        if (dist <= npDoor.trigger_radius + 3.0f && dz <= 4.0f)
         {
             if (!isActionPressed && (now - g_lastProximityLogTime > 2500))
             {
@@ -480,7 +451,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
                     npDoor.name, dist);
             }
 
-            if (isActionPressed && (now - g_lastTeleportTime > 1200))
+            if (isActionPressed && (dist <= npDoor.trigger_radius) && (now - g_lastTeleportTime > 1200))
             {
                 g_lastTeleportTime = now;
                 Log("[DOOR ACTION] >>> Entrando al piso '%s' (dist=%.2f m)", npDoor.name, dist);
@@ -492,7 +463,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
     else
     {
         // -------------------------------------------------------------
-        // INTERIOR: Inside North Point Apartment (Z ~ 26.25, X < 878.5)
+        // INTERIOR: Inside North Point Apartment (Z ~ 26.25, X < 878)
         // -------------------------------------------------------------
 
         // 1. Check Door Exit (Interior door at X=877.50, Y=-101.90)
@@ -500,7 +471,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
         float dyExit = py - (-101.90f);
         float distExit = sqrtf(dxExit * dxExit + dyExit * dyExit);
 
-        if (distExit <= 2.5f && (now - g_lastTeleportTime > 1500))
+        if (distExit <= 2.2f && (now - g_lastTeleportTime > 1500))
         {
             if (!isActionPressed && (now - g_lastProximityLogTime > 2500))
             {
@@ -508,7 +479,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, float p
                 Log("[PROXIMITY] Junto a la puerta de salida del apartamento (dist=%.2f m). Pulsa [E] o [Y] para SALIR al rellano.", distExit);
             }
 
-            if (isActionPressed)
+            if (isActionPressed && distExit <= 2.0f)
             {
                 g_lastTeleportTime = now;
                 Log("[DOOR ACTION] >>> Saliendo del piso al rellano exterior (dist=%.2f m)", distExit);
@@ -631,7 +602,7 @@ static DWORD WINAPI MonitorThread(LPVOID lpParam)
                     g_lastPeriodicY = py;
                     g_lastPeriodicZ = pz;
                     Log("[POS_TRACKER] Posicion actual: (X=%.2f, Y=%.2f, Z=%.2f) | %s",
-                        px, py, pz, (px < 878.5f) ? "DENTRO DEL PISO" : "FUERA EN EL RELLANO");
+                        px, py, pz, (px < 878.0f) ? "DENTRO DEL PISO" : "FUERA EN EL RELLANO");
                 }
             }
 
@@ -643,7 +614,7 @@ static DWORD WINAPI MonitorThread(LPVOID lpParam)
                     g_lastInspectorTime = now;
                     MessageBeep(MB_ICONINFORMATION);
                     Log("[F9 INSPECTOR] Posicion actual: X=%.2f, Y=%.2f, Z=%.2f (%s)",
-                        px, py, pz, (px < 878.5f) ? "DENTRO DEL PISO" : "FUERA");
+                        px, py, pz, (px < 878.0f) ? "DENTRO DEL PISO" : "FUERA");
                     for (int i = 0; i < NUM_DOORS; ++i)
                     {
                         const SafehouseDoor& d = g_Doors[i];
@@ -693,7 +664,7 @@ static DWORD WINAPI MonitorThread(LPVOID lpParam)
 static DWORD WINAPI InitThread(LPVOID lpParam)
 {
     Log("=================================================");
-    Log("[SafehouseHook v3.2] Inicializado en Triad Wars x64 (Changelist 541920)");
+    Log("[SafehouseHook v3.1] Inicializado en Triad Wars x64 (Changelist 541920)");
 
     // Dynamically load XInput
     HMODULE hXInput = LoadLibraryA("Xinput1_4.dll");
@@ -712,17 +683,6 @@ static DWORD WINAPI InitThread(LPVOID lpParam)
         return 0;
     }
     Log("[SafehouseHook] TriadWars.exe base address = 0x%p", (void*)g_base);
-
-    // CRUCIAL: Unprotect .rdata page where QueueEvent increments reference counters
-    DWORD oldProt = 0;
-    if (VirtualProtect((void*)(g_base + 0x185B000), 0x4000, PAGE_EXECUTE_READWRITE, &oldProt))
-    {
-        Log("[SafehouseHook] Pagina .rdata (0x185B000) desprotegida con exito (PAGE_EXECUTE_READWRITE).");
-    }
-    else
-    {
-        Log("[SafehouseHook] AVISO: VirtualProtect fallo en 0x185B000.");
-    }
 
     // Launch background monitor thread
     CreateThread(NULL, 0, MonitorThread, NULL, 0, NULL);
