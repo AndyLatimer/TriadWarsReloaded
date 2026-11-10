@@ -4,9 +4,6 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "MinHook.h"
-
-#pragma comment(lib, "MinHook.lib")
 
 //--------------------------------------------------------------------------
 // Logging System (real-time to beta/safehouse_hook.log)
@@ -97,7 +94,7 @@ struct SafehouseDoor {
 
 static SafehouseDoor g_Doors[] = {
     // 1. North Point Safehouse (exterior landing on stairs vs bedroom/living room)
-    { "North Point Safehouse",  840.50f, -320.20f, 8.50f,   843.00f, -314.50f, 8.80f, 5.5f },
+    { "North Point Safehouse",  840.50f, -320.20f, 8.50f,   843.00f, -314.50f, 8.80f, 6.0f },
     // 2. Central Safehouse
     { "Central Safehouse",     -360.40f, -120.70f, 18.20f, -365.00f, -118.00f, 18.50f, 5.0f },
     // 3. Aberdeen Safehouse (Houseboat)
@@ -112,15 +109,14 @@ static const int NUM_DOORS = sizeof(g_Doors) / sizeof(g_Doors[0]);
 static uintptr_t g_base = 0;
 static DWORD g_lastTeleportTime = 0;
 static DWORD g_lastProximityLogTime = 0;
+static bool g_bPlayerDetectedLogged = false;
 static volatile bool g_bRunning = true;
-
-// Player pointers discovered safely via HookUpdateTransform
-static void* volatile g_pPlayerSimObject = NULL;
-static void* volatile g_pPlayerTransform = NULL;
 
 // Engine Event types
 typedef void* (__fastcall* FnTeleportEventCtor)(void* pEvent, const float* pWorldMatrix, uint32_t targetUID, uint32_t r9, uint64_t channel, uint64_t unk);
 typedef void (__fastcall* FnQueueEvent)(void* pDispatcher, void* pEvent);
+typedef void* (__fastcall* FnGetLocalPlayer)();
+typedef void (__fastcall* FnUpdateTransform)(void* pTransformNode);
 
 static void TeleportPlayer(void* pSimObj, void* pTransformNode, float tx, float ty, float tz, const char* name, bool entering)
 {
@@ -142,8 +138,22 @@ static void TeleportPlayer(void* pSimObj, void* pTransformNode, float tx, float 
 
         *(int*)((uintptr_t)pTransformNode + 0x70) = 1; // mChanged = 1
 
+        // Force matrix propagation through engine
+        FnUpdateTransform pUpdate = (FnUpdateTransform)(g_base + 0x1CA120);
+        if (pUpdate)
+        {
+            pUpdate(pTransformNode);
+        }
+
         // 2. Dispatch official engine TeleportEvent
-        uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
+        uint32_t nameUID = 0x90ECB5FF; // Default PlayerOne_Havok
+        if ((uintptr_t)pSimObj > 0x10000)
+        {
+            uint32_t uid40 = *(uint32_t*)((uintptr_t)pSimObj + 0x40);
+            uint32_t uid48 = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
+            if (uid40 != 0) nameUID = uid40;
+            else if (uid48 != 0) nameUID = uid48;
+        }
 
         FnTeleportEventCtor pTeleportEventCtor = (FnTeleportEventCtor)(g_base + 0x445290);
         FnQueueEvent pQueueEvent = (FnQueueEvent)(g_base + 0x1F0260);
@@ -209,7 +219,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
 
         if (!isActionPressed)
         {
-            // If not pressed, check if we should log proximity once every 2.5s for debugging
+            // If not pressed, check if we should log proximity once every 2.5s for user debugging
             if (now - g_lastProximityLogTime > 2500)
             {
                 for (int i = 0; i < NUM_DOORS; ++i)
@@ -220,7 +230,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
                     if (dExt <= door.trigger_radius + 2.0f || dInt <= door.trigger_radius + 2.0f)
                     {
                         g_lastProximityLogTime = now;
-                        Log("[PROXIMITY] Cerca de '%s' | Jugador: (%.2f, %.2f, %.2f) | Dist Ext: %.2f m, Dist Int: %.2f m. Pulsa [E] o [Y].",
+                        Log("[PROXIMITY] Cerca de '%s' | Posicion: (%.2f, %.2f, %.2f) | Dist Ext: %.2f m, Dist Int: %.2f m. Pulsa [E] o [Y].",
                             door.name, px, py, pz, dExt, dInt);
                         break;
                     }
@@ -245,7 +255,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
         float dzExt = fabsf(pz - door.ext_z);
         float distExt = sqrtf(dxExt * dxExt + dyExt * dyExt);
 
-        if (distExt <= door.trigger_radius && dzExt <= 6.5f)
+        if (distExt <= door.trigger_radius && dzExt <= 7.0f)
         {
             g_lastTeleportTime = now;
             TeleportPlayer(pSimObj, pTransformNode, door.int_x, door.int_y, door.int_z, door.name, true);
@@ -258,7 +268,7 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
         float dzInt = fabsf(pz - door.int_z);
         float distInt = sqrtf(dxInt * dxInt + dyInt * dyInt);
 
-        if (distInt <= door.trigger_radius && dzInt <= 6.5f)
+        if (distInt <= door.trigger_radius && dzInt <= 7.0f)
         {
             g_lastTeleportTime = now;
             TeleportPlayer(pSimObj, pTransformNode, door.ext_x, door.ext_y, door.ext_z, door.name, false);
@@ -270,51 +280,55 @@ static bool CheckSafehouseProximity(void* pSimObj, void* pTransformNode, bool re
 }
 
 //--------------------------------------------------------------------------
-// UpdateTransform Hook (RVA 0x1CA120)
-// Safely matches PlayerOne_Havok (0x90ECB5FF) and stores the player pointer
-//--------------------------------------------------------------------------
-typedef void(__fastcall* FnUpdateTransform)(void* pTransformNode);
-static FnUpdateTransform g_oUpdateTransform = NULL;
-
-static void __fastcall HookUpdateTransform(void* pTransformNode)
-{
-    if (pTransformNode)
-    {
-        __try
-        {
-            // In SimComponent, m_pSimObject is at offset 0x28
-            void* pSimObj = *(void**)((uintptr_t)pTransformNode + 0x28);
-            if (pSimObj)
-            {
-                uint32_t nameUID = *(uint32_t*)((uintptr_t)pSimObj + 0x48);
-                if (nameUID == 0x90ECB5FF) // "PlayerOne_Havok" -> Local Player
-                {
-                    g_pPlayerSimObject = pSimObj;
-                    g_pPlayerTransform = pTransformNode;
-                }
-            }
-        }
-        __except (EXCEPTION_EXECUTE_HANDLER)
-        {
-        }
-    }
-    g_oUpdateTransform(pTransformNode);
-}
-
-//--------------------------------------------------------------------------
-// Background Monitor Thread: Active polling + Hotkeys F7, F8, F9
+// Background Monitor Thread: Active polling via native GetLocalPlayer() (RVA 0x3978A0)
 //--------------------------------------------------------------------------
 static DWORD WINAPI MonitorThread(LPVOID lpParam)
 {
-    Log("[MonitorThread] Hilo de monitorizacion de puertas iniciado.");
+    Log("[MonitorThread] Hilo de monitorizacion nativa iniciado.");
+
+    FnGetLocalPlayer pGetLocalPlayer = (FnGetLocalPlayer)(g_base + 0x3978A0);
+    Log("[MonitorThread] Funcion GetLocalPlayer resuelta en 0x%p", (void*)pGetLocalPlayer);
 
     while (g_bRunning)
     {
         Sleep(30);
 
-        void* pSimObj = g_pPlayerSimObject;
-        void* pTrans = g_pPlayerTransform;
-        if (!pSimObj || !pTrans) continue;
+        DWORD now = GetTickCount();
+
+        // 1. Resolve local player directly from TheoryEngine
+        void* pSimObj = NULL;
+        __try
+        {
+            if (pGetLocalPlayer)
+            {
+                pSimObj = pGetLocalPlayer();
+            }
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER)
+        {
+            pSimObj = NULL;
+        }
+
+        if (!pSimObj || (uintptr_t)pSimObj < 0x10000)
+        {
+            continue;
+        }
+
+        // 2. Resolve TransformNodeComponent from SimObject (+0x58)
+        void* pTrans = NULL;
+        __try
+        {
+            pTrans = *(void**)((uintptr_t)pSimObj + 0x58);
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER)
+        {
+            pTrans = NULL;
+        }
+
+        if (!pTrans || (uintptr_t)pTrans < 0x10000)
+        {
+            continue;
+        }
 
         __try
         {
@@ -323,7 +337,12 @@ static DWORD WINAPI MonitorThread(LPVOID lpParam)
             float py = pWorld[13];
             float pz = pWorld[14];
 
-            DWORD now = GetTickCount();
+            if (!g_bPlayerDetectedLogged)
+            {
+                g_bPlayerDetectedLogged = true;
+                Log("[MonitorThread] Jugador local activo detectado! SimObject=0x%p, Transform=0x%p, Pos=(%.2f, %.2f, %.2f)",
+                    pSimObj, pTrans, px, py, pz);
+            }
 
             // Hotkey [F9]: Coordinates Inspector & Proximity Status
             if ((GetAsyncKeyState(VK_F9) & 0x8000) != 0)
@@ -403,12 +422,7 @@ static DWORD WINAPI InitThread(LPVOID lpParam)
     }
     Log("[SafehouseHook] TriadWars.exe base address = 0x%p", (void*)g_base);
 
-    // Hook UpdateTransform at RVA 0x1CA120 (SDmodding MinHook initializes and enables on CreateHook)
-    void* targetFunc = (void*)(g_base + 0x1CA120);
-    MH_STATUS sCreate = MH_CreateHook(targetFunc, (void*)&HookUpdateTransform, (void**)&g_oUpdateTransform);
-    Log("[SafehouseHook] MH_CreateHook(0x%p) ret = %d", targetFunc, sCreate);
-
-    // Launch background monitor thread
+    // Launch background monitor thread (queries native GetLocalPlayer at 0x3978A0 cleanly)
     CreateThread(NULL, 0, MonitorThread, NULL, 0, NULL);
     Log("[SafehouseHook] MonitorThread lanzado. Listo!");
     Log("=================================================");
@@ -426,7 +440,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
     else if (dwReason == DLL_PROCESS_DETACH)
     {
         g_bRunning = false;
-        MH_Uninitialize();
     }
     return TRUE;
 }
