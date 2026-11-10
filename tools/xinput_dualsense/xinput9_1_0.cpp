@@ -176,32 +176,54 @@ static BOOL ReadDualSenseState(XINPUT_STATE* pState)
             gp.wButtons |= XINPUT_GAMEPAD_DPAD_LEFT;
     }
 
-    // Left Stick: X (0..65535), Y (0..65535, inverted)
+    // Left Stick: X (0..65535), Y (0..65535, inverted: 0=up, 65535=down)
     int rawLX = (int)ji.dwXpos - 32768;
-    int rawLY = -(int)((int)ji.dwYpos - 32768);
+    int rawLY = 32767 - (int)ji.dwYpos;
+    if (rawLX > 32767) rawLX = 32767;
+    if (rawLX < -32768) rawLX = -32768;
+    if (rawLY > 32767) rawLY = 32767;
+    if (rawLY < -32768) rawLY = -32768;
     gp.sThumbLX = ApplyDeadzone((short)rawLX, XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE);
     gp.sThumbLY = ApplyDeadzone((short)rawLY, XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE);
 
-    // Right Stick: Z (0..65535), R (0..65535, inverted)
+    // Right Stick: Z (0..65535), R (0..65535, inverted: 0=up, 65535=down)
     int rawRX = (int)ji.dwZpos - 32768;
-    int rawRY = -(int)((int)ji.dwRpos - 32768);
+    int rawRY = 32767 - (int)ji.dwRpos;
+    if (rawRX > 32767) rawRX = 32767;
+    if (rawRX < -32768) rawRX = -32768;
+    if (rawRY > 32767) rawRY = 32767;
+    if (rawRY < -32768) rawRY = -32768;
     gp.sThumbRX = ApplyDeadzone((short)rawRX, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE);
     gp.sThumbRY = ApplyDeadzone((short)rawRY, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE);
 
-    // Triggers: L2 (Button 6 or U axis), R2 (Button 7 or V axis)
+    // Triggers: L2 (Button 6 or U axis 0..65535), R2 (Button 7 or V axis 0..65535)
     if (ji.dwButtons & (1 << 6))
+    {
         gp.bLeftTrigger = 255;
-    else if (ji.dwUpos > 33500)
-        gp.bLeftTrigger = (BYTE)(((ji.dwUpos - 32768) * 255) / 32767);
+    }
+    else if (ji.dwUpos > 1500)
+    {
+        int val = (int)(((long long)ji.dwUpos * 255) / 65535);
+        gp.bLeftTrigger = (BYTE)(val > 255 ? 255 : (val < 0 ? 0 : val));
+    }
     else
+    {
         gp.bLeftTrigger = 0;
+    }
 
     if (ji.dwButtons & (1 << 7))
+    {
         gp.bRightTrigger = 255;
-    else if (ji.dwVpos > 33500)
-        gp.bRightTrigger = (BYTE)(((ji.dwVpos - 32768) * 255) / 32767);
+    }
+    else if (ji.dwVpos > 1500)
+    {
+        int val = (int)(((long long)ji.dwVpos * 255) / 65535);
+        gp.bRightTrigger = (BYTE)(val > 255 ? 255 : (val < 0 ? 0 : val));
+    }
     else
+    {
         gp.bRightTrigger = 0;
+    }
 
     return TRUE;
 }
