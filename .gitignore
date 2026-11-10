@@ -33,7 +33,6 @@ build/
 *.exp
 *.lib
 *.pdb
-tools/xinput_dualsense/*.dll
 
 # Local sensitive or ephemeral state
 server/LocalServer/LocalServer/logs/

@@ -153,7 +153,7 @@ namespace TriadWarsLauncher
 
             lblConfigStatus = new Label { Text = "Entorno de Red: Comprobando...", Location = new Point(390, 28), AutoSize = true, ForeColor = Color.LightGray };
             lblPatchStatus = new Label { Text = "Parche Sombras: Comprobando...", Location = new Point(390, 60), AutoSize = true, ForeColor = Color.LightGray };
-            lblControllerStatus = new Label { Text = "Mando DualSense: Comprobando...", Location = new Point(390, 92), AutoSize = true, ForeColor = Color.LightGray };
+            lblControllerStatus = new Label { Text = "Mando: Estándar XInput (DS4Windows)", Location = new Point(390, 92), AutoSize = true, ForeColor = Color.LightGreen };
 
             grpStatus.Controls.Add(lblServerStatus);
             grpStatus.Controls.Add(lblGameStatus);
@@ -565,17 +565,8 @@ namespace TriadWarsLauncher
             }
 
             // Controller
-            string xinputDll = Path.Combine(betaDir, "XINPUT9_1_0.dll");
-            if (File.Exists(xinputDll))
-            {
-                lblControllerStatus.Text = "Mando: DualSense Nativo (XInput Hook OK)";
-                lblControllerStatus.ForeColor = Color.LightGreen;
-            }
-            else
-            {
-                lblControllerStatus.Text = "Mando: Controlador estándar de Windows";
-                lblControllerStatus.ForeColor = Color.LightGray;
-            }
+            lblControllerStatus.Text = "Mando: Estándar XInput (DS4Windows)";
+            lblControllerStatus.ForeColor = Color.LightGreen;
 
             // Spawn Safehouse & Landmark Live State
             if (cmbSpawnPoint != null && !cmbSpawnPoint.DroppedDown)
