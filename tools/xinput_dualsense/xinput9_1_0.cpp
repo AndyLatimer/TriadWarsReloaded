@@ -73,16 +73,12 @@ static void InitRealXInput()
     if (g_hRealXInput) return;
 
     char sysPath[MAX_PATH];
-    GetSystemDirectoryA(sysPath, MAX_PATH);
-    strcat_s(sysPath, "\\XINPUT9_1_0.dll");
 
+    // Prefer xinput1_4.dll and xinput1_3.dll to avoid colliding with this proxy DLL name
+    GetSystemDirectoryA(sysPath, MAX_PATH);
+    strcat_s(sysPath, "\\xinput1_4.dll");
     g_hRealXInput = LoadLibraryA(sysPath);
-    if (!g_hRealXInput)
-    {
-        GetSystemDirectoryA(sysPath, MAX_PATH);
-        strcat_s(sysPath, "\\xinput1_4.dll");
-        g_hRealXInput = LoadLibraryA(sysPath);
-    }
+
     if (!g_hRealXInput)
     {
         GetSystemDirectoryA(sysPath, MAX_PATH);
@@ -196,34 +192,32 @@ static BOOL ReadDualSenseState(XINPUT_STATE* pState)
     gp.sThumbRX = ApplyDeadzone((short)rawRX, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE);
     gp.sThumbRY = ApplyDeadzone((short)rawRY, XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE);
 
-    // Triggers: L2 (Button 6 or U axis 0..65535), R2 (Button 7 or V axis 0..65535)
+    // Triggers: L2 (Button 6 or U axis centered at 32767), R2 (Button 7 or V axis centered at 32767)
+    int leftVal = 0;
+    if (ji.dwUpos > 33000)
+    {
+        leftVal = (int)(((long long)(ji.dwUpos - 32768) * 255) / 32767);
+        if (leftVal > 255) leftVal = 255;
+        if (leftVal < 0) leftVal = 0;
+    }
     if (ji.dwButtons & (1 << 6))
     {
-        gp.bLeftTrigger = 255;
+        leftVal = 255;
     }
-    else if (ji.dwUpos > 1500)
-    {
-        int val = (int)(((long long)ji.dwUpos * 255) / 65535);
-        gp.bLeftTrigger = (BYTE)(val > 255 ? 255 : (val < 0 ? 0 : val));
-    }
-    else
-    {
-        gp.bLeftTrigger = 0;
-    }
+    gp.bLeftTrigger = (BYTE)leftVal;
 
+    int rightVal = 0;
+    if (ji.dwVpos > 33000)
+    {
+        rightVal = (int)(((long long)(ji.dwVpos - 32768) * 255) / 32767);
+        if (rightVal > 255) rightVal = 255;
+        if (rightVal < 0) rightVal = 0;
+    }
     if (ji.dwButtons & (1 << 7))
     {
-        gp.bRightTrigger = 255;
+        rightVal = 255;
     }
-    else if (ji.dwVpos > 1500)
-    {
-        int val = (int)(((long long)ji.dwVpos * 255) / 65535);
-        gp.bRightTrigger = (BYTE)(val > 255 ? 255 : (val < 0 ? 0 : val));
-    }
-    else
-    {
-        gp.bRightTrigger = 0;
-    }
+    gp.bRightTrigger = (BYTE)rightVal;
 
     return TRUE;
 }
